@@ -8,7 +8,7 @@ const Home = () => {
         <title>{ siteTitle }</title>
       </Head>
       <section>
-
+        WE ARE WORKING
       </section>
     </Layout>
   )

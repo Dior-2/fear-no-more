@@ -18,13 +18,13 @@ const Layout = ({ children, home }) => {
         <meta name="twitter:card" content="summary_large_image" />
       </Head>
       <header>
-        <Header />
+        {/* <Header /> */}
       </header>
       <main>
         { children }
       </main>
       <footer>
-        <Footer />
+        {/* <Footer /> */}
       </footer>
     </div>
   )
