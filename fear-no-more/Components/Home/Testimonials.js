@@ -15,14 +15,15 @@ const useStyles = makeStyles({
     display: 'flex',
     flexDirection: 'row',
     align: 'center',
-    margin: 100,
+    margin: 75,
   },
   cent: {
     align: 'right',
     position: 'absolute',
     display: 'flex',
     flexDirection: 'row',
-    justifyContent: 'center'
+    justifyContent: 'center',
+    fontWeight: 'Bold'
   },
   snip: {
     align: 'right',
@@ -30,10 +31,12 @@ const useStyles = makeStyles({
     display: 'flex',
     flexDirection: 'row',
     justifyContent: 'center',
-    margin: 50,
-    maxWidth: 450,
+    margin: 30,
+    maxWidth: 400,
+    fontSize: 13,
+    lineHeight: 1.2,
+    fontStyle: 'italic'
   }
-
 
 });
 
@@ -43,8 +46,12 @@ export default function Testimonial(props) {
 
   return (
     <div style={{ display:'flex', justifyContent:'center' }}>
-      <h2 className={classes.cent}>Testimonials</h2>
-      <h5 className={classes.snip}>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</h5>
+      <Typography gutterBottom variant="h5" component="h2" className={classes.cent}>
+            Testimonials
+          </Typography>
+      <Typography variant="body2" component="p" className={classes.snip}>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+          </Typography>
     <Card className={classes.root} >
       <CardActionArea>
         <CardMedia
