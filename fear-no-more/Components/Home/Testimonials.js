@@ -11,11 +11,11 @@ import Typography from '@material-ui/core/Typography';
 
 const useStyles = makeStyles({
   root: {
-    maxWidth: 870,
+    maxWidth: 800,
     display: 'flex',
     flexDirection: 'row',
     align: 'center',
-    margin: 60,
+    margin: 100,
   },
   cent: {
     align: 'right',
@@ -23,6 +23,15 @@ const useStyles = makeStyles({
     display: 'flex',
     flexDirection: 'row',
     justifyContent: 'center'
+  },
+  snip: {
+    align: 'right',
+    position: 'absolute',
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'center',
+    margin: 50,
+    maxWidth: 450,
   }
 
 
@@ -35,13 +44,14 @@ export default function Testimonial(props) {
   return (
     <div style={{ display:'flex', justifyContent:'center' }}>
       <h2 className={classes.cent}>Testimonials</h2>
+      <h5 className={classes.snip}>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</h5>
     <Card className={classes.root} >
       <CardActionArea>
         <CardMedia
           component="img"
           alt="Lorem ipsum"
           height="180"
-          image="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTr81QCnr010ye_BX_zfenykPz7naqaZ60YlA&usqp=CAU"
+          image="https://cf.ltkcdn.net/charity/images/orig/254503-1600x1030-how-organize-food-drive.jpg"
           title="Lorem ipsum"
         />
         <CardContent>
