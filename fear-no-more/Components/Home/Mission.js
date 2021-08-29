@@ -14,24 +14,29 @@ const useStyles = makeStyles({
     display: 'flex',
     flexDirection: 'row',
     align: 'center',
-    margin: 75,
+    marginTop: 75,
+    marginBottom: 50
   },
   cent: {
     align: 'right',
     position: 'absolute',
     display: 'flex',
     flexDirection: 'row',
+    letterSpacing: -2,
     justifyContent: 'center',
-    fontWeight: 'Bold'
+    // fontWeight: 'Bold'
+
   },
   snip: {
     align: 'right',
+    textAlign: 'center',
     position: 'absolute',
     display: 'flex',
     flexDirection: 'row',
     justifyContent: 'center',
     margin: 30,
-    maxWidth: 400,
+    maxWidth: 600,
+    marginTop: 40,
     fontSize: 13,
     lineHeight: 1.2,
     fontStyle: 'italic'
@@ -45,7 +50,7 @@ export default function Mission(props) {
 
   return (
     <div style={{ display:'flex', justifyContent:'center' }}>
-          <Typography gutterBottom variant="h5" component="h2" className={classes.cent}>
+          <Typography gutterBottom variant="h4" component="h2" className={classes.cent}>
             Mission
           </Typography>
       <Typography variant="body2" component="p" className={classes.snip}>
@@ -56,7 +61,7 @@ export default function Mission(props) {
         <CardMedia
           component="img"
           alt="Lorem ipsum"
-          height="180"
+          height="170"
           image="https://resize.indiatvnews.com/en/resize/newbucket/1200_-/2017/05/istock-64215815-medium-1024x679-1493792308.jpg"
           title="Lorem ipsum"
         />
