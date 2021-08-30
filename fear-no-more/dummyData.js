@@ -13,14 +13,6 @@ const listings/offers/:limit/:category = [
     username
     timestamp
     category
-  },
-  {
-    id
-    title
-    body
-    username
-    timestamp
-    category
   }
 ];
 /*params
@@ -29,13 +21,6 @@ const listings/offers/:limit/:category = [
 // -------------------------------------------------
 
 const listings/offers/comments/:listing_id = [
-  {
-    id
-    username (needs to be unique)
-    body
-    body_id (can explain if needed)
-    timestamp
-  },
   {
     id
     username (needs to be unique)
@@ -56,7 +41,7 @@ const listings/offers/post = {
   category
 };
 
-const offers/listings/comment = {
+const listings/offers/comment = {
   listing_id
   username
   body
@@ -70,14 +55,6 @@ const offers/listings/comment = {
 ////////////////////////
 
 const listings/requests/:limit/:category = [
-  {
-    id
-    title
-    body
-    username
-    timestamp
-    category
-  },
   {
     id
     title
@@ -99,20 +76,13 @@ const listings/requests/comments/:listing_id = [
     body
     body_id (can explain if needed)
     timestamp
-  },
-  {
-    id
-    username (needs to be unique)
-    body
-    body_id (can explain if needed)
-    timestamp
   }
 ];
 /*params
 - sort username and most recent
 */
 // -------------------------------------------------
-const listings/requests/postList = {
+const listings/requests/post = {
   username
   title
   body
@@ -120,7 +90,7 @@ const listings/requests/postList = {
   category
 };
 
-const listings/requests/postComment = {
+const listings/requests/comment = {
   listing_id
   username
   body
