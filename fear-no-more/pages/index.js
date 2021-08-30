@@ -3,6 +3,7 @@ import Layout, { siteTitle } from '../components/layout';
 import Testimony from '../Components/Home/Testimonials'
 import Mission from '../Components/Home/Mission'
 import Help from '../Components/Home/Help'
+import Link from 'next/link';
 
 const Home = () => {
   return (
@@ -18,6 +19,10 @@ const Home = () => {
       </section>
       <section>
         <Testimony />
+        <h1>
+          LISTINGS{' '}
+          <Link href='/listings/listings'><a>HERE</a></Link>
+        </h1>
       </section>
     </Layout>
   )
