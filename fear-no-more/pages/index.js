@@ -2,6 +2,10 @@ import Head from 'next/head';
 import Layout, { siteTitle } from '../Components/layout';
 import Link from 'next/link';
 import firebase from '../firebase.js';
+import Testimony from '../Components/Home/Testimonials';
+import Mission from '../Components/Home/Mission';
+import Help from '../Components/Home/Help';
+import Profile from './api/user/profile';
 
 const Home = () => {
   return (
@@ -10,15 +14,7 @@ const Home = () => {
         <title>{ siteTitle }</title>
       </Head>
       <section>
-        <div>
-          It's a test page. It's a page and it is tiny.
-        </div>
-        <button>
-          <Link href="/login">Login</Link>
-        </button>
-        <button type="button">
-          <Link href="/signup">Sign up</Link>
-        </button>
+        <Profile />
       </section>
     </Layout>
   )

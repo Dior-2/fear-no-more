@@ -10,6 +10,7 @@ import Typography from '@material-ui/core/Typography';
 import { spacing } from '@material-ui/system';
 
 
+
 const useStyles = makeStyles({
   root: {
     maxWidth: 400,
@@ -20,7 +21,7 @@ const useStyles = makeStyles({
     spacing: -100,
     marginLeft: 3,
     marginRight: 3,
-    marginBottom: 20
+    marginBottom: 50
   },
   cent: {
     align: 'right',
@@ -44,6 +45,14 @@ const useStyles = makeStyles({
     fontSize: 13,
     lineHeight: 1.2,
     fontStyle: 'italic'
+  },
+  btnL: {
+    marginTop: 10,
+    // color: 'red',
+    float: 'right',
+    borderColor: 'black'
+    // bgcolor: ''
+    // position: 'absolute',
   }
 
 });
@@ -55,50 +64,43 @@ export default function Testimonial(props) {
   const classes = useStyles()
 
   return (
-    <div style={{ display:'flex', justifyContent:'center' }}>
+    <div style={{ display:'flex', justifyContent:'center', }}>
       <Typography gutterBottom variant="h4" component="h2" className={classes.cent}>
-            Testimonials
+            Who Are You?
           </Typography>
       <Typography variant="body2" component="p" className={classes.snip}>
       Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
           </Typography>
     <Card className={classes.root} >
-      <CardActionArea>
-        <CardMedia
-          component="img"
-          alt="Lorem ipsum"
-          height="180"
-          image="https://cf.ltkcdn.net/charity/images/orig/254503-1600x1030-how-organize-food-drive.jpg"
-          title="Lorem ipsum"
-        />
+      {/* <CardActionArea> */}
+
         <CardContent>
           <Typography gutterBottom variant="h5" component="h2">
-            Lorem ipsum
+            Need Help
           </Typography>
           <Typography variant="body2" color="textSecondary" component="p">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
           </Typography>
+          <Button variant="contained" size="large" color="default" className={classes.btnL}>
+          Sign Up
+        </Button>
         </CardContent>
-      </CardActionArea>
+      {/* </CardActionArea> */}
       </Card>
       <Card className={classes.root} >
-      <CardActionArea>
-        <CardMedia
-          component="img"
-          alt="Lorem ipsum"
-          height="180"
-          image="https://www.northwestharvest.org/wp-content/uploads/food-drives-mastheads.jpg"
-          title="Lorem ipsum"
-        />
+
         <CardContent>
           <Typography gutterBottom variant="h5" component="h2">
-            Lorem ipsum
+            Can Help
           </Typography>
           <Typography variant="body2" color="textSecondary" component="p">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
           </Typography>
+          <Button variant="contained" size="large" color="default" className={classes.btnL}>
+          Sign Up
+        </Button>
         </CardContent>
-      </CardActionArea>
+
     </Card>
     </div>
   )

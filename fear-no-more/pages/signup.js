@@ -59,12 +59,6 @@ const FireBaseAPITesting = () => {
             method: method,
             location: location
           };
-
-          console.log(`User ${userId} is set up`);
-
-
-
-
         })
         .catch((error) => {
           const errorCode = error.code;
