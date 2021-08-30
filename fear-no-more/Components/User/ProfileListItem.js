@@ -1,5 +1,6 @@
-import React from 'react';
-
+import React, { useState } from 'react';
+import EditRow from './EditRow';
+import { withStyles, makeStyles } from '@material-ui/core/styles';
 import {
   TableContainer,
   Table,
@@ -9,7 +10,7 @@ import {
   TableCell,
   Paper
 } from '@material-ui/core';
-import { withStyles, makeStyles } from '@material-ui/core/styles';
+
 
 const StyledTableCell = withStyles((theme) => ({
   head: {
@@ -39,16 +40,31 @@ const useStyles = makeStyles({
   },
   cell: {
     minWidth: '8rem'
+  },
+  edit: {
+    cursor: 'pointer'
   }
 });
 
+
 const ProfileListItem = ({ label, text }) => {
   const classes = useStyles();
+  const [editing, setEditing] = useState(false);
 
   return (
     <StyledTableRow>
-      <StyledTableCell className={ classes.cell }component="th" scope="row">{ label }</StyledTableCell>
-      <StyledTableCell component="th" scope="row">{ text }</StyledTableCell>
+      <StyledTableCell
+        className={ classes.cell }
+        component="th"
+        scope="row"
+      >{ label }</StyledTableCell>
+      <StyledTableCell
+        component="th"
+        scope="row"
+      >{ text }</StyledTableCell>
+      <StyledTableCell>
+        <EditRow />
+      </StyledTableCell>
     </StyledTableRow>
   )
 };

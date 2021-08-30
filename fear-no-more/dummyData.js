@@ -13,14 +13,6 @@ const listings/offers/:limit/:category = [
     username
     timestamp
     category
-  },
-  {
-    id
-    title
-    body
-    username
-    timestamp
-    category
   }
 ];
 /*params
@@ -29,13 +21,6 @@ const listings/offers/:limit/:category = [
 // -------------------------------------------------
 
 const listings/offers/comments/:listing_id = [
-  {
-    id
-    username (needs to be unique)
-    body
-    body_id (can explain if needed)
-    timestamp
-  },
   {
     id
     username (needs to be unique)
@@ -120,7 +105,7 @@ const listings/requests/postList = {
   category
 };
 
-const listings/requests/postComment = {
+const listings/requests/comment = {
   listing_id
   username
   body
