@@ -69,7 +69,7 @@ const offers/listings/comment = {
 //  Requests  //////////
 ////////////////////////
 
-const listings/requests/:limit/:sort = [
+const listings/requests/:limit/:category = [
   {
     id
     title
@@ -112,7 +112,7 @@ const listings/requests/comments/:listing_id = [
 - sort username and most recent
 */
 // -------------------------------------------------
-const liatings/requests/postList = {
+const listings/requests/postList = {
   username
   title
   body
