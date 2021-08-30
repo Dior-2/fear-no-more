@@ -44,9 +44,6 @@ const FireBaseAPITesting = () => {
     // { auth.currentUser ? setUserId(auth.currentUser.uid) : console.log('No user to set') }
   }, []);
 
-
-
-
   const handleSignUpClick = () => {
     if (password === passwordConfirmation) {
       createUserWithEmailAndPassword(auth, email, password)
