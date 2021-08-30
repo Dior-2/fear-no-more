@@ -3,7 +3,7 @@ import Layout, { siteTitle } from '../components/layout';
 import Testimony from '../Components/Home/Testimonials'
 import Mission from '../Components/Home/Mission'
 import Help from '../Components/Home/Help'
-import Profile from './api/user/profile'
+import Profile from './user/profile'
 
 const Home = () => {
   return (
@@ -16,6 +16,6 @@ const Home = () => {
       </section>
     </Layout>
   )
-}
+};
 
 export default Home;
