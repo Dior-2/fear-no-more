@@ -21,7 +21,7 @@ const Home = () => {
         <Testimony />
         <h1>
           LISTINGS{' '}
-          <Link href='/listings/listings'><a>HERE</a></Link>
+          <Link href='/listings/allListings'><a>HERE</a></Link>
         </h1>
       </section>
     </Layout>
