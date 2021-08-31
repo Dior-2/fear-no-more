@@ -20,6 +20,7 @@ const useStyles = makeStyles({
     justifyContent: 'center',
     alignItems:     'center',
     height:         '100vh',
+    marginBottom:   '3rem'
   },
   table: {
     minWidth: 700,
@@ -54,12 +55,15 @@ const Profile = ({ /*user*/ }) => {
   return (
     <Container component="main" maxWidth="lg" className={ classes.root }>
     <h1>EDIT PROFILE</h1>
-      <TableContainer component={ Paper }>
+      <TableContainer component={ Paper } >
         <Table className={ classes.table }>
           <TableHead>
             <TableRow style={{ backgroundColor: 'grey', height: '2.5rem'}}>
-              Account
-
+              <TableCell style={{ rowspan: '3' }}>
+                Account
+              </TableCell>
+              <TableCell />
+              <TableCell />
             </TableRow>
           </TableHead>
           <TableBody>
@@ -71,7 +75,13 @@ const Profile = ({ /*user*/ }) => {
             <ProfileListItem label="Organization" text="Home"      name="organization"/>
           </TableBody>
           <TableHead>
-            Contact
+            <TableRow style={{ backgroundColor: 'grey', height: '2.5rem'}}>
+              <TableCell style={{ rowspan: '3' }}>
+                Contact
+              </TableCell>
+              <TableCell />
+              <TableCell />
+            </TableRow>
           </TableHead>
           <TableBody>
             <ProfileListItem label="Home Phone"     text=""                      name="homePhone"/>
@@ -80,7 +90,13 @@ const Profile = ({ /*user*/ }) => {
             <ProfileListItem label="Contact Method" text="phone"                 name="preferredContact"/>
           </TableBody>
           <TableHead>
-            Address
+          <TableRow style={{ backgroundColor: 'grey', height: '2.5rem'}}>
+              <TableCell style={{ rowspan: '3' }}>
+                Address
+              </TableCell>
+              <TableCell />
+              <TableCell />
+            </TableRow>
           </TableHead>
           <TableBody>
             <ProfileListItem label="City"      text="Gotham"           name="city"/>
