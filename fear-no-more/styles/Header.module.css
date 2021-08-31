@@ -1,0 +1,191 @@
+/* Header */
+
+.background {
+  padding-bottom: 150px;
+  display: flex;
+  background: black;
+  justify-content: center;
+  background-image: url("./homless_background.jpg");
+  background-repeat: no-repeat;
+  background-size: 100%;
+  margin-bottom: 30px;
+  z-index: -1;
+  position: relative;
+  box-shadow: inset 0 0 0 1000px rgba(0,0,0,.2);
+}
+
+.background_logo {
+  display: flex;
+  background-image: url("./Logo.png");
+  background-size: 15%;
+  background-repeat: no-repeat;
+  margin: 20px;
+}
+
+/* .background_cover {
+  background: rgb(0,0,0, 0.2);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+} */
+
+.navBlock {
+  width: 800px;
+}
+
+.background nav {
+  display: flex;
+  justify-content: flex-end;
+}
+
+
+.background nav ul {
+  display: flex;
+  justify-content: flex-end;
+  list-style: none;
+}
+
+.background nav li {
+  margin-left:1rem;
+  color: white;
+}
+
+.background .pageName {
+  display: flex;
+  justify-content: center;
+  align-self: center;
+  color: white;
+  font-size: 45px;
+  font-weight: 700;
+  padding-top: 2rem;
+}
+
+/* Footer */
+
+.footer {
+  padding-top: 100px;
+  padding-bottom: 100px;
+  display: flex;
+  background: black;
+  color: white;
+  justify-content: center;
+}
+
+.footer_block {
+  display: flex;
+  width: 800px;
+}
+
+/* About Us */
+
+.aboutUs {
+  display: flex;
+  width: 400px;
+  justify-content: center;
+}
+
+.aboutUs_block {
+  width: 280px;
+}
+
+.aboutUs_title {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.aboutUs_body {
+  font-size: 15px;
+  font-weight: 400;
+  margin-bottom: 10px;
+}
+
+.aboutUs_address {
+  font-size: 15px;
+  font-weight: 400;
+  margin-bottom: 10px;
+}
+
+.aboutUs_phoneNumber {
+  font-size: 15px;
+  margin-bottom: 10px;
+  font-weight: 400;
+}
+
+.aboutUs_email {
+  font-size: 15px;
+  margin-bottom: 10px;
+  font-weight: 400;
+}
+
+/* Contact Us */
+
+.contactUs {
+  display: flex;
+  width: 400px;
+  justify-content: center;
+}
+
+.contactUs_block {
+  width: 280px;
+}
+
+.contactUs_title {
+  font-size: 18px;
+  margin-bottom: 30px;
+}
+
+.contactUs_name {
+  margin-bottom: 15px;
+}
+
+#contactUs_name {
+  width: 100%;
+  outline: none;
+  background-color: rgb(24, 24, 24);
+  font-size: 15px;
+  padding: 8px 10px;
+  color: white;
+  border: none;
+}
+
+.contactUs_email {
+  margin-bottom: 15px;
+}
+
+#contactUs_email {
+  width: 100%;
+  outline: none;
+  background-color: rgb(24, 24, 24);
+  font-size: 15px;
+  padding: 8px 10px;
+  color: white;
+  border: none;
+}
+
+.contactUs_message {
+  margin-bottom: 15px;
+}
+
+#contactUs_message {
+  width: 100%;
+  outline: none;
+  background-color: rgb(24, 24, 24);
+  font-size: 15px;
+  padding: 8px 10px;
+  color: white;
+  height: 80px;
+  resize: none;
+  border: none;
+}
+
+.contactUs_submit {
+  width: 180px;
+  height: 45px;
+  font-size: 16px;
+  background-color: black;
+  color: white;
+  cursor: pointer;
+  border: 2px solid white;
+}

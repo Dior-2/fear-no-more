@@ -3,6 +3,8 @@ import Image from 'next/image';
 import Link from 'next/link';
 import Header from './Nav/Header';
 import Footer from './Nav/Footer';
+import TopHeader from './Nav/TopHeader';
+import BottomFooter from './Nav/BottomFooter';
 
 export const siteTitle = "Fear No More";
 
@@ -17,15 +19,13 @@ const Layout = ({ children, home }) => {
         <meta name="og:title" content={ siteTitle } />
         <meta name="twitter:card" content="summary_large_image" />
       </Head>
-      <header>
-        {/* <Header /> */}
-      </header>
+      <TopHeader />
+      <Header />
       <main>
         { children }
       </main>
-      <footer>
-        {/* <Footer /> */}
-      </footer>
+      <Footer />
+      <BottomFooter />
     </div>
   )
 }
