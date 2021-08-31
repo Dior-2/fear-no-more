@@ -51,7 +51,6 @@ const Profile = ({ /*user*/ }) => {
   };
 
 
-
   return (
     <Container component="main" maxWidth="lg" className={ classes.root }>
     <h1>EDIT PROFILE</h1>

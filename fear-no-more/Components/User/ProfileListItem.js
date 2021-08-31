@@ -65,7 +65,7 @@ const ProfileListItem = ({ label, text, name }) => {
         component="th"
         scope="row"
       >{ text }</StyledTableCell>
-      <StyledTableCell>
+      <StyledTableCell style={{ maxWidth: '8rem' }}>
         <EditRow />
       </StyledTableCell>
     </StyledTableRow>
