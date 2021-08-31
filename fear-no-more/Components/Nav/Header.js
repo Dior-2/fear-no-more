@@ -5,10 +5,11 @@ export default function Header() {
   return (
     <div>
       <div className={headerStyles.background}>
+      <div className={headerStyles.background_cover}>
+      </div>
+
       <div className={headerStyles.navBlock}>
-
         <nav className={headerStyles.nav}>
-
           <ul>
             <li>
               <Link href="/">
@@ -40,6 +41,7 @@ export default function Header() {
 
       </div>
       </div>
+
 
     </div>
   )

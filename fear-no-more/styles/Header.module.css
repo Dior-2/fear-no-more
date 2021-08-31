@@ -5,7 +5,23 @@
   display: flex;
   background: black;
   justify-content: center;
+  background-image: url("./homless_background.jpg");
+  background-repeat: no-repeat;
+  background-size: 100%;
+  margin-bottom: 30px;
+  z-index: -1;
+  position: relative;
+  box-shadow: inset 0 0 0 1000px rgba(0,0,0,.2);
 }
+
+/* .background_cover {
+  background: rgb(0,0,0, 0.2);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+} */
 
 .navBlock {
   width: 800px;
@@ -154,4 +170,14 @@
   height: 80px;
   resize: none;
   border: none;
+}
+
+.contactUs_submit {
+  width: 180px;
+  height: 45px;
+  font-size: 16px;
+  background-color: black;
+  color: white;
+  cursor: pointer;
+  border: 2px solid white;
 }

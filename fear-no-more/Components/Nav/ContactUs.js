@@ -3,7 +3,6 @@ import HeaderStyles from '../../styles/Header.module.css'
 export default function ContactUs() {
   return (
     <div className={HeaderStyles.contactUs}>
-
       <div className={HeaderStyles.contactUs_block}>
 
       <form>
@@ -24,7 +23,7 @@ export default function ContactUs() {
           <textarea id={HeaderStyles.contactUs_message}name="writeMessage" placeholder="Message" required />
         </div>
 
-        <button type="button" className="ContactUsButton">Send Message</button>
+        <button type="button" className={HeaderStyles.contactUs_submit}>Send Message</button>
       </form>
       </div>
   </div>
