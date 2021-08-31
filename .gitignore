@@ -9,7 +9,7 @@ fear-no-more/node_modules
 /coverage
 
 # next.js
-/.next/
+fear-no-more/.next/
 /out/
 
 # production
@@ -33,6 +33,6 @@ yarn-error.log*
 # vercel
 .vercel
 
-
+fear-no-more/package-lock.json
 
 
