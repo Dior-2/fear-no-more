@@ -4,12 +4,13 @@ import Testimony from '../Components/Home/Testimonials'
 import Mission from '../Components/Home/Mission'
 import Help from '../Components/Home/Help'
 import Link from 'next/link';
+import Profile from './api/user/profile'
 
 const Home = () => {
   return (
     <Layout home>
       <Head>
-        <title>{siteTitle}</title>
+        <title>{ siteTitle }</title>
       </Head>
       <section>
         <Mission />
@@ -23,6 +24,7 @@ const Home = () => {
           LISTINGS{' '}
           <Link href='/listings/list'><a>HERE</a></Link>
         </h1>
+        <Profile />
       </section>
     </Layout>
   )
