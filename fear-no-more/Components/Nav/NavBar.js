@@ -32,25 +32,25 @@ export default function NavBar({username, setUsername}) {
   const isMenuOpen = Boolean(anchorEl);
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
 
-  useEffect(() => {
-    onAuthStateChanged(auth, (user) => {
-      if (user) {
-        // User is signed in, see docs for a list of available properties
-        // https://firebase.google.com/docs/reference/js/firebase.User
-        const userId = user.uid;
-        console.log('User ID on Load is', userId);
-        setUserId(userId);
-        // ...
-      } else {
-        // User is signed out
-        // ...
-      }
-    });
-    // const auth = getAuth();
-    // console.log('auth', auth);
-    // { auth.currentUser ? console.log('userId', auth.currentUser.uid) : console.log('No user to log') }
-    // { auth.currentUser ? setUserId(auth.currentUser.uid) : console.log('No user to set') }
-  }, []);
+  // useEffect(() => {
+  //   onAuthStateChanged(auth, (user) => {
+  //     if (user) {
+  //       // User is signed in, see docs for a list of available properties
+  //       // https://firebase.google.com/docs/reference/js/firebase.User
+  //       const userId = user.uid;
+  //       console.log('User ID on Load is', userId);
+  //       setUserId(userId);
+  //       // ...
+  //     } else {
+  //       // User is signed out
+  //       // ...
+  //     }
+  //   });
+  //   // const auth = getAuth();
+  //   // console.log('auth', auth);
+  //   // { auth.currentUser ? console.log('userId', auth.currentUser.uid) : console.log('No user to log') }
+  //   // { auth.currentUser ? setUserId(auth.currentUser.uid) : console.log('No user to set') }
+  // }, []);
 
   const handleProfileMenuOpen = (event) => {
     setAnchorEl(event.currentTarget);

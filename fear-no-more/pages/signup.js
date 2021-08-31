@@ -24,25 +24,25 @@ const FireBaseAPITesting = () => {
   const [userId, setUserId] = useState('Guest');
   const auth = getAuth();
 
-  useEffect(() => {
-    onAuthStateChanged(auth, (user) => {
-      if (user) {
-        // User is signed in, see docs for a list of available properties
-        // https://firebase.google.com/docs/reference/js/firebase.User
-        const userId = user.uid;
-        console.log('User ID on Load is', userId);
-        setUserId(userId);
-        // ...
-      } else {
-        // User is signed out
-        // ...
-      }
-    });
-    // const auth = getAuth();
-    // console.log('auth', auth);
-    // { auth.currentUser ? console.log('userId', auth.currentUser.uid) : console.log('No user to log') }
-    // { auth.currentUser ? setUserId(auth.currentUser.uid) : console.log('No user to set') }
-  }, []);
+  // useEffect(() => {
+  //   onAuthStateChanged(auth, (user) => {
+  //     if (user) {
+  //       // User is signed in, see docs for a list of available properties
+  //       // https://firebase.google.com/docs/reference/js/firebase.User
+  //       const userId = user.uid;
+  //       console.log('User ID on Load is', userId);
+  //       setUserId(userId);
+  //       // ...
+  //     } else {
+  //       // User is signed out
+  //       // ...
+  //     }
+  //   });
+  //   // const auth = getAuth();
+  //   // console.log('auth', auth);
+  //   // { auth.currentUser ? console.log('userId', auth.currentUser.uid) : console.log('No user to log') }
+  //   // { auth.currentUser ? setUserId(auth.currentUser.uid) : console.log('No user to set') }
+  // }, []);
 
   const handleSignUpClick = () => {
     if (password === passwordConfirmation) {
@@ -59,6 +59,9 @@ const FireBaseAPITesting = () => {
             method: method,
             location: location
           };
+          // send newUserData to backend
+            // get backend user info and set states
+            // take to the appropriate listings
         })
         .catch((error) => {
           const errorCode = error.code;
