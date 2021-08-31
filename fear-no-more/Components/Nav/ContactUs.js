@@ -4,6 +4,8 @@ export default function ContactUs() {
   return (
     <div className={HeaderStyles.contactUs}>
 
+      <div className={HeaderStyles.contactUs_block}>
+
       <form>
 
       <div className={HeaderStyles.contactUs_title}>
@@ -11,19 +13,20 @@ export default function ContactUs() {
         </div>
 
         <div className={HeaderStyles.contactUs_name}>
-          <input type="text" name="writeName" placeholder="Name" maxLength="50" required />
+          <input id={HeaderStyles.contactUs_name} type="text" name="writeName" placeholder="Name" maxLength="50" required />
         </div>
 
         <div className={HeaderStyles.contactUs_email}>
-          <input type="text" name="writeEmail" placeholder="E-mail" maxLength="100" required />
+          <input id={HeaderStyles.contactUs_email} type="text" name="writeEmail" placeholder="E-mail" maxLength="100" required />
         </div>
 
         <div className={HeaderStyles.contactUs_message}>
-          <input type="text" name="writeMessage" placeholder="Message" required />
+          <textarea id={HeaderStyles.contactUs_message}name="writeMessage" placeholder="Message" required />
         </div>
 
         <button type="button" className="ContactUsButton">Send Message</button>
       </form>
+      </div>
   </div>
   )
 }
