@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { TextField, Button } from '@material-ui/core';
 import EditIcon from '@material-ui/icons/Edit';
+import { withStyles, makeStyles } from '@material-ui/core/styles';
 
 const ChangeForm = ({ submit }) => {
   return (
@@ -11,7 +12,14 @@ const ChangeForm = ({ submit }) => {
   )
 };
 
+const useStyles = makeStyles({
+  button: {
+    padding: '0'
+  }
+});
+
 const EditRow = () => {
+  const classes = useStyles();
   const [editing, setEditing] = useState(false);
 
   const formSubmit = (e) => {
