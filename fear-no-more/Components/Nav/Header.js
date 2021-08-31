@@ -5,8 +5,8 @@ export default function Header() {
   return (
     <div>
       <div className={headerStyles.background}>
-      <div className={headerStyles.background_cover}>
-      </div>
+      <div className={headerStyles.background_logo}>
+
 
       <div className={headerStyles.navBlock}>
         <nav className={headerStyles.nav}>
@@ -39,6 +39,7 @@ export default function Header() {
           </p>
         </div>
 
+      </div>
       </div>
       </div>
 
