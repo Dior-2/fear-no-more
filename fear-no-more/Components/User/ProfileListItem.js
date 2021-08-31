@@ -20,7 +20,6 @@ const StyledTableCell = withStyles((theme) => ({
   body: {
     fontSize: 14,
     minWidth: '8rem'
-    // flexGrow: 1
   },
 }))(TableCell);
 
@@ -29,7 +28,6 @@ const StyledTableRow = withStyles((theme) => ({
     '&:nth-of-type(odd)': {
       backgroundColor: theme.palette.action.hover,
     },
-    // display: 'flex',
   }
 }))(TableRow);
 
