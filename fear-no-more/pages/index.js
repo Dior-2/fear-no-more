@@ -11,20 +11,12 @@ const Home = () => {
     <Layout home>
       <Head>
         <title>{ siteTitle }</title>
+        <meta name="viewport" content="width=device-width, initial-scale=0.5" />
       </Head>
       <section>
-        <Mission />
-      </section>
-      <section>
         <Help />
-      </section>
-      <section>
+        <Mission />
         <Testimony />
-        <h1>
-          LISTINGS{' '}
-          <Link href='/listings/list'><a>HERE</a></Link>
-        </h1>
-        <Profile />
       </section>
     </Layout>
   )
