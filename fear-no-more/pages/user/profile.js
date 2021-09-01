@@ -66,11 +66,11 @@ const Profile = ({ /*user*/ }) => {
             </TableRow>
           </TableHead>
           <TableBody>
-            <ProfileListItem label="Username"     text={user.username}     name="username" submit={ updateProfile }/>
-            <ProfileListItem label="Password"     text="******"            name="password" submit={ updateProfile }/>
-            <ProfileListItem label="First Name"   text={user.firstname}    name="firstname" submit={ updateProfile }/>
-            <ProfileListItem label="Last Name"    text={user.lastname}     name="lastname" submit={ updateProfile }/>
-            <ProfileListItem label="Role"         text={user.role}         name="role" submit={ updateProfile }/>
+            <ProfileListItem label="Username"     text={user.username}     name="username"     submit={ updateProfile }/>
+            <ProfileListItem label="Password"     text="******"            name="password"     submit={ updateProfile }/>
+            <ProfileListItem label="First Name"   text={user.firstname}    name="firstname"    submit={ updateProfile }/>
+            <ProfileListItem label="Last Name"    text={user.lastname}     name="lastname"     submit={ updateProfile }/>
+            <ProfileListItem label="Role"         text={user.role}         name="role"         submit={ updateProfile }/>
             <ProfileListItem label="Organization" text={user.organization} name="organization" submit={ updateProfile }/>
           </TableBody>
           <TableHead>
@@ -83,9 +83,9 @@ const Profile = ({ /*user*/ }) => {
             </TableRow>
           </TableHead>
           <TableBody>
-            <ProfileListItem label="Home Phone"     text={user.homephone}        name="homephone" submit={ updateProfile }/>
-            <ProfileListItem label="Cell Phone"     text={user.mobile}           name="mobile" submit={ updateProfile }/>
-            <ProfileListItem label="Email"          text={user.email}            name="email" submit={ updateProfile }/>
+            <ProfileListItem label="Home Phone"     text={user.homephone}        name="homephone"        submit={ updateProfile }/>
+            <ProfileListItem label="Cell Phone"     text={user.mobile}           name="mobile"           submit={ updateProfile }/>
+            <ProfileListItem label="Email"          text={user.email}            name="email"            submit={ updateProfile }/>
             <ProfileListItem label="Contact Method" text={user.preferredcontact} name="preferredcontact" submit={ updateProfile }/>
           </TableBody>
           <TableHead>
@@ -98,9 +98,9 @@ const Profile = ({ /*user*/ }) => {
             </TableRow>
           </TableHead>
           <TableBody>
-            <ProfileListItem label="City"      text={user.city}     name="city" submit={ updateProfile }/>
-            <ProfileListItem label="State"     text={user.state}    name="state" submit={ updateProfile }/>
-            <ProfileListItem label="Zip"       text={user.zip}      name="zip" submit={ updateProfile }/>
+            <ProfileListItem label="City"      text={user.city}     name="city"     submit={ updateProfile }/>
+            <ProfileListItem label="State"     text={user.state}    name="state"    submit={ updateProfile }/>
+            <ProfileListItem label="Zip"       text={user.zip}      name="zip"      submit={ updateProfile }/>
             <ProfileListItem label="Address 1" text={user.address1} name="address1" submit={ updateProfile }/>
             <ProfileListItem label="Address 2" text={user.address2} name="address2" submit={ updateProfile }/>
           </TableBody>
