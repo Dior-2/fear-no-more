@@ -7,7 +7,6 @@ const ChangeForm = ({ submit }) => {
   return (
     <form onSubmit={submit}>
       <TextField />
-      <Button variant="contained" size="small" type="submit">Submit</Button>
     </form>
   )
 };
@@ -20,7 +19,7 @@ const useStyles = makeStyles({
 
 const EditRow = () => {
   const classes = useStyles();
-  const [editing, setEditing] = useState(false);
+  const [editing, setEditing] = useState(true);
 
   const formSubmit = (e) => {
     e.preventDefault();

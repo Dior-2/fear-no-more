@@ -71,7 +71,7 @@ export default function NavBar() {
       // set user role to 3
       setUserId('Guest');
       setUsername('Guest');
-      Router.push('/api/signup');
+      Router.push('/');
     }).catch((error) => {
       console.log('We all love humoring Amalia, whose name starts with an a:', error);
       // An error happened.
@@ -104,13 +104,36 @@ export default function NavBar() {
                 <Typography variant="h6" className={classes.title}>
                   Fear No More
                 </Typography>
-                <Button color="inherit" >{username === 'Guest' ? 'Login' : `Welcome, ${username}!`}</Button>
                 {
                   username === 'Guest'
                     ?
-                  <Button color="inherit" onClick={() => { console.log('Going to sign up page') }}>Sign Up</Button>
+                  <Button color="inherit" onClick={() => {
+                    Router.push('/login');
+                  }}>
+                    Login
+                  </Button>
                     :
-                  <Button color="inherit" onClick={() => { handleSignOutClick(); }}>Sign Out</Button>
+                  <Button color="inherit" onClick={() => {
+                    Router.push('/login');
+                  }}>
+                    {`Welcome, ${username}`}
+                  </Button>
+
+                }
+                {
+                  username === 'Guest'
+                    ?
+                  <Button color="inherit" onClick={() => {
+                    Router.push('/user/signup');
+                  }}>
+                    Sign Up
+                  </Button>
+                    :
+                  <Button color="inherit" onClick={() => {
+                     handleSignOutClick();
+                  }}>
+                    Sign Out
+                  </Button>
                 }
               </Toolbar>
             </AppBar>

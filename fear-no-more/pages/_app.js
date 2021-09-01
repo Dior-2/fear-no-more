@@ -18,10 +18,53 @@ function MyApp({ Component, pageProps }) {
         const userId = user.uid;
         const userEmail = user.email;
         console.log('User email on Load is', userEmail);
+        console.log('UserId on load is', userId);
         //setUserId(userId);
         axios.get(`${url}/api/profile?email=${userEmail}`)
         .then(response => {
-          setUserProfile(response.data[0]);
+          console.log('Response from app', response)
+          if (response.data.length > 0) {
+            setUserProfile(response.data[0]);
+          } else {
+            setUserProfile({
+              address1: "123 Amalia Bruno",
+              address2: "",
+              city: "Caleb",
+              email: "Darian@edric.games",
+              firebase_id: "",
+              firstname: "Harold",
+              homephone: "4567890123",
+              id: 0,
+              lastname: "Inspiretron",
+              mobile: "3210987654",
+              organization: "Joe's Klub",
+              preferredcontact: 0,
+              role: 3,
+              state: "LA",
+              username: "To Firebase but not database",
+              zip: 12345
+            });
+          }
+        })
+        .catch(err => {
+          setUserProfile({
+            address1: "123 Amalia Bruno",
+            address2: "",
+            city: "Caleb",
+            email: "Darian@edric.games",
+            firebase_id: "",
+            firstname: "Harold",
+            homephone: "4567890123",
+            id: 0,
+            lastname: "Inspiretron",
+            mobile: "3210987654",
+            organization: "Joe's Klub",
+            preferredcontact: 0,
+            role: 3,
+            state: "LA",
+            username: "Guest",
+            zip: 12345
+          });
         });
       } else {
         setUserProfile({

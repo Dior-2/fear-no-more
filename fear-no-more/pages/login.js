@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from 'react';
+import Router, { useRouter } from 'next/router';
 import Head from 'next/head';
 import Link from 'next/link';
 import Layout, { siteTitle } from '../Components/layout';
@@ -97,7 +98,7 @@ const Login = () => {
         // console.log
         setUserId(userId);
         // More stuff here when you think about it
-
+        Router.push('/');
       })
       .catch((error) => {
         const errorCode = error.code;
