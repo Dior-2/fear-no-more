@@ -19,23 +19,29 @@ function MyApp({ Component, pageProps }) {
         const userEmail = user.email;
         console.log('User email on Load is', userEmail);
         //setUserId(userId);
-        axios.get(`${url}/api/profile/`, {
-          params: {
-            email: userEmail
-          }
-        })
+        axios.get(`${url}/api/profile?email=${userEmail}`)
         .then(response => {
-          console.log('NO WHAMMIES!!')
-        })
+          setUserProfile(response.data[0]);
+        });
       } else {
-        axios.get(`${url}/api/profile/`, {
-          params: {
-            email: userEmail
-          }
-        })
-        .then(response => {
-          console.log('response', response);
-        })
+        setUserProfile({
+          address1: "123 Amalia Bruno",
+          address2: "",
+          city: "Caleb",
+          email: "Darian@edric.games",
+          firebase_id: "",
+          firstname: "Harold",
+          homephone: "4567890123",
+          id: 0,
+          lastname: "Inspiretron",
+          mobile: "3210987654",
+          organization: "Joe's Klub",
+          preferredcontact: 0,
+          role: 3,
+          state: "LA",
+          username: "Guest",
+          zip: 12345
+        });
       }
     });
   }, []);

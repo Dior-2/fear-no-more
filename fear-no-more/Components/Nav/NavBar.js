@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from 'react';
+import Router, { useRouter } from 'next/router';
 import AuthContext from '../../pages/AuthContext.js';
 import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
@@ -23,8 +24,9 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function NavBar({setUsername}) {
+export default function NavBar() {
   const [userId, setUserId] = useState('Guest');
+  const [username, setUsername] = useState('Guest');
   const classes = useStyles();
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
@@ -69,7 +71,9 @@ export default function NavBar({setUsername}) {
       // set user role to 3
       setUserId('Guest');
       setUsername('Guest');
+      Router.push('/api/signup');
     }).catch((error) => {
+      console.log('We all love humoring Amalia, whose name starts with an a:', error);
       // An error happened.
     });
   };
@@ -104,16 +108,15 @@ export default function NavBar({setUsername}) {
                 {
                   username === 'Guest'
                     ?
-                    <Button color="inherit" onClick={() => { console.log('Going to sign up page') }}>Sign Up</Button>
+                  <Button color="inherit" onClick={() => { console.log('Going to sign up page') }}>Sign Up</Button>
                     :
-                    <Button color="inherit" onClick={() => { handleSignOutClick(); }}>Sign Out</Button>
+                  <Button color="inherit" onClick={() => { handleSignOutClick(); }}>Sign Out</Button>
                 }
               </Toolbar>
             </AppBar>
             {renderLogin}
           </div>
         )
-
       }}
     </AuthContext.Consumer>
   );
