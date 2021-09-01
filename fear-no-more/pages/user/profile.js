@@ -32,8 +32,8 @@ const Profile = ({ /*user*/ }) => {
   const [user, setUser] = useState({});
 
   useEffect(() => {
-    getUserData('mgray15@alexa.com');
-  }, [])
+    getUserData('bluigi12@fda.gov');
+  }, []);
 
   const getUserData = async (email) => {
     const params = {email};
@@ -43,13 +43,11 @@ const Profile = ({ /*user*/ }) => {
 
   const updateProfile = async (e, name, userInfo) => {
     e.preventDefault();
-    const params={email: user.email}
 
-    const userObj = {...user};
-    userObj[name] = userInfo;
+    const data = {...user, ogemail: user.email, [name]: userInfo};
 
-    axios.put(`http://18.222.198.9/api/profile`, {params, data: userObj})
-      .then(() => getUserData('ksertink@soup.io'))
+    await axios.put(`http://18.222.198.9/api/profile`, data)
+      .then(() => getUserData('bluigi12@fda.gov'))
       .catch(err => console.log(err))
   };
 
@@ -69,11 +67,11 @@ const Profile = ({ /*user*/ }) => {
           </TableHead>
           <TableBody>
             <ProfileListItem label="Username"     text={user.username}     name="username" submit={ updateProfile }/>
-            <ProfileListItem label="Password"     text="******"            name="password"/>
-            <ProfileListItem label="First Name"   text={user.firstname}    name="firstName"/>
-            <ProfileListItem label="Last Name"    text={user.lastname}     name="lastName"/>
-            <ProfileListItem label="Role"         text={user.role}         name="role"/>
-            <ProfileListItem label="Organization" text={user.organization} name="organization"/>
+            <ProfileListItem label="Password"     text="******"            name="password" submit={ updateProfile }/>
+            <ProfileListItem label="First Name"   text={user.firstname}    name="firstname" submit={ updateProfile }/>
+            <ProfileListItem label="Last Name"    text={user.lastname}     name="lastname" submit={ updateProfile }/>
+            <ProfileListItem label="Role"         text={user.role}         name="role" submit={ updateProfile }/>
+            <ProfileListItem label="Organization" text={user.organization} name="organization" submit={ updateProfile }/>
           </TableBody>
           <TableHead>
             <TableRow style={{ backgroundColor: 'grey', height: '2.5rem'}}>
@@ -85,10 +83,10 @@ const Profile = ({ /*user*/ }) => {
             </TableRow>
           </TableHead>
           <TableBody>
-            <ProfileListItem label="Home Phone"     text={user.homephone}        name="homePhone"/>
-            <ProfileListItem label="Cell Phone"     text={user.mobile}           name="mobile"/>
-            <ProfileListItem label="Email"          text={user.email}            name="email"/>
-            <ProfileListItem label="Contact Method" text={user.preferredcontact} name="preferredContact"/>
+            <ProfileListItem label="Home Phone"     text={user.homephone}        name="homephone" submit={ updateProfile }/>
+            <ProfileListItem label="Cell Phone"     text={user.mobile}           name="mobile" submit={ updateProfile }/>
+            <ProfileListItem label="Email"          text={user.email}            name="email" submit={ updateProfile }/>
+            <ProfileListItem label="Contact Method" text={user.preferredcontact} name="preferredcontact" submit={ updateProfile }/>
           </TableBody>
           <TableHead>
           <TableRow style={{ backgroundColor: 'grey', height: '2.5rem'}}>
@@ -100,11 +98,11 @@ const Profile = ({ /*user*/ }) => {
             </TableRow>
           </TableHead>
           <TableBody>
-            <ProfileListItem label="City"      text={user.city}     name="city"/>
-            <ProfileListItem label="State"     text={user.state}    name="state"/>
-            <ProfileListItem label="Zip"       text={user.zip}      name="zip"/>
-            <ProfileListItem label="Address 1" text={user.address1} name="address1"/>
-            <ProfileListItem label="Address 2" text={user.address2} name="address2"/>
+            <ProfileListItem label="City"      text={user.city}     name="city" submit={ updateProfile }/>
+            <ProfileListItem label="State"     text={user.state}    name="state" submit={ updateProfile }/>
+            <ProfileListItem label="Zip"       text={user.zip}      name="zip" submit={ updateProfile }/>
+            <ProfileListItem label="Address 1" text={user.address1} name="address1" submit={ updateProfile }/>
+            <ProfileListItem label="Address 2" text={user.address2} name="address2" submit={ updateProfile }/>
           </TableBody>
         </Table>
       </TableContainer>
