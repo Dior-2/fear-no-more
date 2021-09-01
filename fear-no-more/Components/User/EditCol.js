@@ -18,24 +18,33 @@ const useStyles = makeStyles({
   }
 });
 
-const EditRow = () => {
+const EditCol = ({ submit, name }) => {
   const classes = useStyles();
+
   const [editing, setEditing] = useState(false);
+  // const [userInfo, setUserInfo] = useState();
 
   const formSubmit = (e) => {
     e.preventDefault();
-    setEditing(false)
+    setEditing(false);
+
+    // submit(e, 'is this making it back?');
+
+    //NEED TO SET THE INPUt FIELD BACK TO EMPTY
   };
 
   return (
     <React.Fragment>
       {
         editing ?
-          <ChangeForm submit={ formSubmit }/> :
+          <ChangeForm name={ name } submit={ (e) => {
+            formSubmit(e, name)
+            submit(e, name)
+          }}/> :
           <EditIcon onClick={ () => setEditing(true) }/>
       }
     </React.Fragment>
   )
 };
 
-export default EditRow;
+export default EditCol;

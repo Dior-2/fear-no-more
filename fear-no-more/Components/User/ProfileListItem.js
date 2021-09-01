@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import EditRow from './EditRow';
+import EditCol from './EditCol';
 import { withStyles, makeStyles } from '@material-ui/core/styles';
 import {
   TableContainer,
@@ -10,7 +10,6 @@ import {
   TableCell,
   Paper
 } from '@material-ui/core';
-
 
 const StyledTableCell = withStyles((theme) => ({
   head: {
@@ -47,8 +46,7 @@ const useStyles = makeStyles({
   }
 });
 
-
-const ProfileListItem = ({ label, text, name }) => {
+const ProfileListItem = ({ label, text, name, submit }) => {
   const classes = useStyles();
   const [editing, setEditing] = useState(false);
 
@@ -58,13 +56,15 @@ const ProfileListItem = ({ label, text, name }) => {
         className={ classes.cell }
         component="th"
         scope="row"
-      >{ label }</StyledTableCell>
+      >
+      { label }</StyledTableCell>
       <StyledTableCell
         component="th"
         scope="row"
-      >{ text }</StyledTableCell>
+      >
+      { text }</StyledTableCell>
       <StyledTableCell style={{ maxWidth: '8rem' }}>
-        <EditRow />
+        <EditCol name={ name } submit={ submit }/>
       </StyledTableCell>
     </StyledTableRow>
   )
