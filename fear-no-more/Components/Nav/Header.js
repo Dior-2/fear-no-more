@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import Link from 'next/link'
 import headerStyles from '../../styles/Header.module.css'
 import Image from 'next/image'
-import Logo from '../../styles/Logo.png'
+import Logo from '../../public/Logo.png'
 
 import { ReactElement } from 'react'
 import { faBars } from '@fortawesome/free-solid-svg-icons'
@@ -49,7 +49,13 @@ export default function Header() {
         </a>
         </div>
         </div>
+        <div className={headerStyles.pageName}>
+          <p>
+            Share your love with ones who need
+          </p>
+        </div>
       </nav>
+
       {/* <div className={headerStyles.background}>
       <div className={headerStyles.background_logo}>
 
