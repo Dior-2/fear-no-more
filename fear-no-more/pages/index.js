@@ -13,8 +13,8 @@ const Home = () => {
         <title>{ siteTitle }</title>
       </Head>
       <section>
-        <Mission />
         <Help />
+        <Mission />
         <Testimony />
       </section>
     </Layout>
