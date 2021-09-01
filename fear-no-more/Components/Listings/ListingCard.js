@@ -44,7 +44,7 @@ export default function ListingCard(props) {
       lg={6}
       alignItems='center'
       justifyContent='center'
-      spacing={0}>
+      spacing={3}>
         <Card className={classes.card}>
           <CardMedia
             className={classes.media}

@@ -20,10 +20,10 @@ const Home = () => {
       </section>
       <section>
         <Testimony />
-        <h1>
+        {/* <h1>
           LISTINGS{' '}
           <Link href='/listings/list'><a>HERE</a></Link>
-        </h1>
+        </h1> */}
         <Profile />
       </section>
     </Layout>
