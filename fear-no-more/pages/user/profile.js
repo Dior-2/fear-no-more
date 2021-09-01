@@ -29,10 +29,6 @@ const useStyles = makeStyles({
 
 const Profile = ({ /*user*/ }) => {
   const classes = useStyles();
-
-  ///////////////////////////////////
-  ///////////////////////////////////
-  // TEMPORARY CALL TO USER OBJECT //
   const [user, setUser] = useState({});
 
   useEffect(() => {
@@ -42,16 +38,19 @@ const Profile = ({ /*user*/ }) => {
   const getUserData = async (email) => {
     const params = {email};
     const {data} = await axios.get(`http://18.222.198.9/api/profile`, {params}).catch(err => err);
-    console.log(data)
     setUser(data[0]);
   };
-  ///////////////////////////////////
-  ///////////////////////////////////
 
-  const updateProfile = (e, name) => {
+  const updateProfile = async (e, name, userInfo) => {
     e.preventDefault();
-    console.log('USER: ', user)
-    console.log('NAME: ', name)
+    const params={username: user.username}
+
+    const userObj = {...user};
+    userObj[name] = userInfo;
+
+    axios.put(`http://18.222.198.9/api/profile`, {params, data: userObj})
+      .then(() => getUserData('mgray15@alexa.com'))
+      .catch(err => console.log(err))
   };
 
   return (
