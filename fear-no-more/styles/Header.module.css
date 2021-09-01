@@ -194,16 +194,29 @@
 
 /* New Header */
 .navbar {
+  background-color: olive;
+  background-image: url("./homless_background.jpg");
+  background-repeat: no-repeat;
+  background-size: 100%;
+  box-shadow: inset 0 0 0 1000px rgba(0,0,0,.2);
+}
+
+.navbar_first_block{
+  display: flex;
+  justify-content: center;
+}
+
+.navbar_block{
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 8px 12px;
-  background-color: olive;
+  width: 800px;
 }
 
 .navbar_logo {
-  width: 160px;
-  height: 160px;
+  width: 120px;
+  height: 120px;
   color: white;
 }
 
@@ -222,9 +235,15 @@
   color: white;
 }
 
-.navar_menu li:hover {
-  background-color: greenyellow;
-  border-radius: 10px;
+.navbar_menu_gone {
+  display: flex;
+  list-style: none;
+  padding-left: 0;
+}
+
+.navbar_menu_gone li {
+  padding: 8px 12px;
+  color: white;
 }
 
 .navbar_toggleBtn{
@@ -236,7 +255,7 @@
 }
 
 @media screen and (max-width:768px) {
-  .navbar {
+  .navbar_block {
     flex-direction: column;
     align-items: flex-start;
     padding: 8px 24px;
@@ -249,11 +268,6 @@
   .navbar_menu li{
     width: 100%;
     text-align: center;
-  }
-  .navbar_logo{
-    width: 160px;
-    height: 160px;
-    justify-content: center;
   }
 
   .navbar_toggleBtn{

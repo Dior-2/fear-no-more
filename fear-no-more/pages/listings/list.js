@@ -27,7 +27,11 @@ export default function Listings(allData) {
   return (
     <>
       <Layout>
-          <Head><title>Listings</title></Head>
+          <Head>
+            <title>Listings</title>
+            <meta name="viewport" content="width=device-width, initial-scale=0.5" />
+          </Head>
+
         <h1>Listings</h1>
         <Link href='/'><a>Home</a></Link>
 

@@ -11,6 +11,7 @@ const Home = () => {
     <Layout home>
       <Head>
         <title>{ siteTitle }</title>
+        <meta name="viewport" content="width=device-width, initial-scale=0.5" />
       </Head>
       <section>
         <Help />

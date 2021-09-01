@@ -21,6 +21,9 @@ export default function Header() {
   return (
     <div>
       <nav className={headerStyles.navbar}>
+      <div className={headerStyles.navbar_first_block}>
+      <div className={headerStyles.navbar_block}>
+
         <div className={headerStyles.navbar_logo}>
           <Image src={Logo} className={headerStyles.navbar_logo_detail} alt='Logo' />
         </div>
@@ -31,12 +34,12 @@ export default function Header() {
             </Link>
           </li>
           <li>
-            <Link href="/">
+            <Link href="/listings/list">
               <a>Request</a>
             </Link>
           </li>
           <li>
-            <Link href="/">
+            <Link href="/listings/list">
               <a>Offer</a>
             </Link>
           </li>
@@ -44,6 +47,8 @@ export default function Header() {
         <a href="#" className={headerStyles.navbar_toggleBtn} onClick={menuClick} >
           <FontAwesomeIcon icon={faBars} />
         </a>
+        </div>
+        </div>
       </nav>
       {/* <div className={headerStyles.background}>
       <div className={headerStyles.background_logo}>
