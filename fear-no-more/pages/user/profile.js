@@ -29,27 +29,29 @@ const useStyles = makeStyles({
 
 const Profile = ({ /*user*/ }) => {
   const classes = useStyles();
-
-
   const [user, setUser] = useState({});
 
-
   useEffect(() => {
-    getUserData('zgoodlife1');
+    getUserData('mgray15@alexa.com');
   }, [])
 
-
-  const getUserData = async (username) => {
-    try {
-      const params = {username};
-      const {data} = await axios.get(`http://18.222.198.9/api/profile`, {params});
-      setUser(data);
-    }
-    catch(err) {
-      return err
-    }
+  const getUserData = async (email) => {
+    const params = {email};
+    const {data} = await axios.get(`http://18.222.198.9/api/profile`, {params}).catch(err => err);
+    setUser(data[0]);
   };
 
+  const updateProfile = async (e, name, userInfo) => {
+    e.preventDefault();
+    const params={email: user.email}
+
+    const userObj = {...user};
+    userObj[name] = userInfo;
+
+    axios.put(`http://18.222.198.9/api/profile`, {params, data: userObj})
+      .then(() => getUserData('ksertink@soup.io'))
+      .catch(err => console.log(err))
+  };
 
   return (
     <Container component="main" maxWidth="lg" className={ classes.root }>
@@ -58,7 +60,7 @@ const Profile = ({ /*user*/ }) => {
         <Table className={ classes.table }>
           <TableHead>
             <TableRow style={{ backgroundColor: 'grey', height: '2.5rem'}}>
-              <TableCell style={{ rowspan: '3' }}>
+              <TableCell>
                 Account
               </TableCell>
               <TableCell />
@@ -66,16 +68,16 @@ const Profile = ({ /*user*/ }) => {
             </TableRow>
           </TableHead>
           <TableBody>
-            <ProfileListItem label="Username"     text="Spiderman" name="username"/>
-            <ProfileListItem label="Password"     text="******"    name="password"/>
-            <ProfileListItem label="First Name"   text="Peter"     name="firstName"/>
-            <ProfileListItem label="Last Name"    text="Parker"    name="lastName"/>
-            <ProfileListItem label="Role"         text="Offering"  name="role"/>
-            <ProfileListItem label="Organization" text="Home"      name="organization"/>
+            <ProfileListItem label="Username"     text={user.username}     name="username" submit={ updateProfile }/>
+            <ProfileListItem label="Password"     text="******"            name="password"/>
+            <ProfileListItem label="First Name"   text={user.firstname}    name="firstName"/>
+            <ProfileListItem label="Last Name"    text={user.lastname}     name="lastName"/>
+            <ProfileListItem label="Role"         text={user.role}         name="role"/>
+            <ProfileListItem label="Organization" text={user.organization} name="organization"/>
           </TableBody>
           <TableHead>
             <TableRow style={{ backgroundColor: 'grey', height: '2.5rem'}}>
-              <TableCell style={{ rowspan: '3' }}>
+              <TableCell>
                 Contact
               </TableCell>
               <TableCell />
@@ -83,14 +85,14 @@ const Profile = ({ /*user*/ }) => {
             </TableRow>
           </TableHead>
           <TableBody>
-            <ProfileListItem label="Home Phone"     text=""                      name="homePhone"/>
-            <ProfileListItem label="Cell Phone"     text="(555) 123-3214"        name="mobile"/>
-            <ProfileListItem label="Email"          text="webcrawler@spidey.com" name="email"/>
-            <ProfileListItem label="Contact Method" text="phone"                 name="preferredContact"/>
+            <ProfileListItem label="Home Phone"     text={user.homephone}        name="homePhone"/>
+            <ProfileListItem label="Cell Phone"     text={user.mobile}           name="mobile"/>
+            <ProfileListItem label="Email"          text={user.email}            name="email"/>
+            <ProfileListItem label="Contact Method" text={user.preferredcontact} name="preferredContact"/>
           </TableBody>
           <TableHead>
           <TableRow style={{ backgroundColor: 'grey', height: '2.5rem'}}>
-              <TableCell style={{ rowspan: '3' }}>
+              <TableCell>
                 Address
               </TableCell>
               <TableCell />
@@ -98,11 +100,11 @@ const Profile = ({ /*user*/ }) => {
             </TableRow>
           </TableHead>
           <TableBody>
-            <ProfileListItem label="City"      text="Gotham"           name="city"/>
-            <ProfileListItem label="State"     text="California"       name="state"/>
-            <ProfileListItem label="Zip"       text="98765"            name="zip"/>
-            <ProfileListItem label="Address 1" text="1234 Find Me Way" name="address1"/>
-            <ProfileListItem label="Address 2" text=""                 name="address2"/>
+            <ProfileListItem label="City"      text={user.city}     name="city"/>
+            <ProfileListItem label="State"     text={user.state}    name="state"/>
+            <ProfileListItem label="Zip"       text={user.zip}      name="zip"/>
+            <ProfileListItem label="Address 1" text={user.address1} name="address1"/>
+            <ProfileListItem label="Address 2" text={user.address2} name="address2"/>
           </TableBody>
         </Table>
       </TableContainer>
