@@ -36,8 +36,8 @@ const EditCol = ({ submit, name }) => {
               value={ userInfo }
               onChange={ (e) => handleChange(e) }
             />
-          <Button variant="contained" size="small" type="submit">
-            Submit</Button>
+          <Button variant="contained" size="small" type="submit">Submit</Button>
+          <Button variant="contained" size="small" onClick={ (e) => resetForm(e) }>X</Button>
           </form> :
           <EditIcon onClick={ () => setEditing(true) }/>
       }
