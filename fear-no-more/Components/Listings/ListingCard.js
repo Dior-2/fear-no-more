@@ -36,41 +36,49 @@ export default function ListingCard(props) {
   const classes = useStyles();
 
   return (
-    <Grid item xs={12} sm={6}>
-      <Card className={classes.card}>
-        <CardMedia
-          className={classes.media}
-          image={props.imageURL || "/logo-ii.png"}
-          title="Image of something..." />
-        <CardContent className={classes.cardContent}>
-          <Typography variant='h6' color='textPrimary'>
-            {props.title}
-          </Typography>
-          <Typography variant="body2" color="textSecondary" component="p">
-            {props.words}
-          </Typography>
-        </CardContent>
-        <CardActions disableSpacing>
-          <Button
-            variant="contained"
-            color="secondary"
-            className={classes.button}
-            startIcon={<AccessibilityNewTwoToneIcon />}>
-            Reach Out
-          </Button>
-          <IconButton
-            color="secondary"
-            aria-label="comment">
-            <CommentTwoToneIcon />
-          </IconButton>
-          <IconButton
-            color="secondary"
-            className={classes.expand}
-            aria-label="share">
-            <ScreenShareTwoToneIcon />
-          </IconButton>
-        </CardActions>
-      </Card>
-    </Grid>
+    <Grid
+      item
+      container
+      sm={12}
+      md={6}
+      lg={6}
+      alignItems='center'
+      justifyContent='center'
+      spacing={0}>
+        <Card className={classes.card}>
+          <CardMedia
+            className={classes.media}
+            image={props.imageURL || "/logo-ii.png"}
+            title="Image of something..." />
+          <CardContent className={classes.cardContent}>
+            <Typography variant='h6' color='textPrimary'>
+              {props.title}
+            </Typography>
+            <Typography variant="body2" color="textSecondary" component="p">
+              {props.words}
+            </Typography>
+          </CardContent>
+          <CardActions disableSpacing>
+            <Button
+              variant="contained"
+              color="secondary"
+              className={classes.button}
+              startIcon={<AccessibilityNewTwoToneIcon />}>
+              Reach Out
+            </Button>
+            <IconButton
+              color="secondary"
+              aria-label="comment">
+              <CommentTwoToneIcon />
+            </IconButton>
+            <IconButton
+              color="secondary"
+              className={classes.expand}
+              aria-label="share">
+              <ScreenShareTwoToneIcon />
+            </IconButton>
+          </CardActions>
+        </Card>
+      </Grid>
   );
 }

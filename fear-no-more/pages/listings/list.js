@@ -1,3 +1,4 @@
+import React, { useState } from 'react';
 import Link from 'next/link';
 import Head from 'next/head';
 import { makeStyles } from '@material-ui/core/styles';
@@ -5,11 +6,15 @@ import Grid from '@material-ui/core/Grid';
 import Layout from '../../Components/layout';
 import List from '../../Components/Listings/List';
 import ListingCard from '../../Components/Listings/ListingCard';
-const useStyles = makeStyles(() => {
+import Pagination from '../../Components/Listings/Pagination';
+
+const useStyles = makeStyles(() => ({
   root: {
-    flexGrow: 1
+    flexGrow: 1,
+    width: '70%',
+    margin: '0 auto',
   }
-})
+}));
 
 import { getData } from '../../lib/data';
 export async function getStaticProps() {
@@ -20,9 +25,18 @@ export async function getStaticProps() {
     }
   }
 }
+
+function pagination (array, count) {
+  let chunk = array.slice(0, count);
+
+}
 export default function Listings(allData) {
-  const data = allData.allData[0].parsedData.rows;
   const classes = useStyles();
+  const data = allData.allData[0].parsedData.rows;
+  const [pageCount, setPageCount] = useState(0);
+
+  // 6 ITEMS PER 'PAGE'
+  // setPageCount(parseInt(data.length/4));
 
   return (
     <>
@@ -33,7 +47,11 @@ export default function Listings(allData) {
 
         {/* LISTINGS */}
         <div className={classes.root}>
-          <Grid container spacing={3}>
+          <Grid
+            container
+            alignItems='center'
+            justifyContent='center'
+            spacing={0}>
               {data.map((item, idx) => {
                 let slicedWords = item.words.slice(0, 150);
                 return (
@@ -43,6 +61,8 @@ export default function Listings(allData) {
                       words={`${slicedWords}...`} />
                 )
               })}
+              <Pagination
+                count={4} />
             </Grid>
         </div>
       </Layout>
