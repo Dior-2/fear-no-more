@@ -4,7 +4,7 @@ import Layout, { siteTitle } from '../components/layout';
 import Testimony from '../Components/Home/Testimonials'
 import Mission from '../Components/Home/Mission'
 import Help from '../Components/Home/Help'
-import Profile from './user/profile'
+// import Profile from './user/profile'
 
 const Home = () => {
   return (
@@ -23,8 +23,9 @@ const Home = () => {
         <h1>
           LISTINGS{' '}
           <Link href='/listings/list'><a>HERE</a></Link>
+          <br/>
+          <Link href='/user/profile'><a>Edit Profile</a></Link>
         </h1>
-        <Profile />
       </section>
     </Layout>
   )
