@@ -22,8 +22,6 @@ const EditCol = ({ submit, name }) => {
   };
 
   const handleChange = (e) => setUserInfo(e.target.value);
-  const cancelChange = () => setEditing(false);
-
 
   return (
     <>
@@ -39,7 +37,7 @@ const EditCol = ({ submit, name }) => {
               onChange={ (e) => handleChange(e) }
             />
           <Button variant="contained" size="small" type="submit">Submit</Button>
-          <Button variant="contained" size="small" onClick={ cancelChange }>X</Button>
+          <Button variant="contained" size="small" onClick={ (e) => resetForm(e) }>X</Button>
           </form> :
           <EditIcon onClick={ () => setEditing(true) }/>
       }
