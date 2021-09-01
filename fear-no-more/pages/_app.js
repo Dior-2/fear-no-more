@@ -1,30 +1,52 @@
-import React, {useEffect} from 'react';
+import React, {useState, useEffect} from 'react';
+import AuthContext from './AuthContext.js';
+import axios from 'axios';
 import '../styles/globals.css'
 import firebase from '../firebase.js';
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 
 function MyApp({ Component, pageProps }) {
+  const [userProfile, setUserProfile] = useState({});
+  const url = 'http://18.222.198.9'
   const auth = getAuth();
+
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
       if (user) {
         // User is signed in, see docs for a list of available properties
         // https://firebase.google.com/docs/reference/js/firebase.User
         const userId = user.uid;
-        console.log('User ID on Load is', userId);
+        const userEmail = user.email;
+        console.log('User email on Load is', userEmail);
         //setUserId(userId);
-        // ...
+        axios.get(`${url}/api/profile/`, {
+          params: {
+            email: userEmail
+          }
+        })
+        .then(response => {
+          console.log('NO WHAMMIES!!')
+        })
       } else {
-        console.log('User is not logged in');
+        axios.get(`${url}/api/profile/`, {
+          params: {
+            email: userEmail
+          }
+        })
+        .then(response => {
+          console.log('response', response);
+        })
       }
     });
-    // const auth = getAuth();
-    // console.log('auth', auth);
-    // { auth.currentUser ? console.log('userId', auth.currentUser.uid) : console.log('No user to log') }
-    // { auth.currentUser ? setUserId(auth.currentUser.uid) : console.log('No user to set') }
   }, []);
 
-  return <Component {...pageProps} />
+
+
+  return (
+    <AuthContext.Provider value={userProfile}>
+        <Component {...pageProps} />
+    </AuthContext.Provider>
+  )
 }
 
-export default MyApp
+export default MyApp;

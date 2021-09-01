@@ -1,4 +1,5 @@
 import React, {useState, useEffect} from 'react';
+import AuthContext from '../../pages/AuthContext.js';
 import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -22,7 +23,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function NavBar({username, setUsername}) {
+export default function NavBar({setUsername}) {
   const [userId, setUserId] = useState('Guest');
   const classes = useStyles();
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -90,23 +91,30 @@ export default function NavBar({username, setUsername}) {
   );
 
   return (
-    <div className={classes.root}>
-      <AppBar position="static">
-        <Toolbar>
-          <Typography variant="h6" className={classes.title}>
-            Fear No More
-          </Typography>
-          <Button color="inherit" >{username === 'Guest' ? 'Login' : `Welcome, ${username}!`}</Button>
-          {
-            username === 'Guest'
-              ?
-            <Button color="inherit" onClick={() => {console.log('Going to sign up page')}}>Sign Up</Button>
-              :
-            <Button color="inherit" onClick={() => { handleSignOutClick();}}>Sign Out</Button>
-          }
-        </Toolbar>
-      </AppBar>
-      {renderLogin}
-    </div>
+    <AuthContext.Consumer>
+      {({username}) => {
+        return (
+          <div className={classes.root}>
+            <AppBar position="static">
+              <Toolbar>
+                <Typography variant="h6" className={classes.title}>
+                  Fear No More
+                </Typography>
+                <Button color="inherit" >{username === 'Guest' ? 'Login' : `Welcome, ${username}!`}</Button>
+                {
+                  username === 'Guest'
+                    ?
+                    <Button color="inherit" onClick={() => { console.log('Going to sign up page') }}>Sign Up</Button>
+                    :
+                    <Button color="inherit" onClick={() => { handleSignOutClick(); }}>Sign Out</Button>
+                }
+              </Toolbar>
+            </AppBar>
+            {renderLogin}
+          </div>
+        )
+
+      }}
+    </AuthContext.Consumer>
   );
 }
