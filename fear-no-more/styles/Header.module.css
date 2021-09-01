@@ -12,6 +12,7 @@
   z-index: -1;
   position: relative;
   box-shadow: inset 0 0 0 1000px rgba(0,0,0,.2);
+  background-attachment: fixed;
 }
 
 .background_logo {
@@ -50,6 +51,7 @@
 .background nav li {
   margin-left:1rem;
   color: white;
+  cursor: pointer;
 }
 
 .background .pageName {

@@ -12,7 +12,9 @@ const Home = () => {
         <title>{ siteTitle }</title>
       </Head>
       <section>
-        <Profile />
+        <Mission />
+        <Help />
+        <Testimony />
       </section>
     </Layout>
   )
