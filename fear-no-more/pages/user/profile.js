@@ -43,7 +43,7 @@ const Profile = ({ /*user*/ }) => {
 
   const updateProfile = async (e, name, userInfo) => {
     e.preventDefault();
-    const params={username: user.username}
+    const params={email: user.email}
 
     const userObj = {...user};
     userObj[name] = userInfo;
