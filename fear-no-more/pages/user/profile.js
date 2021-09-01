@@ -49,7 +49,7 @@ const Profile = ({ /*user*/ }) => {
     userObj[name] = userInfo;
 
     axios.put(`http://18.222.198.9/api/profile`, {params, data: userObj})
-      .then(() => getUserData('mgray15@alexa.com'))
+      .then(() => getUserData('ksertink@soup.io'))
       .catch(err => console.log(err))
   };
 
