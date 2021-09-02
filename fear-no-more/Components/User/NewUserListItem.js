@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
+import { TextField, Button } from '@material-ui/core';
 import EditRow from './EditRow';
-import EditCol from './EditCol';
 import { withStyles, makeStyles } from '@material-ui/core/styles';
 import {
   TableContainer,
@@ -12,6 +12,7 @@ import {
   Paper
 } from '@material-ui/core';
 
+
 const StyledTableCell = withStyles((theme) => ({
   head: {
     backgroundColor: theme.palette.common.black,
@@ -19,7 +20,7 @@ const StyledTableCell = withStyles((theme) => ({
   },
   body: {
     fontSize: 14,
-    minWidth: '8rem'
+    minWidth: '200px'
     // flexGrow: 1
   },
 }))(TableCell);
@@ -39,38 +40,36 @@ const useStyles = makeStyles({
     flexDirection: 'column',
     justifyContent: 'center',
     alignItems: 'center',
-    height: '4rem',
+    height: '25px',
   },
   cell: {
-    minWidth: '8rem'
+    minWidth: '500px'
   },
   edit: {
     cursor: 'pointer'
   }
 });
 
-const ProfileListItem = ({ label, text, name, submit }) => {
+
+const NewUserListItem = ({ fields }) => {
   const classes = useStyles();
-  const [editing, setEditing] = useState(false);
+  const [editing, setEditing] = useState(true);
 
   return (
-    <StyledTableRow className={ classes.root }>
-      <StyledTableCell
-        className={ classes.cell }
-        component="th"
-        scope="row"
-      >
-      { label }</StyledTableCell>
-      <StyledTableCell
-        component="th"
-        scope="row"
-      >
-      { text }</StyledTableCell>
-      <StyledTableCell style={{ maxWidth: '8rem' }}>
-        <EditCol name={ name } submit={ submit }/>
-      </StyledTableCell>
+    <StyledTableRow className={classes.root}>
+      {
+        fields.map((field, i) => {
+          return (
+            <StyledTableCell key={i}>
+              <TextField  label={field.label}
+                onChange={(e) => { field.setter(e.target.value); }}
+              />
+            </StyledTableCell>
+          )
+        })
+      }
     </StyledTableRow>
   )
 };
 
-export default ProfileListItem;
+export default NewUserListItem;
