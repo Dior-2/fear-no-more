@@ -1,33 +1,26 @@
 import Head from 'next/head';
+import Link from 'next/link';
 import Layout, { siteTitle } from '../components/layout';
 import Testimony from '../Components/Home/Testimonials'
 import Mission from '../Components/Home/Mission'
 import Help from '../Components/Home/Help'
-import Link from 'next/link';
-import Profile from './api/user/profile'
+import Profile from './user/profile'
 
 const Home = () => {
   return (
     <Layout home>
       <Head>
         <title>{ siteTitle }</title>
+        <meta name="viewport" content="width=device-width, initial-scale=0.5" />
       </Head>
       <section>
-        <Mission />
-      </section>
-      <section>
         <Help />
-      </section>
-      <section>
+        <Mission />
         <Testimony />
-        {/* <h1>
-          LISTINGS{' '}
-          <Link href='/listings/list'><a>HERE</a></Link>
-        </h1> */}
         <Profile />
       </section>
     </Layout>
   )
-}
+};
 
 export default Home;
