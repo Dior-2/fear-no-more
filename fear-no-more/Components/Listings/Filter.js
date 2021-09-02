@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import axios from 'axios';
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
@@ -21,19 +21,42 @@ const useStyles = makeStyles(() => ({
 
 const options = ['All', 'Bills', 'Food', 'Homegoods', 'Housing'];
 
+// ^^^ COMPONENT DECLARATION ^^^ //
 export default function Filter() {
+  useEffect(() => {
+    async function fetchData() {
+      const noQuery = await axios.get(`http://18.222.198.9/api/listings/offers`)
+        .then((response) => {
+          setListData(response.data);
+        })
+        .catch((error) => {
+          console.error(`ERROR :!:!:! ${error}`);
+        });
+    }
+    fetchData();
+  }, []);
+  const [listData, setListData] = useState([]);
+
   const classes = useStyles();
-  const [open, setOpen] = React.useState(false);
-  const anchorRef = React.useRef(null);
-  const [selectedIndex, setSelectedIndex] = React.useState(0);
+  const [open, setOpen] = useState(false);
+  const anchorRef = useRef(null);
+  const [selectedIndex, setSelectedIndex] = useState(0);
 
-  const handleClick = () => {
-    console.info(`You clicked ${options[selectedIndex]}`);
-  };
+  // SETS CATEGORY TO FILTER LIST BY
+  const [listFiltered, setListFiltered] = useState(false);
+  const [filterOption, setFilterOption] = useState('');
+  const [filteredList, setFilteredList] = useState([]);
 
-  const handleMenuItemClick = (event, index) => {
+  function filterList (option) {
+    let results = listData.slice();
+    setFilteredList(results.filter((item) => item.category === option.toLowerCase()));
+  }
+
+  const handleMenuItemClick = (event, option, index) => {
     setSelectedIndex(index);
     setOpen(false);
+    filterList(option);
+    setListFiltered(true);
   };
 
   const handleToggle = () => {
@@ -48,19 +71,6 @@ export default function Filter() {
   };
 
 
-  useEffect(() => {
-    async function fetchData() {
-      const response = await axios.get(`http://18.222.198.9/api/listings/offers`)
-        .then((response) => {
-          setListData(response.data);
-        })
-        .catch((error) => {
-          console.error(`ERROR :!:!:! ${error}`);
-        });
-    }
-    fetchData();
-  }, []);
-  const [listData, setListData] = useState([]);
 
 
   // ~~~~~~~ STATE VARIABLES ~~~~~~~ //
@@ -89,6 +99,9 @@ export default function Filter() {
   // THIS IS A CHUNK OF THE DATA THAT CHANGES ON
   // EACH CLICK OF EITHER INC OR DEC
   let projectList = listData.slice(nextPage, nextPage + 6);
+
+
+
 
   function incrementPage() {
     // SET PAGE NUMBER
@@ -134,19 +147,16 @@ export default function Filter() {
   }
 
 
-  <Grid
-    className={classes.filter}
-    container
-    justifyContent='center'>
-    <Filter />
-  </Grid>
+
+
+
   return (
     <>
       <div className={classes.root}>
         <Grid className={classes.filter} container direction="column" alignItems="center">
           <Grid item xs={12}>
             <ButtonGroup variant="contained" color="primary" ref={anchorRef} aria-label="split button">
-              <Button onClick={handleClick}>{options[selectedIndex]}</Button>
+              <Button>{options[selectedIndex]}</Button>
               <Button
                 color="primary"
                 size="small"
@@ -173,7 +183,7 @@ export default function Filter() {
                           <MenuItem
                             key={option}
                             selected={index === selectedIndex}
-                            onClick={(event) => handleMenuItemClick(event, index)}>
+                            onClick={(event) => handleMenuItemClick(event, option, index)}>
                             {option}
                           </MenuItem>
                         ))}
@@ -189,17 +199,30 @@ export default function Filter() {
             alignItems='center'
             justifyContent='center'
             spacing={0}>
-            {projectList.map((item, idx) => {
-              let slicedWords = item.body.slice(0, 150);
-              return (
-                <ListingCard
-                  key={idx}
-                  body={`${slicedWords}...`}
-                  category={item.category.toUpperCase()}
-                  photo={item.photo}
-                  title={item.title} />
-              )
-            })}
+
+            {!listFiltered
+              ? projectList.map((item, idx) => {
+                let slicedWords = item.body.slice(0, 150);
+                return (
+                  <ListingCard
+                    key={idx}
+                    body={`${slicedWords}...`}
+                    category={item.category.toUpperCase()}
+                    photo={item.photo}
+                    title={item.title} />
+                )
+              }) : filteredList.map((item, idx) => {
+                let slicedWords = item.body.slice(0, 150);
+                return (
+                  <ListingCard
+                    key={idx}
+                    body={`${slicedWords}...`}
+                    category={item.category.toUpperCase()}
+                    photo={item.photo}
+                    title={item.title} />
+                )
+              })}
+
           </Grid>
           <Grid
             container
