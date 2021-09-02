@@ -7,6 +7,7 @@ import { getAuth, onAuthStateChanged } from "firebase/auth";
 
 function MyApp({ Component, pageProps }) {
   const [userProfile, setUserProfile] = useState({});
+  const [focusPost, setFocusPost] = useState(6);
   const url = 'http://18.222.198.9'
   const auth = getAuth();
 
@@ -92,7 +93,7 @@ function MyApp({ Component, pageProps }) {
 
 
   return (
-    <AuthContext.Provider value={userProfile}>
+    <AuthContext.Provider value={{userProfile: userProfile, focusPost: focusPost}}>
         <Component {...pageProps} />
     </AuthContext.Provider>
   )
