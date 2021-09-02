@@ -25,7 +25,7 @@ const useStyles = makeStyles({
     flexDirection: 'column',
     justifyContent: 'center',
     alignItems: 'center',
-    height: '100vh',
+    height: '60vh',
     marginBottom: '3rem'
   },
   table: {
@@ -86,101 +86,102 @@ const Profile = () => {
   const classes = useStyles();
 
   const handleSignUpClick = () => {
-    axios.get(`${url}/api/check/${email}`)
+    axios.get(`${url}/api/check?email=${email}`)
       .then(response => {
-        console.log(response);
+        console.log('response is', response);
+        if (city !== ''
+          && email !== ''
+          && firstName !== ''
+          && lastName !== ''
+          && username !== ''
+          && state !== ''
+          && response.data[0] === "0") {
+          createUserWithEmailAndPassword(auth, email, password)
+            .then((userCredential) => {
+              // Signed in
+              console.log(userCredential);
+              const uid = userCredential.user.uid;
+              setFireBaseID(uid);
+              console.log('Reaching this line with firebase_id', fireBaseID);
+              if (address1 === '') {
+                var convertedAddress1 = null;
+              } else {
+                var convertedAddress1 = address1;
+              }
+              if (address2 === '') {
+                var convertedAddress2 = null;
+              } else {
+                var convertedAddress2 = address2;
+              }
+              if (homePhone === '') {
+                var convertedHomePhone = null;
+              } else {
+                var convertedHomePhone = homePhone;
+              }
+              if (mobile === '') {
+                var convertedMobile = null;
+              } else {
+                var convertedMobile = mobile;
+              }
+              if (preferredContact === '') {
+                var convertedPreferredContact = 0;
+              } else {
+                convertedPreferredContact = Number(preferredContact);
+              }
+              if (role === '') {
+                var convertedRole = 0;
+              } else {
+                var convertedRole = Number(role);
+              }
+              if (organization === '') {
+                var convertedOrganization = null;
+              } else {
+                var convertedOrganization = organization;
+              }
+              if (zipcode === '') {
+                var convertedZip = null;
+              } else {
+                var convertedZip = Number(zipcode);
+              }
+              const newUserData = {
+                firebase_id: fireBaseID,
+                firstname: firstName,
+                lastname: lastName,
+                username: username,
+                email: email,
+                homephone: convertedHomePhone,
+                mobile: convertedMobile,
+                preferredcontact: convertedPreferredContact,
+                city: city,
+                state: state,
+                zip: convertedZip,
+                address1: convertedAddress1,
+                address2: convertedAddress2,
+                role: convertedRole,
+                organization: convertedOrganization
+              };
+              console.log('Sending newUserData:', newUserData);
+              axios.post(`${url}/api/profile/`, newUserData)
+                .then((data) => {
+                  console.log('No whammies?', data);
+                  Router.push('/');
+                })
+                .catch(err => console.log('Whammies', err));
+              // send newUserData to backend
+              // get backend user info and set states
+              // take to the appropriate listings
+            })
+            .catch((error) => {
+              console.log('WHAMMIES', error);
+              const errorCode = error.code;
+              const errorMessage = error.message;
+              // ...
+            });
+        } else {
+          console.log('Ask them if they validate!');
+        };
       })
       .catch(err => console.log('That ain\'t work none', err));
-    if (city !== ''
-    && email !== ''
-    && firstName !== ''
-    && lastName !== ''
-    && username !== ''
-    && state !== '') {
-      createUserWithEmailAndPassword(auth, email, password)
-        .then((userCredential) => {
-          // Signed in
-          console.log(userCredential);
-          const uid = userCredential.user.uid;
-          setFireBaseID(uid);
-          console.log('Reaching this line with firebase_id', fireBaseID);
-          if (address1 === '') {
-            var convertedAddress1 = null;
-          } else {
-            var convertedAddress1 = address1;
-          }
-          if (address2 === '') {
-            var convertedAddress2 = null;
-          } else {
-            var convertedAddress2 = address2;
-          }
-          if (homePhone === '') {
-            var convertedHomePhone = null;
-          } else {
-            var convertedHomePhone = homePhone;
-          }
-          if (mobile === '') {
-            var convertedMobile = null;
-          } else {
-            var convertedMobile = mobile;
-          }
-          if (preferredContact === '') {
-            var convertedPreferredContact = 0;
-          } else {
-            convertedPreferredContact = Number(preferredContact);
-          }
-          if (role === '') {
-            var convertedRole = 0;
-          } else {
-            var convertedRole = Number(role);
-          }
-          if (organization === '') {
-            var convertedOrganization = null;
-          } else {
-            var convertedOrganization = organization;
-          }
-          if (zipcode === '') {
-            var convertedZip = null;
-          } else {
-            var convertedZip = Number(zipcode);
-          }
-          const newUserData = {
-            firebase_id: fireBaseID,
-            firstname: firstName,
-            lastname: lastName,
-            username: username,
-            email: email,
-            homephone: convertedHomePhone,
-            mobile: convertedMobile,
-            preferredcontact: convertedPreferredContact,
-            city: city,
-            state: state,
-            zip: convertedZip,
-            address1: convertedAddress1,
-            address2: convertedAddress2,
-            role: convertedRole,
-            organization: convertedOrganization
-          };
-          console.log('Sending newUserData:', newUserData);
-          axios.post(`${url}/api/profile/`, newUserData)
-          .then((data) => {
-            console.log('No whammies?', data);
-            Router.push('/');
-          })
-          .catch(err => console.log('Whammies', err));
-          // send newUserData to backend
-          // get backend user info and set states
-          // take to the appropriate listings
-        })
-        .catch((error) => {
-          console.log('WHAMMIES', error);
-          const errorCode = error.code;
-          const errorMessage = error.message;
-          // ...
-        });
-    } else {
-      console.log('Ask them if they validate!');
-    };
   }
 
   return (

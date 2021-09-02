@@ -39,5 +39,8 @@ secrets.json
 FearNoMore-Backend.cer
 fear-no-more/package-lock.json
 secrets.json
+firebase.js
+firebaseClient.js
+
 
 
