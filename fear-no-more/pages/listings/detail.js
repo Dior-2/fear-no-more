@@ -62,7 +62,7 @@ const Detail = () => {
           }
         </section>
           <br/>
-          <CommentPost />
+          <CommentPost style={{ border: '1px solid' }} />
 
       </Container>
     </Layout>
