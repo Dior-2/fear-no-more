@@ -143,12 +143,12 @@ export default function Listings() {
             <ButtonGroup
               className={classes.fixed}
               variant="contained"
-              color="secondary">
+              color="primary">
               <Button
                 disabled={listBegin}
                 onClick={() => decrementPage()}>Back</Button>
               <Button
-                color='primary'
+                color='secondary'
                 disableRipple={true}>Page : {pageNumber}</Button>
               <Button
                 disabled={listEnd}

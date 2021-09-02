@@ -55,7 +55,7 @@ export default function ListingCard(props) {
           <CardActions disableSpacing>
             <Button
               variant="contained"
-              color="secondary"
+              color="primary"
               className={classes.button}
               startIcon={<AccessibilityNewTwoToneIcon />}>
               Reach Out
