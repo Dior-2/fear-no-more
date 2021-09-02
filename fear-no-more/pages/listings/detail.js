@@ -6,6 +6,7 @@ import { withStyles, makeStyles } from '@material-ui/core/styles';
 
 import Layout from '../../Components/layout';
 import Thread from '../../Components/listings/Thread';
+import PostListing from '../../Components/listings/PostListing';
 
 const useStyles = makeStyles({
   root: {
@@ -25,10 +26,16 @@ const useStyles = makeStyles({
 const Detail = () => {
   const classes = useStyles();
   const [threads, setThreads] = useState();
+  const [listing, setListing] = useState();
 
   useEffect(() => {
     getThreads(6);
+    // getListing(6);
   }, []);
+
+  const getListing = async (id = 6) => {
+    const { data } = await axios.get(`http://18.222.198.9/api/listings/requests?post_id=${id}`);
+  };
 
   const getThreads = async (id = 6) => {
     const { data } = await axios.get(`http://18.222.198.9/api/comments?post_id=${id}`);
@@ -44,12 +51,15 @@ const Detail = () => {
         <section>
           {
             threads?.map((thread, i) =>
-              <article key={ i } style={{ border: '4px solid pink' }}>
+              <article key={ i } style={{ border: '4px solid blue' }}>
                 <Thread key={ i }thread={ thread } />
               </article>
             )
           }
         </section>
+          <br/>
+          <PostListing />
+
       </Container>
     </Layout>
   )
