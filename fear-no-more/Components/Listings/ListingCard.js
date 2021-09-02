@@ -1,22 +1,14 @@
-import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
-import Paper from '@material-ui/core/Paper';
 import Button from '@material-ui/core/Button';
 import AccessibilityNewTwoToneIcon from '@material-ui/icons/AccessibilityNewTwoTone';
 import Card from '@material-ui/core/Card';
 import CardMedia from '@material-ui/core/CardMedia';
 import CardContent from '@material-ui/core/CardContent';
 import CardActions from '@material-ui/core/CardActions';
-import CommentTwoToneIcon from '@material-ui/icons/CommentTwoTone';
-import ScreenShareTwoToneIcon from '@material-ui/icons/ScreenShareTwoTone';
-import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
 
 const useStyles = makeStyles((theme) => ({
-  root: {
-    flexGrow: 1
-  },
   card: {
     width: '400px',
     marginBottom: '50px',
@@ -24,9 +16,6 @@ const useStyles = makeStyles((theme) => ({
   media: {
     paddingTop: '56.25%', // 16:9
     backgroundColor: '#6f180e'
-  },
-  expand: {
-    marginLeft: 'auto',
   },
   cardContent: {
     height: '150px'
