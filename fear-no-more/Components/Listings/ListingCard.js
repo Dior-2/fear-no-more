@@ -1,3 +1,4 @@
+import Link from 'next/link';
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
@@ -35,33 +36,37 @@ export default function ListingCard(props) {
       alignItems='center'
       justifyContent='center'
       spacing={3}>
-        <Card
-          className={classes.card}>
-          <CardMedia
-            className={classes.media}
-            image={props.imageURL || "/logo-ii.png"}
-            title="Image of something..." />
-          <CardContent className={classes.cardContent}>
-            <Typography variant='h6' color='textPrimary'>
-              {props.title}
-            </Typography>
-            <Typography variant="body2" color="textSecondary" component="p">
-              {props.body}
-            </Typography>
-            <Typography variant="body2" color="textSecondary" component="p">
-              {props.category}
-            </Typography>
-          </CardContent>
-          <CardActions disableSpacing>
-            <Button
-              variant="contained"
-              color="primary"
-              className={classes.button}
-              startIcon={<AccessibilityNewTwoToneIcon />}>
-              Reach Out
-            </Button>
-          </CardActions>
-        </Card>
-      </Grid>
+      <Card
+        className={classes.card}>
+        <CardMedia
+          className={classes.media}
+          image={props.photo || "/logo-ii.png"}
+          title={props.title} />
+        <CardContent className={classes.cardContent}>
+          <Typography variant='h6' color='textPrimary'>
+            {props.title}
+          </Typography>
+          <Typography variant="body2" color="textSecondary" component="p">
+            {props.body}
+          </Typography>
+          <Typography variant="body2" color="textSecondary" component="p">
+            {props.category}
+          </Typography>
+        </CardContent>
+        <CardActions disableSpacing>
+          <Link href='/listings/detail'>
+            <a>
+              <Button
+                variant="contained"
+                color="primary"
+                className={classes.button}
+                startIcon={<AccessibilityNewTwoToneIcon />}>
+                Reach Out
+              </Button>
+            </a>
+          </Link>
+        </CardActions>
+      </Card>
+    </Grid>
   );
 }
