@@ -73,7 +73,7 @@ const Profile = ({ /*user*/ }) => {
                   </TableHead>
                   <TableBody>
                     <ProfileItem label="Username"     text={value.userProfile.username}     name="username"     submit={ updateProfile }/>
-                    <ProfileItem label="Password"     text="******"            name="password"     submit={ updateProfile }/>
+                    <ProfileItem label="Password"     text="******"                         name="password"     submit={ updateProfile }/>
                     <ProfileItem label="First Name"   text={value.userProfile.firstname}    name="firstname"    submit={ updateProfile }/>
                     <ProfileItem label="Last Name"    text={value.userProfile.lastname}     name="lastname"     submit={ updateProfile }/>
                     <ProfileItem label="Role"         text={value.userProfile.role}         name="role"         submit={ updateProfile }/>
