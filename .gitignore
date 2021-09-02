@@ -33,6 +33,14 @@ yarn-error.log*
 # vercel
 .vercel
 
+# my test work
+pages/index.js
+secrets.json
+FearNoMore-Backend.cer
 fear-no-more/package-lock.json
+secrets.json
+firebase.js
+firebaseClient.js
+
 
 

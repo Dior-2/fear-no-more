@@ -5,18 +5,18 @@ export default function Header() {
   return (
     <div>
       <div className={TopHeaderStyles.background}>
-      <div className={TopHeaderStyles.widthBlock}>
-      <nav className={TopHeaderStyles.nav}>
-        <ul>
-          <li>
-            <Link href="/">
-              <a>Login or Register</a>
-            </Link>
-          </li>
+        <div className={TopHeaderStyles.widthBlock}>
+        <nav className={TopHeaderStyles.nav}>
+          <ul>
+            <li>
+              <Link href="/">
+                <a>Login or Register</a>
+              </Link>
+            </li>
 
-        </ul>
-      </nav>
-      </div>
+          </ul>
+        </nav>
+        </div>
       </div>
     </div>
   )

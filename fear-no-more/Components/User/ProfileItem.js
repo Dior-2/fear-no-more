@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import EditRow from './EditRow';
 import EditCol from './EditCol';
 import { withStyles, makeStyles } from '@material-ui/core/styles';
 import {
@@ -19,6 +20,7 @@ const StyledTableCell = withStyles((theme) => ({
   body: {
     fontSize: 14,
     minWidth: '8rem'
+    // flexGrow: 1
   },
 }))(TableCell);
 
@@ -27,6 +29,7 @@ const StyledTableRow = withStyles((theme) => ({
     '&:nth-of-type(odd)': {
       backgroundColor: theme.palette.action.hover,
     },
+    // display: 'flex',
   }
 }))(TableRow);
 
@@ -46,7 +49,7 @@ const useStyles = makeStyles({
   }
 });
 
-const ProfileListItem = ({ label, text, name, submit }) => {
+const ProfileItem = ({ label, text, name, submit }) => {
   const classes = useStyles();
   const [editing, setEditing] = useState(false);
 
@@ -70,4 +73,4 @@ const ProfileListItem = ({ label, text, name, submit }) => {
   )
 };
 
-export default ProfileListItem;
+export default ProfileItem;
