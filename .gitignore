@@ -32,7 +32,8 @@ yarn-error.log*
 
 # vercel
 .vercel
-
+FearNoMore-Backend.cer
 fear-no-more/package-lock.json
+secrets.json
 
 
