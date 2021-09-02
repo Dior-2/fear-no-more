@@ -7,7 +7,7 @@ import NavBar from '../Components/Nav/NavBar';
 import Testimony from '../Components/Home/Testimonials';
 import Mission from '../Components/Home/Mission';
 import Help from '../Components/Home/Help';
-import Profile from './api/user/profile';
+import Profile from './user/profile'
 
 const Home = () => {
   const [username, setUsername] = useState('Guest');
@@ -16,24 +16,16 @@ const Home = () => {
     <Layout home>
       <Head>
         <title>{ siteTitle }</title>
+        <meta name="viewport" content="width=device-width, initial-scale=0.5" />
       </Head>
-      <NavBar username={username} setUsername={setUsername} />
+
       <section>
-        {/* <section>
-          <Profile />
-        </section> */}
-        <section>
-          <Mission />
-        </section>
-        <section>
-          <Help />
-        </section>
-        <section>
-          <Testimony />
-        </section>
+        <Help />
+        <Mission />
+        <Testimony />
       </section>
     </Layout>
   )
-}
+};
 
 export default Home;

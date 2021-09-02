@@ -111,7 +111,7 @@ const Login = () => {
       <Head>
         <title>{siteTitle}</title>
       </Head>
-      <NavBar username={userId}/>
+      {/* <NavBar username={userId}/> */}
       <section>
         <div style={{ display: 'flex', justifyContent: 'center' }}>
           <Card className={classes.root} >

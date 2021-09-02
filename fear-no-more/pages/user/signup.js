@@ -3,6 +3,8 @@ import Router, { useRouter } from 'next/router';
 import axios from 'axios';
 import firebase from '../../firebase.js';
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import Layout, { siteTitle } from '../../Components/layout';
+import Head from 'next/head';
 import Button from '@material-ui/core/Button';
 import NewUserListItem from '../../Components/User/NewUserListItem';
 import { withStyles, makeStyles } from '@material-ui/core/styles';
@@ -84,6 +86,11 @@ const Profile = () => {
   const classes = useStyles();
 
   const handleSignUpClick = () => {
+    axios.get(`${url}/api/check/${email}`)
+      .then(response => {
+        console.log(response);
+      })
+      .catch(err => console.log('That ain\'t work none', err));
     if (city !== ''
     && email !== ''
     && firstName !== ''
@@ -177,60 +184,65 @@ const Profile = () => {
   }
 
   return (
-    <Container component="main" maxWidth="lg" className={classes.root}>
-      <h1>Create Account</h1>
-      <TableContainer component={Paper} >
-        <Table className={classes.table}>
-          <TableHead>
-            <TableRow style={{ backgroundColor: 'grey', height: '2.5rem' }}>
-              <TableCell style={{ rowspan: '3' }}>
-                Account
-              </TableCell>
-              <TableCell />
-              <TableCell />
-              <TableCell />
-              <TableCell />
-              <TableCell />
-            </TableRow>
-          </TableHead>
-          <TableBody>
-            <NewUserListItem fields={accountRow} />
-          </TableBody>
-          <TableHead>
-            <TableRow style={{ backgroundColor: 'grey', height: '2.5rem' }}>
-              <TableCell style={{ rowspan: '3' }}>
-                Contact
-              </TableCell>
-              <TableCell />
-              <TableCell />
-              <TableCell />
-              <TableCell />
-              <TableCell />
-            </TableRow>
-          </TableHead>
-          <TableBody>
-            <NewUserListItem fields={contactRow} />
-          </TableBody>
-          <TableHead>
-            <TableRow style={{ backgroundColor: 'grey', height: '2.5rem' }}>
-              <TableCell style={{ rowspan: '3' }}>
-                Address
-              </TableCell>
-              <TableCell />
-              <TableCell />
-              <TableCell />
-              <TableCell />
-              <TableCell />
-            </TableRow>
-          </TableHead>
-          <TableBody>
-            <NewUserListItem fields={addressRow}/>
-          </TableBody>
-        </Table>
-      </TableContainer>
-      <Button onClick={ () => { handleSignUpClick(); }}>Sign Up</Button>
-      <Button onClick={() => {Router.push('/')}}>Cancel</Button>
-    </Container>
+    <Layout home>
+      <Head>
+        <title>{siteTitle}</title>
+      </Head>
+      <Container component="main" maxWidth="lg" className={classes.root}>
+        <h1>Create Account</h1>
+        <TableContainer component={Paper} >
+          <Table className={classes.table}>
+            <TableHead>
+              <TableRow style={{ backgroundColor: 'grey', height: '2.5rem' }}>
+                <TableCell style={{ rowspan: '3' }}>
+                  Account
+                </TableCell>
+                <TableCell />
+                <TableCell />
+                <TableCell />
+                <TableCell />
+                <TableCell />
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              <NewUserListItem fields={accountRow} />
+            </TableBody>
+            <TableHead>
+              <TableRow style={{ backgroundColor: 'grey', height: '2.5rem' }}>
+                <TableCell style={{ rowspan: '3' }}>
+                  Contact
+                </TableCell>
+                <TableCell />
+                <TableCell />
+                <TableCell />
+                <TableCell />
+                <TableCell />
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              <NewUserListItem fields={contactRow} />
+            </TableBody>
+            <TableHead>
+              <TableRow style={{ backgroundColor: 'grey', height: '2.5rem' }}>
+                <TableCell style={{ rowspan: '3' }}>
+                  Address
+                </TableCell>
+                <TableCell />
+                <TableCell />
+                <TableCell />
+                <TableCell />
+                <TableCell />
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              <NewUserListItem fields={addressRow}/>
+            </TableBody>
+          </Table>
+        </TableContainer>
+        <Button onClick={ () => { handleSignUpClick(); }}>Sign Up</Button>
+        <Button onClick={() => {Router.push('/')}}>Cancel</Button>
+      </Container>
+    </Layout>
   )
 };
 
