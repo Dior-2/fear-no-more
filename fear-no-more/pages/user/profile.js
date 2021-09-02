@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import AuthContext, {useContext} from '../../pages/AuthContext.js';
+import AuthContext from '../../pages/AuthContext.js';
 import axios from 'axios';
 import { withStyles, makeStyles } from '@material-ui/core/styles';
 import { Container, List } from '@material-ui/core';
@@ -44,12 +44,19 @@ const Profile = ({ /*user*/ }) => {
   //   setUser(data[0]);
   // };
 
-  const updateProfile = async (e, name, userInfo) => {
+  const updateProfile = async (e, name, userInfo, user, updateTrigger, setUpdateTrigger) => {
     e.preventDefault();
-
+    console.log('name', name);
+    console.log('userInfo', userInfo);
+    console.log('email', user.email);
     const data = {...user, ogemail: user.email, [name]: userInfo};
+    console.log('data', data);
     await axios.put(`http://18.222.198.9/api/profile`, data)
-      .then(() => getUserData('bear@bear.com'))
+      .then(response => {
+        console.log('response', response);
+        console.log('contest', AuthContext);
+        setUpdateTrigger(!updateTrigger);
+      })
       .catch(err => console.log(err))
   };
 
