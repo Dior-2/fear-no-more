@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import Image from 'next/image';
 import axios from 'axios';
 
 import { Container } from '@material-ui/core';
@@ -6,7 +7,8 @@ import { withStyles, makeStyles } from '@material-ui/core/styles';
 
 import Layout from '../../Components/layout';
 import Thread from '../../Components/listings/Thread';
-import PostListing from '../../Components/listings/PostListing';
+import CommentPost from '../../Components/listings/CommentPost';
+import DetailCard from '../../Components/listings/DetailCard';
 
 const useStyles = makeStyles({
   root: {
@@ -15,7 +17,8 @@ const useStyles = makeStyles({
     justifyContent: 'flex-start',
     alignItems:     'center',
     height:         '100vh',
-    marginBottom:   '3rem'
+    marginBottom:   '3rem',
+    overflow:       'scroll'
   },
   header: {
     margin:   '6rem',
@@ -29,15 +32,16 @@ const Detail = () => {
   const [listing, setListing] = useState();
 
   useEffect(() => {
-    getThreads(6);
-    // getListing(6);
+    getThreads(3);
+    getListing(3);
   }, []);
 
-  const getListing = async (id = 6) => {
+  const getListing = async (id) => {
     const { data } = await axios.get(`http://18.222.198.9/api/listings/requests?post_id=${id}`);
+    setListing(data[0]);
   };
 
-  const getThreads = async (id = 6) => {
+  const getThreads = async (id) => {
     const { data } = await axios.get(`http://18.222.198.9/api/comments?post_id=${id}`);
     setThreads(data);
   };
@@ -46,19 +50,19 @@ const Detail = () => {
     <Layout>
       <Container maxWidth="lg" className={ classes.root }>
         <header className={ classes.header }>
-          THIS SHOULD HAVE THE LiSTING INFORMATION
+          {/* <DetailCard props={ listing }/> */}
         </header>
         <section>
           {
             threads?.map((thread, i) =>
               <article key={ i } style={{ border: '4px solid blue' }}>
-                <Thread key={ i }thread={ thread } />
+                <Thread key={ i } thread={ thread } />
               </article>
             )
           }
         </section>
           <br/>
-          <PostListing />
+          <CommentPost />
 
       </Container>
     </Layout>
