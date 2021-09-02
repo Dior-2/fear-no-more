@@ -44,11 +44,17 @@ export default function Filter() {
 
   // SETS CATEGORY TO FILTER LIST BY
   const [listFiltered, setListFiltered] = useState(false);
-  const [filterOption, setFilterOption] = useState('');
   const [filteredList, setFilteredList] = useState([]);
 
   function filterList (option) {
     let results = listData.slice();
+    console.log(results)
+    let optionNormalize = option.charAt(0).toLowerCase() + option.slice(1);
+    if (optionNormalize === 'all') {
+      setListFiltered(false);
+    } else {
+      setListFiltered(true);
+    }
     setFilteredList(results.filter((item) => item.category === option.toLowerCase()));
   }
 
@@ -56,7 +62,6 @@ export default function Filter() {
     setSelectedIndex(index);
     setOpen(false);
     filterList(option);
-    setListFiltered(true);
   };
 
   const handleToggle = () => {
@@ -99,9 +104,6 @@ export default function Filter() {
   // THIS IS A CHUNK OF THE DATA THAT CHANGES ON
   // EACH CLICK OF EITHER INC OR DEC
   let projectList = listData.slice(nextPage, nextPage + 6);
-
-
-
 
   function incrementPage() {
     // SET PAGE NUMBER
@@ -227,7 +229,6 @@ export default function Filter() {
           <Grid
             container
             justifyContent='center'>
-
             <ButtonGroup
               className={classes.fixed}
               variant="contained"
