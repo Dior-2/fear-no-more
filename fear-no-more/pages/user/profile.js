@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import ProfileListItem from '../../Components/User/ProfileListItem';
 import { withStyles, makeStyles } from '@material-ui/core/styles';
 import { Container, List } from '@material-ui/core';
 import {
@@ -12,6 +11,8 @@ import {
   TableCell,
   Paper
 } from '@material-ui/core';
+import ProfileItem from '../../Components/User/ProfileItem';
+import Layout from '../../Components/layout';
 
 const useStyles = makeStyles({
   root: {
@@ -32,7 +33,7 @@ const Profile = ({ /*user*/ }) => {
   const [user, setUser] = useState({});
 
   useEffect(() => {
-    getUserData('joe.r.peck@gmail.com');
+    getUserData('bear@bear.com');
   }, []);
 
   const getUserData = async (email) => {
@@ -47,66 +48,68 @@ const Profile = ({ /*user*/ }) => {
     const data = {...user, ogemail: user.email, [name]: userInfo};
 
     await axios.put(`http://18.222.198.9/api/profile`, data)
-      .then(() => getUserData('joe.r.peck@gmail.com'))
+      .then(() => getUserData('bear@bear.com'))
       .catch(err => console.log(err))
   };
 
   return (
-    <Container component="main" maxWidth="lg" className={ classes.root }>
-    <h1>EDIT PROFILE</h1>
-      <TableContainer component={ Paper } >
-        <Table className={ classes.table }>
-          <TableHead>
+    <Layout>
+      <Container component="main" maxWidth="lg" className={ classes.root }>
+      <h1>EDIT PROFILE</h1>
+        <TableContainer component={ Paper } >
+          <Table className={ classes.table }>
+            <TableHead>
+              <TableRow style={{ backgroundColor: 'grey', height: '2.5rem'}}>
+                <TableCell>
+                  Account
+                </TableCell>
+                <TableCell />
+                <TableCell />
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              <ProfileItem label="Username"     text={user.username}     name="username"     submit={ updateProfile }/>
+              <ProfileItem label="Password"     text="******"            name="password"     submit={ updateProfile }/>
+              <ProfileItem label="First Name"   text={user.firstname}    name="firstname"    submit={ updateProfile }/>
+              <ProfileItem label="Last Name"    text={user.lastname}     name="lastname"     submit={ updateProfile }/>
+              <ProfileItem label="Role"         text={user.role}         name="role"         submit={ updateProfile }/>
+              <ProfileItem label="Organization" text={user.organization} name="organization" submit={ updateProfile }/>
+            </TableBody>
+            <TableHead>
+              <TableRow style={{ backgroundColor: 'grey', height: '2.5rem'}}>
+                <TableCell>
+                  Contact
+                </TableCell>
+                <TableCell />
+                <TableCell />
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              <ProfileItem label="Home Phone"     text={user.homephone}        name="homephone"        submit={ updateProfile }/>
+              <ProfileItem label="Cell Phone"     text={user.mobile}           name="mobile"           submit={ updateProfile }/>
+              <ProfileItem label="Email"          text={user.email}            name="email"            submit={ updateProfile }/>
+              <ProfileItem label="Contact Method" text={user.preferredcontact} name="preferredcontact" submit={ updateProfile }/>
+            </TableBody>
+            <TableHead>
             <TableRow style={{ backgroundColor: 'grey', height: '2.5rem'}}>
-              <TableCell>
-                Account
-              </TableCell>
-              <TableCell />
-              <TableCell />
-            </TableRow>
-          </TableHead>
-          <TableBody>
-            <ProfileListItem label="Username"     text={user.username}     name="username" submit={ updateProfile }/>
-            <ProfileListItem label="Password"     text="******"            name="password" submit={ updateProfile }/>
-            <ProfileListItem label="First Name"   text={user.firstname}    name="firstname" submit={ updateProfile }/>
-            <ProfileListItem label="Last Name"    text={user.lastname}     name="lastname" submit={ updateProfile }/>
-            <ProfileListItem label="Role"         text={user.role}         name="role" submit={ updateProfile }/>
-            <ProfileListItem label="Organization" text={user.organization} name="organization" submit={ updateProfile }/>
-          </TableBody>
-          <TableHead>
-            <TableRow style={{ backgroundColor: 'grey', height: '2.5rem'}}>
-              <TableCell>
-                Contact
-              </TableCell>
-              <TableCell />
-              <TableCell />
-            </TableRow>
-          </TableHead>
-          <TableBody>
-            <ProfileListItem label="Home Phone"     text={user.homephone}        name="homephone" submit={ updateProfile }/>
-            <ProfileListItem label="Cell Phone"     text={user.mobile}           name="mobile" submit={ updateProfile }/>
-            <ProfileListItem label="Email"          text={user.email}            name="email" submit={ updateProfile }/>
-            <ProfileListItem label="Contact Method" text={user.preferredcontact} name="preferredcontact" submit={ updateProfile }/>
-          </TableBody>
-          <TableHead>
-          <TableRow style={{ backgroundColor: 'grey', height: '2.5rem'}}>
-              <TableCell>
-                Address
-              </TableCell>
-              <TableCell />
-              <TableCell />
-            </TableRow>
-          </TableHead>
-          <TableBody>
-            <ProfileListItem label="City"      text={user.city}     name="city" submit={ updateProfile }/>
-            <ProfileListItem label="State"     text={user.state}    name="state" submit={ updateProfile }/>
-            <ProfileListItem label="Zip"       text={user.zip}      name="zip" submit={ updateProfile }/>
-            <ProfileListItem label="Address 1" text={user.address1} name="address1" submit={ updateProfile }/>
-            <ProfileListItem label="Address 2" text={user.address2} name="address2" submit={ updateProfile }/>
-          </TableBody>
-        </Table>
-      </TableContainer>
-    </Container>
+                <TableCell>
+                  Address
+                </TableCell>
+                <TableCell />
+                <TableCell />
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              <ProfileItem label="City"      text={user.city}     name="city"     submit={ updateProfile }/>
+              <ProfileItem label="State"     text={user.state}    name="state"    submit={ updateProfile }/>
+              <ProfileItem label="Zip"       text={user.zip}      name="zip"      submit={ updateProfile }/>
+              <ProfileItem label="Address 1" text={user.address1} name="address1" submit={ updateProfile }/>
+              <ProfileItem label="Address 2" text={user.address2} name="address2" submit={ updateProfile }/>
+            </TableBody>
+          </Table>
+        </TableContainer>
+      </Container>
+    </Layout>
   )
 };
 

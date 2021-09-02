@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { TextField, Button } from '@material-ui/core';
 import EditIcon from '@material-ui/icons/Edit';
+import { TextField, Button } from '@material-ui/core';
 import { withStyles, makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles({
@@ -36,8 +36,8 @@ const EditCol = ({ submit, name }) => {
               value={ userInfo }
               onChange={ (e) => handleChange(e) }
             />
-          <Button variant="contained" size="small" type="submit">
-            Submit</Button>
+          <Button variant="contained" size="small" type="submit">Submit</Button>
+          <Button variant="contained" size="small" onClick={ (e) => resetForm(e) }>X</Button>
           </form> :
           <EditIcon onClick={ () => setEditing(true) }/>
       }
