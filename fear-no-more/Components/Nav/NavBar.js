@@ -96,7 +96,7 @@ export default function NavBar() {
 
   return (
     <AuthContext.Consumer>
-      {({username}) => {
+      {(value) => {
         return (
           <div className={classes.root}>
             <AppBar position="static">
@@ -105,7 +105,7 @@ export default function NavBar() {
                   Fear No More
                 </Typography>
                 {
-                  username === 'Guest'
+                  value.userProfile.username === 'Guest'
                     ?
                   <Button color="inherit" onClick={() => {
                     Router.push('/login');
@@ -114,14 +114,13 @@ export default function NavBar() {
                   </Button>
                     :
                   <Button color="inherit" onClick={() => {
-                    Router.push('/login');
+                    Router.push('/user/profile');
                   }}>
-                    {`Welcome, ${username}`}
+                    {`Welcome, ${value.userProfile.username}`}
                   </Button>
-
                 }
                 {
-                  username === 'Guest'
+                  value.userProfile.username === 'Guest'
                     ?
                   <Button color="inherit" onClick={() => {
                     Router.push('/user/signup');
