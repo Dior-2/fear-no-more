@@ -46,7 +46,7 @@ const useStyles = makeStyles({
   }
 });
 
-const ProfileListItem = ({ label, text, name, submit }) => {
+const ProfileItem = ({ label, text, name, submit }) => {
   const classes = useStyles();
   const [editing, setEditing] = useState(false);
 
@@ -70,4 +70,4 @@ const ProfileListItem = ({ label, text, name, submit }) => {
   )
 };
 
-export default ProfileListItem;
+export default ProfileItem;
