@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import AuthContext from '../../pages/AuthContext.js';
 import EditIcon from '@material-ui/icons/Edit';
 import { TextField, Button } from '@material-ui/core';
 import { withStyles, makeStyles } from '@material-ui/core/styles';
@@ -9,9 +10,9 @@ const useStyles = makeStyles({
   }
 });
 
-const EditCol = ({ submit, name }) => {
+const EditCol = ({ submit, fieldInfo, name }) => {
   const classes = useStyles();
-
+  var info = fieldInfo;
   const [editing, setEditing] = useState(false);
   const [userInfo, setUserInfo] = useState('');
 
@@ -24,24 +25,36 @@ const EditCol = ({ submit, name }) => {
   const handleChange = (e) => setUserInfo(e.target.value);
 
   return (
-    <>
-      {
-        editing ?
-          <form onSubmit={ (e) => {
-            resetForm(e, name)
-            submit(e, name, userInfo) }}
-          >
-            <TextField
-              name={ name }
-              value={ userInfo }
-              onChange={ (e) => handleChange(e) }
-            />
-          <Button variant="contained" size="small" type="submit">Submit</Button>
-          <Button variant="contained" size="small" onClick={ (e) => resetForm(e) }>X</Button>
-          </form> :
-          <EditIcon onClick={ () => setEditing(true) }/>
-      }
-    </>
+    <AuthContext.Consumer>
+      {(value) => {
+        var user = value.userProfile;
+        var updateTrigger = value.updateTrigger;
+        var setUpdateTrigger = value.setUpdateTrigger;
+        // console.log('Context email', contextEmail);
+        return (
+          <React.Fragment>
+            {
+              editing ?
+                <form onSubmit={(e) => {
+                  resetForm(e, name)
+                  submit(e, name, userInfo, user, updateTrigger, setUpdateTrigger);
+                }}
+                >
+                  <TextField
+                    name={name}
+                    value={userInfo}
+                    onChange={(e) => handleChange(e)}
+                  />
+                  <Button variant="contained" size="small" type="submit">Submit</Button>
+                  <Button variant="contained" size="small" onClick={(e) => resetForm(e)}>X</Button>
+                </form> :
+                <EditIcon onClick={() => setEditing(true)} />
+            }
+          </React.Fragment>
+        )
+      }}
+    </AuthContext.Consumer>
+
   )
 };
 
