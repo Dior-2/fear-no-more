@@ -21,33 +21,32 @@ export default function Header() {
   return (
     <div>
       <nav className={headerStyles.navbar}>
-      <div className={headerStyles.navbar_first_block}>
-      <div className={headerStyles.navbar_block}>
-
-        <div className={headerStyles.navbar_logo}>
-          <Image src={Logo} className={headerStyles.navbar_logo_detail} alt='Logo' />
-        </div>
-        <ul className={isActive ? headerStyles.navbar_menu : headerStyles.navbar_menu_gone}>
-          <li>
-            <Link href="/">
-              <a>Home</a>
-            </Link>
-          </li>
-          <li>
-            <Link href="/listings/list">
-              <a>Request</a>
-            </Link>
-          </li>
-          <li>
-            <Link href="/listings/list">
-              <a>Offer</a>
-            </Link>
-          </li>
-        </ul>
-        <a href="#" className={headerStyles.navbar_toggleBtn} onClick={menuClick} >
-          <FontAwesomeIcon icon={faBars} />
-        </a>
-        </div>
+        <div className={headerStyles.navbar_first_block}>
+          <div className={headerStyles.navbar_block}>
+            <div className={headerStyles.navbar_logo}>
+              <Image src={Logo} className={headerStyles.navbar_logo_detail} alt='Logo' />
+            </div>
+            <ul className={isActive ? headerStyles.navbar_menu : headerStyles.navbar_menu_gone}>
+              <li>
+                <Link href="/">
+                  <a>Home</a>
+                </Link>
+              </li>
+              <li>
+                <Link href="/listings/list">
+                  <a>Request</a>
+                </Link>
+              </li>
+              <li>
+                <Link href="/listings/list">
+                  <a>Offer</a>
+                </Link>
+              </li>
+            </ul>
+            <a href="#" className={headerStyles.navbar_toggleBtn} onClick={menuClick} >
+              <FontAwesomeIcon icon={faBars} />
+            </a>
+          </div>
         </div>
         <div className={headerStyles.pageName}>
           <p>
@@ -55,46 +54,6 @@ export default function Header() {
           </p>
         </div>
       </nav>
-
-      {/* <div className={headerStyles.background}>
-      <div className={headerStyles.background_logo}>
-
-      <div className={headerStyles.navBlock}>
-        <nav className={headerStyles.nav}>
-          <ul>
-            <li>
-              <Link href="/">
-                <a>Home</a>
-              </Link>
-            </li>
-
-            <li>
-              <Link href="/">
-                <a>Request</a>
-             </Link>
-            </li>
-
-            <li>
-              <Link href="/">
-                <a>offer</a>
-              </Link>
-            </li>
-
-          </ul>
-        </nav>
-        <br />
-
-        <div className={headerStyles.pageName}>
-          <p>
-            Share your love with ones who need
-          </p>
-        </div>
-
-      </div>
-      </div>
-      </div>
- */}
-
     </div>
   )
 }
