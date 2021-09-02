@@ -1,4 +1,5 @@
 import React from 'react';
+import Router, { useRouter } from 'next/router';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardActionArea from '@material-ui/core/CardActionArea';
@@ -81,9 +82,11 @@ export default function Testimonial(props) {
           <Typography variant="body2" color="textSecondary" component="p">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
           </Typography>
-          <Button variant="contained" size="large" color="default" className={classes.btnL}>
-          Sign Up
-        </Button>
+          <Button variant="contained" size="large" color="default" className={classes.btnL}
+            onClick={() => {Router.push('/user/signup');}}
+          >
+            Sign Up
+          </Button>
         </CardContent>
       {/* </CardActionArea> */}
       </Card>
@@ -96,9 +99,11 @@ export default function Testimonial(props) {
           <Typography variant="body2" color="textSecondary" component="p">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
           </Typography>
-          <Button variant="contained" size="large" color="default" className={classes.btnL}>
-          Sign Up
-        </Button>
+          <Button variant="contained" size="large" color="default" className={classes.btnL}
+            onClick={() => { Router.push('/user/signup'); }}
+          >
+            Sign Up
+          </Button>
         </CardContent>
 
     </Card>

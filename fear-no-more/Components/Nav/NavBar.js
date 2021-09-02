@@ -101,9 +101,14 @@ export default function NavBar() {
           <div className={classes.root}>
             <AppBar position="static">
               <Toolbar>
-                <Typography variant="h6" className={classes.title}>
-                  Fear No More
-                </Typography>
+
+                  <Typography variant="h6" className={classes.title}>
+                    <Button color="inherit" onClick={() => {
+                      Router.push('/');
+                    }}>
+                      Fear No More
+                    </Button>
+                  </Typography>
                 {
                   value.userProfile.username === 'Guest'
                     ?

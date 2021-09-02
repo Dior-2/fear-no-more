@@ -28,63 +28,63 @@ function MyApp({ Component, pageProps }) {
             setUserProfile(response.data[0]);
           } else {
             setUserProfile({
-              address1: "123 Amalia Bruno",
-              address2: "",
-              city: "Caleb",
-              email: "Darian@edric.games",
-              firebase_id: "",
-              firstname: "Harold",
-              homephone: "4567890123",
+              address1: null,
+              address2: null,
+              city: "Guest City",
+              email: "guest@anonymous.com",
+              firebase_id: null,
+              firstname: "Best",
+              homephone: null,
               id: 0,
-              lastname: "Inspiretron",
-              mobile: "3210987654",
-              organization: "Joe's Klub",
+              lastname: "Guest",
+              mobile: null,
+              organization: null,
               preferredcontact: 0,
               role: 3,
-              state: "LA",
-              username: "To Firebase but not database",
-              zip: 12345
+              state: "GS",
+              username: "Guest",
+              zip: null
             });
           }
         })
         .catch(err => {
           setUserProfile({
-            address1: "123 Amalia Bruno",
-            address2: "",
-            city: "Caleb",
-            email: "Darian@edric.games",
-            firebase_id: "",
-            firstname: "Harold",
-            homephone: "4567890123",
+            address1: null,
+            address2: null,
+            city: "Guest City",
+            email: "guest@anonymous.com",
+            firebase_id: null,
+            firstname: "Best",
+            homephone: null,
             id: 0,
-            lastname: "Inspiretron",
-            mobile: "3210987654",
-            organization: "Joe's Klub",
+            lastname: "Guest",
+            mobile: null,
+            organization: null,
             preferredcontact: 0,
             role: 3,
-            state: "LA",
+            state: "GS",
             username: "Guest",
-            zip: 12345
+            zip: null
           });
         });
       } else {
         setUserProfile({
-          address1: "123 Amalia Bruno",
-          address2: "",
-          city: "Caleb",
-          email: "Darian@edric.games",
-          firebase_id: "",
-          firstname: "Harold",
-          homephone: "4567890123",
+          address1: null,
+          address2: null,
+          city: "Guest City",
+          email: "guest@anonymous.com",
+          firebase_id: null,
+          firstname: "Best",
+          homephone: null,
           id: 0,
-          lastname: "Inspiretron",
-          mobile: "3210987654",
-          organization: "Joe's Klub",
+          lastname: "Guest",
+          mobile: null,
+          organization: null,
           preferredcontact: 0,
           role: 3,
-          state: "LA",
+          state: "GS",
           username: "Guest",
-          zip: 12345
+          zip: null
         });
       }
     });
