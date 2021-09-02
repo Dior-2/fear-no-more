@@ -18,7 +18,8 @@ const useStyles = makeStyles((theme) => ({
     flexGrow: 1
   },
   card: {
-    maxWidth: 345,
+    width: '400px',
+    marginBottom: '50px',
   },
   media: {
     paddingTop: '56.25%', // 16:9
@@ -40,12 +41,13 @@ export default function ListingCard(props) {
       item
       container
       sm={12}
-      md={6}
+      md={12}
       lg={6}
       alignItems='center'
       justifyContent='center'
       spacing={3}>
-        <Card className={classes.card}>
+        <Card
+          className={classes.card}>
           <CardMedia
             className={classes.media}
             image={props.imageURL || "/logo-ii.png"}
@@ -66,17 +68,6 @@ export default function ListingCard(props) {
               startIcon={<AccessibilityNewTwoToneIcon />}>
               Reach Out
             </Button>
-            <IconButton
-              color="secondary"
-              aria-label="comment">
-              <CommentTwoToneIcon />
-            </IconButton>
-            <IconButton
-              color="secondary"
-              className={classes.expand}
-              aria-label="share">
-              <ScreenShareTwoToneIcon />
-            </IconButton>
           </CardActions>
         </Card>
       </Grid>
