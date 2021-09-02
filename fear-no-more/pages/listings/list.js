@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import axios from 'axios';
 import ButtonGroup from '@material-ui/core/ButtonGroup';
 import Button from '@material-ui/core/Button';
 import Link from 'next/link';
@@ -25,6 +26,7 @@ export async function getStaticProps() {
     }
   }
 }
+// api/listings/offers/:limit/:category
 
 export default function Listings(allData) {
   const classes = useStyles();

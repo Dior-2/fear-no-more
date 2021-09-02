@@ -32,7 +32,7 @@ const Profile = ({ /*user*/ }) => {
   const [user, setUser] = useState({});
 
   useEffect(() => {
-    getUserData('bluigi12@fda.gov');
+    getUserData('bear@bear.com');
   }, []);
 
   const getUserData = async (email) => {
@@ -47,7 +47,7 @@ const Profile = ({ /*user*/ }) => {
     const data = {...user, ogemail: user.email, [name]: userInfo};
 
     await axios.put(`http://18.222.198.9/api/profile`, data)
-      .then(() => getUserData('bluigi12@fda.gov'))
+      .then(() => getUserData('bear@bear.com'))
       .catch(err => console.log(err))
   };
 
