@@ -1,7 +1,6 @@
 import React from 'react';
 
 const Comment = ({ comment }) => {
-  // console.log('comment', comment);
   const noComment = () => <div>Waiting on a reply</div>;
 
   return (
