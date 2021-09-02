@@ -46,7 +46,10 @@ export default function ListingCard(props) {
               {props.title}
             </Typography>
             <Typography variant="body2" color="textSecondary" component="p">
-              {props.words}
+              {props.body}
+            </Typography>
+            <Typography variant="body2" color="textSecondary" component="p">
+              {props.category}
             </Typography>
           </CardContent>
           <CardActions disableSpacing>
