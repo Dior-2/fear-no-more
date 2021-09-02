@@ -23,6 +23,7 @@ const Home = () => {
         <Help />
         <Mission />
         <Testimony />
+        <Profile />
       </section>
     </Layout>
   )
