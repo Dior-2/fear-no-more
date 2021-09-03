@@ -1,4 +1,5 @@
 import React from 'react';
+import moment from 'moment';
 
 const DisplayComment = ({ comment }) => {
   const noComment = () => <div>Waiting on a reply</div>;
@@ -18,7 +19,7 @@ const DisplayComment = ({ comment }) => {
           borderRadius: '3px' }}>
           <div style={{ marginBottom: '20px', fontSize: '12px' }}>@{ comment.username }</div>
           <div style={{ marginBottom: '25px', fontSize: '20px' }}>{ comment.body }</div>
-          <div style={{ fontSize: '13px' }}>{ Date(comment.date).split(' ').splice(0, 4).join(' ') }</div>
+          <div style={{ fontSize: '13px' }}>{ moment(comment.date).format("MMM Do YY") }</div>
         </div>
       }
     </>
