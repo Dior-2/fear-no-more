@@ -26,7 +26,7 @@ const useStyles = makeStyles({
   }
 });
 
-const Detail = () => {
+const Detail = (/*{ listing }*/) => {
   const classes = useStyles();
   const [threads, setThreads] = useState();
   const [listing, setListing] = useState();
@@ -46,11 +46,18 @@ const Detail = () => {
     setThreads(data);
   };
 
+  //NEED TO PASS CONTEXT TO THIS PAGE
   return (
     <Layout>
       <Container maxWidth="lg" className={ classes.root }>
         <header className={ classes.header }>
+        {/*
+            ADD DETAIL FOR THE CURRENT LISTING
+            PHOTO NOT WORKING FOR DETAILCARD
+            NOT SURE IF COMMENT SHOULD GO HERE
+         */ }
           {/* <DetailCard props={ listing }/> */}
+          {/* <CommentPost /> */}
         </header>
         <section>
           {
@@ -61,8 +68,8 @@ const Detail = () => {
             )
           }
         </section>
-          <br/>
-          <CommentPost style={{ border: '1px solid' }} />
+          {/* <br/>
+          <CommentPost /> */}
 
       </Container>
     </Layout>

@@ -1,13 +1,13 @@
 import React from 'react';
 
-const Comment = ({ comment }) => {
+const DisplayComment = ({ comment }) => {
   const noComment = () => <div>Waiting on a reply</div>;
 
   return (
     <>
       {
-        <div style={{ backgroundColor: 'red' }}>
-          <div>@{ comment.username }</div>
+        <div style={{ backgroundColor: 'grey' }}>
+          <div><b>@{ comment.username }</b></div>
           <div>{ comment.body }</div>
           <div>{ Date(comment.date) }</div>
           <div>{ comment.post_id }</div>
@@ -18,4 +18,4 @@ const Comment = ({ comment }) => {
   )
 };
 
-export default Comment;
+export default DisplayComment;
