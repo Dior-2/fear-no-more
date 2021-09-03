@@ -17,10 +17,11 @@ const useStyles = makeStyles((theme) => ({
   root: {
     '& .MuiTextField-root': {
       margin: theme.spacing(1),
-      width: '25ch',
+      width: '100%',
     },
     form: {
       display: 'flex',
+      width: '100%',
       justifyContent: 'center',
       alignItems: 'center'
     }
@@ -59,9 +60,11 @@ const Thread = ({ thread, setTrigger, trigger }) => {
   };
 
   return (
-    <div>
-      <Accordion sqaure expanded={ expanded === 'panel1' } onChange={ handleChange('panel1') }>
-        <AccordionSummary aria-controls="panel1d-content" id="panel1d-header">
+    <div >
+      <div style={{display:'flex', justifyContent:'center'}}>
+      <Accordion sqaure expanded={ expanded === 'panel1' } style={{ display: 'flex', justifyContent: 'center', }} onChange={ handleChange('panel1') }>
+        <AccordionSummary aria-controls="panel1d-content" id="panel1d-header" style={{width: '700px', display: 'flex', justifyContent: 'center' }}>
+
           <div style={{ width: '100%'}}>
             @{ thread[0].username }<br />
             { thread[0].body }
@@ -69,8 +72,8 @@ const Thread = ({ thread, setTrigger, trigger }) => {
           <CommentIcon />
 
         </AccordionSummary>
-          <AccordionDetails>
-            <form onSubmit={(e) => addComment(e)} className={ classes.form }>
+          <AccordionDetails >
+            <form onSubmit={(e) => addComment(e)} className={ classes.form } style={{display:'flex', justifyContent:'center'}}>
               <TextField
                 variant="outlined"
                 type="text"
@@ -81,7 +84,7 @@ const Thread = ({ thread, setTrigger, trigger }) => {
                 color="primary"
                 type="submit">SUBMIT</Button>
             </form>
-          </AccordionDetails>
+          </AccordionDetails >
           {
             thread.slice(1).map((c, i) =>
               <AccordionDetails key={ i } >
@@ -89,6 +92,7 @@ const Thread = ({ thread, setTrigger, trigger }) => {
               </AccordionDetails>
           )}
       </Accordion>
+      </div>
     </div>
   )
 };
