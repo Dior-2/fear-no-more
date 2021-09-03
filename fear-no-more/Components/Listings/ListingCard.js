@@ -27,17 +27,19 @@ export default function ListingCard(props) {
   const classes = useStyles();
 
   return (
-    <Grid
-      item
-      container
-      sm={12}
-      md={12}
-      lg={6}
-      alignItems='center'
-      justifyContent='center'
-      spacing={3}>
+    // <Grid
+    //   item
+    //   container
+    //   sm={12}
+    //   md={12}
+    //   lg={6}
+    //   alignItems='center'
+    //   justifyContent='center'
+    //   spacing={3}>
+    <div style={{ width: '400px' }}>
+    <div style={{ display: 'flex', width: '100%',  }} >
       <Card
-        className={classes.card}>
+        className={classes.card} >
         <CardMedia
           className={classes.media}
           image={props.photo || "/logo-ii.png"}
@@ -67,6 +69,8 @@ export default function ListingCard(props) {
           </Link>
         </CardActions>
       </Card>
-    </Grid>
+      </div>
+      </div>
+    // </Grid>
   );
 }

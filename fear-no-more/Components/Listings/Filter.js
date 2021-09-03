@@ -152,9 +152,10 @@ export default function FilterComponent () {
 
   return (
     <>
-      <div className={classes.root}>
-        <Grid container direction="column" alignItems="center">
-          <Grid item xs={12}>
+      <div className={classes.root} style={{ width: '800px'}} >
+        {/* <Grid container direction="column" alignItems="center">
+          <Grid item xs={12}> */}
+          <div style={{ display: 'flex', justifyContent: 'center' }} >
             <ButtonGroup className={classes.filter} variant="contained" color="primary" ref={anchorRef} aria-label="split button">
               <Button>{options[selectedIndex]}</Button>
               <Button
@@ -168,6 +169,9 @@ export default function FilterComponent () {
                 <ArrowDropDownIcon />
               </Button>
             </ButtonGroup>
+            </div>
+            <div style={{ display: 'flex', justifyContent: 'center',  }} >
+
             <Popper open={open} anchorEl={anchorRef.current} role={undefined} transition disablePortal>
               {({ TransitionProps, placement }) => (
                 <Grow
@@ -192,7 +196,9 @@ export default function FilterComponent () {
                 </Grow>
               )}
             </Popper>
-          </Grid>
+          {/* </Grid> */}
+          </div>
+
           <Grid
             container
             alignItems='center'
@@ -239,7 +245,8 @@ export default function FilterComponent () {
                 onClick={() => incrementPage()}>Next</Button>
             </ButtonGroup>
           </Grid>
-        </Grid>
+        {/* </Grid> */}
+
       </div>
     </>
   );
