@@ -55,7 +55,7 @@ const Detail = (/*{ listing }*/) => {
             PHOTO NOT WORKING FOR DETAILCARD
             NOT SURE IF COMMENT SHOULD GO HERE
          */ }
-          <DetailCard props={ listing }/>
+          {/* <DetailCard props={ listing }/> */}
           <br/>
           <CommentPost />
         </header>
