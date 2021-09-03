@@ -23,6 +23,7 @@ const useStyles = makeStyles((theme) => ({
       margin: theme.spacing(1),
       width: '25ch',
     },
+    fontSize: '22px',
   },
   button: {
     display: 'block',
@@ -102,7 +103,8 @@ export default function PostRequest(props) {
       {(value) => {
         console.log(value)
         return (
-          <div>
+          <div style={{ display: 'flex', justifyContent: 'center' }}>
+            <div style={{ width: '600px', display: 'flex', justifyContent: 'center', flexDirection: 'column',  }}>
             <form className={classes.root} noValidate autoComplete="off">
               <div>
                 <h3>Create Listing</h3>
@@ -118,6 +120,7 @@ export default function PostRequest(props) {
                       onOpen={handleOpen}
                       value={categoryText}
                       onChange={handleChange}
+                      style={{width: '200px'}}
                     >
                       <MenuItem value="">
                         <em>None</em>
@@ -129,11 +132,8 @@ export default function PostRequest(props) {
                     </Select>
                   </FormControl>
                 </div>
-                <TextField id="standard-basic" label="Title" onChange={handleTitle} />
-
-
-
-
+                <TextField id="standard-basic" label="Title" onChange={handleTitle} style={{width: '100%'}}/>
+                <div style={{margin: '15px'}}/>
                 <TextField
                   id="outlined-multiline-static"
                   label="Post Request"
@@ -143,6 +143,7 @@ export default function PostRequest(props) {
                   defaultValue=""
                   variant="outlined"
                   onChange={handleBody}
+                  style={{ width: '100%', marginBottom: '30px' }}
                 />
               </div>
             </form>
@@ -150,6 +151,7 @@ export default function PostRequest(props) {
               Primary
             </Button>
           </div>
+      </div>
         )
       }}
     </AuthContext.Consumer>
