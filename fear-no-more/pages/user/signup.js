@@ -26,8 +26,9 @@ const useStyles = makeStyles({
     flexDirection: 'column',
     justifyContent: 'center',
     alignItems: 'center',
-    height: '60vh',
-    marginBottom: '3rem'
+    height: '100%',
+    marginBottom: '3rem',
+    width: '750px'
   },
   table: {
     minWidth: '500px',
@@ -208,13 +209,13 @@ const Profile = () => {
       <Head>
         <title>{siteTitle}</title>
       </Head>
+      <div style={{ display: 'flex', justifyContent: 'center', fontSize: '25px', fontWeight: '500', marginTop: '55px', marginBottom: '45px' }}>Create Account</div>
       <Container component="main" maxWidth="lg" className={classes.root}>
-        <h1>Create Account</h1>
         <TableContainer component={Paper} >
           <Table className={classes.table}>
             <TableHead>
-              <TableRow style={{ backgroundColor: 'grey', height: '2.5rem' }}>
-                <TableCell style={{ rowspan: '3' }}>
+              <TableRow style={{ backgroundColor: '#496fbf', height: '2.5rem' }}>
+                <TableCell style={{ rowspan: '3', color: 'white' }}>
                   Account
                 </TableCell>
                 <TableCell />
@@ -228,8 +229,8 @@ const Profile = () => {
               <NewUserListItem fields={accountRow} dropdown={roleDropdown} blankCells={[]}/>
             </TableBody>
             <TableHead>
-              <TableRow style={{ backgroundColor: 'grey', height: '2.5rem' }}>
-                <TableCell style={{ rowspan: '3' }}>
+              <TableRow style={{ backgroundColor: '#496fbf', height: '2.5rem' }}>
+                <TableCell style={{ rowspan: '3', color: 'white' }}>
                   Contact
                 </TableCell>
                 <TableCell />
@@ -243,8 +244,8 @@ const Profile = () => {
               <NewUserListItem fields={contactRow} dropdown={preferredContactDropdown} blankCells={[1,2]}/>
             </TableBody>
             <TableHead>
-              <TableRow style={{ backgroundColor: 'grey', height: '2.5rem' }}>
-                <TableCell style={{ rowspan: '3' }}>
+              <TableRow style={{ backgroundColor: '#496fbf', height: '2.5rem' }}>
+                <TableCell style={{ rowspan: '3', color: 'white' }}>
                   Address
                 </TableCell>
                 <TableCell />
@@ -259,8 +260,10 @@ const Profile = () => {
             </TableBody>
           </Table>
         </TableContainer>
-        <Button onClick={ () => { handleSignUpClick(); }}>Sign Up</Button>
-        <Button onClick={() => {Router.push('/')}}>Cancel</Button>
+        <div style={{ marginTop: '50px', marginBottom: '30px', display: 'flex', justifyContent: 'center',  }}>
+        <Button style={{ backgroundColor: "#496fbf", color: 'white', width: '200px', marginRight: '20px' }} onClick={ () => { handleSignUpClick(); }}>Sign Up</Button>
+        <Button style={{ backgroundColor: "#496fbf", color: 'white', width: '200px', marginLeft: '20px' }} onClick={() => {Router.push('/')}}>Cancel</Button>
+        </div>
       </Container>
     </Layout>
   )

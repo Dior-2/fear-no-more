@@ -21,8 +21,10 @@ const useStyles = makeStyles({
     flexDirection:  'column',
     justifyContent: 'center',
     alignItems:     'center',
-    height:         '100vh',
-    marginBottom:   '3rem'
+    height:         '100%',
+    marginBottom:   '70px',
+    width: '750px',
+    marginTop: '30px',
   },
   table: {
     minWidth: 700,
@@ -62,13 +64,13 @@ const Profile = ({ /*user*/ }) => {
       {(value) => {
         return (
           <Layout>
+            <div style={{ display: 'flex', justifyContent: 'center', marginTop: '60px', marginBottom: '60px', fontSize: '40px', fontWeight: 500 }}>Profile</div>
             <Container component="main" maxWidth="lg" className={ classes.root }>
-            <h1>EDIT PROFILE</h1>
               <TableContainer component={ Paper } >
                 <Table className={ classes.table }>
                   <TableHead>
-                    <TableRow style={{ backgroundColor: 'grey', height: '2.5rem'}}>
-                      <TableCell>
+                    <TableRow style={{ backgroundColor: '#496fbf', height: '2.5rem'}}>
+                      <TableCell style={{ color: 'white'}}>
                         Account
                       </TableCell>
                       <TableCell />
@@ -84,8 +86,8 @@ const Profile = ({ /*user*/ }) => {
                     <ProfileItem label="Organization" text={value.userProfile.organization} name="organization" submit={ updateProfile }/>
                   </TableBody>
                   <TableHead>
-                    <TableRow style={{ backgroundColor: 'grey', height: '2.5rem'}}>
-                      <TableCell>
+                    <TableRow style={{ backgroundColor: '#496fbf', height: '2.5rem'}}>
+                      <TableCell style={{ color: 'white'}}>
                         Contact
                       </TableCell>
                       <TableCell />
@@ -99,8 +101,8 @@ const Profile = ({ /*user*/ }) => {
                     <ProfileItem label="Contact Method" text={value.userProfile.contactDisplay} name="preferredcontact" submit={ updateProfile }/>
                   </TableBody>
                   <TableHead>
-                  <TableRow style={{ backgroundColor: 'grey', height: '2.5rem'}}>
-                      <TableCell>
+                  <TableRow style={{ backgroundColor: '#496fbf', height: '2.5rem'}}>
+                      <TableCell style={{ color: 'white'}}>
                         Address
                       </TableCell>
                       <TableCell />

@@ -30,8 +30,12 @@ const useStyles = makeStyles({
     display: 'flex',
     flexDirection: 'row',
     align: 'center',
-    marginTop: 75,
-    marginBottom: 50
+    marginTop: 60,
+    marginBottom: 60,
+    // pointerEvents: 'none',
+    border: "none",
+    boxShadow: "none",
+    width: '400px'
   },
   cent: {
     align: 'right',
@@ -114,49 +118,56 @@ const Login = () => {
         <div style={{ display: 'flex', justifyContent: 'center' }}>
           <Card className={classes.root} >
             <CardActionArea>
-              <CardMedia
+              {/* <CardMedia
                 component="img"
                 alt="Lorem ipsum"
                 height="170"
                 image="https://resize.indiatvnews.com/en/resize/newbucket/1200_-/2017/05/istock-64215815-medium-1024x679-1493792308.jpg"
                 title="Lorem ipsum"
-              />
+              /> */}
               <CardContent>
-                <Typography gutterBottom variant="h5" component="h2">
-                  Welcome Back!
+                <Typography gutterBottom variant="h5" component="h2" style={{ marginTop: '15px', marginBottom: '15px' }}>
+                  Welcome Fear No More!
+                </Typography>
+                <div />
+                <Typography style={{ marginTop: '15px', marginBottom: '15px', color: 'grey' }}>
+                  Whether you are in need of help or have recources to share, we wish you a healthy and productive exchange. We wish you a rewarding experience and a bright future!
                 </Typography>
                 <div>
-                  <Typography htmlFor="username">Email</Typography>
-                  <input type="text" id="login-username" name="email" placeholder="Enter email..." required
+                  <Typography htmlFor="username" style={{ paddingTop: '10px', paddingBottom: '10px', fontSize: '17px', fontWeight: '500', }}>Email</Typography>
+                  <input style={{ width: '100%', border: 'none', backgroundColor: '#bbc9e7', height: '35px', borderRadius: '5px',  }} type="text" id="login-username" name="email" placeholder="  Enter email..." required
                     onChange={(e) => { setEmail(e.target.value); }}
                   />
                 </div>
                 <div>
-                  <Typography htmlFor="password">Password</Typography>
-                  <input type="text" id="login-password" name="password" type="password" placeholder="Enter password..." required
+                  <Typography htmlFor="password" style={{ paddingTop: '10px', paddingBottom: '10px', fontSize: '17px', fontWeight: '500', }}>Password</Typography>
+                  <input style={{ width: '100%', border: 'none', backgroundColor: '#bbc9e7', height: '35px', borderRadius: '5px', marginBottom: '20px' }} type="password" id="login-password" name="password" placeholder="  Enter password..." required
                     onChange={(e) => { setPassword(e.target.value); }}
                   />
                 </div>
+
+                <div>
+                  <a style={{ display: 'flex', justifyContent: 'flex-end', marginBottom: '20px', color: 'grey' }} onClick={() => { requestReset(true) }}>Forgot Password?</a>
+                </div>
+
                 <div>
                   <section>
-                    <Button variant="contained" color="primary" onClick={() => {
+                    <Button style={{ marginRight: '15px', marginBottom: '30px', width: '48%' }} variant="contained" color="primary" onClick={() => {
                       handleSignInClick();
                     }}>
                       Sign in!
                     </Button>
-                    <Button variant="contained">
+                    <Button variant="contained" style={{ marginBottom: '30px', width: '47%' }}>
                       <Link href="/">Go Back</Link>
                     </Button>
                   </section>
                   <section>
                     <Typography variant="body2" color="textSecondary" component="p">
-                      Whether you're in need of help or have resources to share, we wish you a healthy and productive exchange. We wish you a rewarding experience and a bright future!
+                      By Logging in, signining in or continuing, I agree to Fear-No-More's Terms of Use and Privacy Policy.
                     </Typography>
                   </section>
                 </div>
-                <div>
-                  <a onClick={() => { requestReset(true) }}>Forgot Password?</a>
-                </div>
+
               </CardContent>
             </CardActionArea>
           </Card>
