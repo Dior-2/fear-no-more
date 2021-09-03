@@ -7,7 +7,7 @@ import { getAuth, onAuthStateChanged } from "firebase/auth";
 
 function MyApp({ Component, pageProps }) {
   const [userProfile, setUserProfile] = useState({});
-  const [focusPost, setFocusPost] = useState(6);
+  const [focusPost, setFocusPost] = useState(null);
   const [updateTrigger, setUpdateTrigger] = useState(false);
   const url = 'http://18.222.198.9'
   const auth = getAuth();
@@ -104,7 +104,13 @@ function MyApp({ Component, pageProps }) {
 
 
   return (
-    <AuthContext.Provider value={{userProfile, focusPost: focusPost, updateTrigger: updateTrigger, setUpdateTrigger: setUpdateTrigger}}>
+    <AuthContext.Provider value={{
+      userProfile: userProfile,
+      focusPost: focusPost,
+      setFocusPost: setFocusPost,
+      updateTrigger: updateTrigger,
+      setUpdateTrigger: setUpdateTrigger
+    }}>
         <Component {...pageProps} />
     </AuthContext.Provider>
   )
