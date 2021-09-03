@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import axios from 'axios';
+
 import CommentIcon from '@material-ui/icons/Comment';
 import { makeStyles } from '@material-ui/core/styles';
 import {
@@ -11,6 +12,9 @@ import {
   Typography
 } from '@material-ui/core';
 import DisplayComment from '../../Components/Listings/DisplayComment';
+
+import AuthContext from '../../pages/AuthContext.js';
+import { getAuth, signOut, onAuthStateChanged } from "firebase/auth";
 
 
 const useStyles = makeStyles((theme) => ({
@@ -30,8 +34,11 @@ const useStyles = makeStyles((theme) => ({
 
 const Thread = ({ thread, setTrigger, trigger }) => {
   const classes = useStyles();
+
   const [expanded, setExpanded] = useState('');
   const [threadComment, setThreadComment] = useState('');
+
+  const { focusPost, userProfile } = useContext(AuthContext);
 
   const handleChange = (panel) => (event, newExpanded) => {
     setExpanded(newExpanded ? panel : false);
@@ -47,9 +54,9 @@ const Thread = ({ thread, setTrigger, trigger }) => {
     const comment = {
       ///////////////////////////////////////
       //MOST OF THIS SHOULD COME FROM CONTEXT
-      post_id: thread[0].post_id,
+      post_id: focusPost,
       thread_id: thread[0].thread_id,
-      email: 'need to get this from context',
+      email: userProfile.email,
       body: threadComment
     }
 
