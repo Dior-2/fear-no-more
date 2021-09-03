@@ -14,14 +14,15 @@ import DisplayComment from '../../Components/Listings/DisplayComment';
 
 
 const useStyles = makeStyles((theme) => ({
+  input: {
+    color: 'white',
+  },
   root: {
     '& .MuiTextField-root': {
       margin: theme.spacing(1),
-      width: '100%',
     },
     form: {
       display: 'flex',
-      width: '100%',
       justifyContent: 'center',
       alignItems: 'center'
     }
@@ -60,31 +61,36 @@ const Thread = ({ thread, setTrigger, trigger }) => {
   };
 
   return (
-    <div >
-      <div style={{display:'flex', justifyContent:'center'}}>
-      <Accordion sqaure expanded={ expanded === 'panel1' } style={{ display: 'flex', justifyContent: 'center', }} onChange={ handleChange('panel1') }>
-        <AccordionSummary aria-controls="panel1d-content" id="panel1d-header" style={{width: '700px', display: 'flex', justifyContent: 'center' }}>
-
+    <div>
+      <Accordion sqaure expanded={ expanded === 'panel1' } onChange={ handleChange('panel1') } style={{ backgroundColor: '#3f51b5', color: 'white', marginBottom: '15px' }}>
+        <AccordionSummary aria-controls="panel1d-content" id="panel1d-header">
           <div style={{ width: '100%'}}>
-            @{ thread[0].username }<br />
-            { thread[0].body }
+           <div style={{ fontSize: '12px' }}> @{thread[0].username} </div> <br/>
+           <div style={{ fontSize: '20px', marginBottom: '15px' }}> {thread[0].body} </div>
           </div>
           <CommentIcon />
 
         </AccordionSummary>
-          <AccordionDetails >
-            <form onSubmit={(e) => addComment(e)} className={ classes.form } style={{display:'flex', justifyContent:'center'}}>
+          <AccordionDetails>
+            <form onSubmit={(e) => addComment(e)} className={ classes.form }>
               <TextField
                 variant="outlined"
                 type="text"
+                style={{ backgroundColor: '#2d3c8e', border: 'none', width: '100%', marginBottom: '15px', }}
+                InputProps={{
+                  className: classes.input,
+                }}
                 value={ threadComment }
                 onChange={ threadCommentChange }/>
               <Button
                 variant="contained"
-                color="primary"
+                style={{ backgroundColor: '#2b387c', color: 'white', width: '100%',  hover: {
+                  "&:hover": {
+                    backgroundColor: '#171e43'
+                  } }}}
                 type="submit">SUBMIT</Button>
             </form>
-          </AccordionDetails >
+          </AccordionDetails>
           {
             thread.slice(1).map((c, i) =>
               <AccordionDetails key={ i } >
@@ -92,7 +98,6 @@ const Thread = ({ thread, setTrigger, trigger }) => {
               </AccordionDetails>
           )}
       </Accordion>
-      </div>
     </div>
   )
 };

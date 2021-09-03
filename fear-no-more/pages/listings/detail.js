@@ -16,7 +16,6 @@ const useStyles = makeStyles({
     display:        'flex',
     flexDirection:  'column',
     justifyContent: 'center',
-    width: '800px',
     marginBottom:   '50px',
     alignItems: 'center',
   },
@@ -70,7 +69,7 @@ const Detail = (/*{ listing }*/) => {
         <section>
           {
             threads?.map((thread, i) =>
-              <article key={ i } style={{ backgroundColor: 'black' }}>
+              <article key={ i } >
                 <Thread
                   key={ i }
                   thread={ thread }
