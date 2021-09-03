@@ -66,7 +66,7 @@ export default function Testimonial(props) {
 
   return (
     <div style={{ display:'flex', justifyContent:'center', }}>
-      <Typography gutterBottom variant="h4" component="h2" className={classes.cent}>
+      <Typography gutterBottom mb={1} variant="h4" component="h2" className={classes.cent}>
             Who Are You?
           </Typography>
       <Typography variant="body2" component="p" className={classes.snip}>
