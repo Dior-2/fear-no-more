@@ -104,7 +104,7 @@ function MyApp({ Component, pageProps }) {
 
 
   return (
-    <AuthContext.Provider value={{userProfile: userProfile, focusPost: focusPost, updateTrigger: updateTrigger, setUpdateTrigger: setUpdateTrigger}}>
+    <AuthContext.Provider value={{userProfile, focusPost: focusPost, updateTrigger: updateTrigger, setUpdateTrigger: setUpdateTrigger}}>
         <Component {...pageProps} />
     </AuthContext.Provider>
   )

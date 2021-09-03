@@ -35,28 +35,12 @@ const Profile = ({ /*user*/ }) => {
   const classes = useStyles();
   const [user, setUser] = useState({});
 
-  // useEffect(() => {
-  //   //console.log('context', useContext(AuthContext));
-  //   //getUserData('bear@bear.com');
-  // }, []);
-
-  // const getUserData = async (email) => {
-  //   const params = {email};
-  //   const {data} = await axios.get(`http://18.222.198.9/api/profile`, {params}).catch(err => err);
-  //   setUser(data[0]);
-  // };
-
   const updateProfile = async (e, name, userInfo, user, updateTrigger, setUpdateTrigger) => {
     e.preventDefault();
     const data = {...user, ogemail: user.email, [name]: userInfo};
-    console.log('data', data);
     await axios.put(`http://18.222.198.9/api/profile`, data)
-      .then(response => {
-        console.log('response', response);
-        console.log('contest', AuthContext);
-        setUpdateTrigger(!updateTrigger);
-      })
-      .catch(err => console.log(err))
+      .then(response => setUpdateTrigger(!updateTrigger))
+      .catch(err => err)
   };
 
   return (
