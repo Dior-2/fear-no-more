@@ -5,7 +5,7 @@ import { Container } from '@material-ui/core';
 import { withStyles, makeStyles } from '@material-ui/core/styles';
 
 import Layout from '../../Components/layout';
-import Thread from '../../Components/listings/Thread';
+import Thread from '../../Components/Listings/Thread';
 
 const useStyles = makeStyles({
   root: {

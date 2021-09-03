@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import AuthContext from '../../pages/AuthContext.js';
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
@@ -27,46 +28,56 @@ export default function ListingCard(props) {
   const classes = useStyles();
 
   return (
-    <Grid
-      item
-      container
-      sm={12}
-      md={12}
-      lg={6}
-      alignItems='center'
-      justifyContent='center'
-      spacing={3}>
-      <Card
-        className={classes.card}>
-        <CardMedia
-          className={classes.media}
-          image={props.photo || "/logo-ii.png"}
-          title={props.title} />
-        <CardContent className={classes.cardContent}>
-          <Typography variant='h6' color='textPrimary'>
-            {props.title}
-          </Typography>
-          <Typography variant="body2" color="textSecondary" component="p">
-            {props.body}
-          </Typography>
-          <Typography variant="body2" color="textSecondary" component="p">
-            {props.category}
-          </Typography>
-        </CardContent>
-        <CardActions disableSpacing>
-          <Link href='/listings/detail'>
-            <a>
-              <Button
-                variant="contained"
-                color="primary"
-                className={classes.button}
-                startIcon={<AccessibilityNewTwoToneIcon />}>
-                Reach Out
-              </Button>
-            </a>
-          </Link>
-        </CardActions>
-      </Card>
-    </Grid>
+    <AuthContext.Consumer>
+      {(value) => {
+        var setFocusPost = value.setFocusPost;
+        return (
+          <Grid
+            item
+            container
+            sm={12}
+            md={12}
+            lg={6}
+            alignItems='center'
+            justifyContent='center'
+            spacing={3}>
+            <Card
+              className={classes.card}>
+              <CardMedia
+                className={classes.media}
+                image={props.photo || "/logo-ii.png"}
+                title={props.title} />
+              <CardContent className={classes.cardContent}>
+                <Typography variant='h6' color='textPrimary'>
+                  {props.title}
+                </Typography>
+                <Typography variant="body2" color="textSecondary" component="p">
+                  {props.body}
+                </Typography>
+                <Typography variant="body2" color="textSecondary" component="p">
+                  {props.category}
+                </Typography>
+              </CardContent>
+              <CardActions disableSpacing>
+                <Link href='/listings/detail'>
+                  <a>
+                    <Button
+                      onClick={() => {
+                        value.setFocusPost(props.id);
+                      }}
+                      variant="contained"
+                      color="primary"
+                      className={classes.button}
+                      startIcon={<AccessibilityNewTwoToneIcon />}>
+                      Reach Out
+                    </Button>
+                  </a>
+                </Link>
+              </CardActions>
+            </Card>
+          </Grid>
+        )
+      }}
+    </AuthContext.Consumer>
   );
 }

@@ -204,6 +204,7 @@ export default function FilterComponent () {
                 return (
                   <ListingCard
                     key={idx}
+                    id={item.id}
                     body={`${slicedWords}...`}
                     category={item.category.toUpperCase()}
                     photo={item.photo}
@@ -214,6 +215,7 @@ export default function FilterComponent () {
                 return (
                   <ListingCard
                     key={idx}
+                    id={item.id}
                     body={`${slicedWords}...`}
                     category={item.category.toUpperCase()}
                     photo={item.photo}
