@@ -27,10 +27,10 @@ const EditCol = ({ submit, fieldInfo, name }) => {
   return (
     <AuthContext.Consumer>
       {(value) => {
-        var user = value.userProfile;
-        var updateTrigger = value.updateTrigger;
-        var setUpdateTrigger = value.setUpdateTrigger;
-        // console.log('Context email', contextEmail);
+        const user = value.userProfile;
+        const updateTrigger = value.updateTrigger;
+        const setUpdateTrigger = value.setUpdateTrigger;
+      
         return (
           <React.Fragment>
             {
