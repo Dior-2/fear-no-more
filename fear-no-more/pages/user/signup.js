@@ -7,6 +7,7 @@ import Layout, { siteTitle } from '../../Components/layout';
 import Head from 'next/head';
 import Button from '@material-ui/core/Button';
 import NewUserListItem from '../../Components/User/NewUserListItem';
+
 import { withStyles, makeStyles } from '@material-ui/core/styles';
 import { Container, List } from '@material-ui/core';
 import {
@@ -25,8 +26,9 @@ const useStyles = makeStyles({
     flexDirection: 'column',
     justifyContent: 'center',
     alignItems: 'center',
-    height: '60vh',
-    marginBottom: '3rem'
+    height: '100%',
+    marginBottom: '3rem',
+    width: '750px'
   },
   table: {
     minWidth: '500px',
@@ -49,9 +51,17 @@ const Profile = () => {
     {label: 'Password', setter: setPassword},
     {label: 'First Name', setter: setFirstName},
     {label: 'Last Name', setter: setLastName},
-    {label: 'Role', setter: setRole},
-    {label: 'Organization', setter: setOrganization}
+    {label: 'Organization', setter: setOrganization},
   ];
+  var roleDropdown = {
+    label: 'Role',
+    field: role,
+    setter: setRole,
+    options: [
+      {value: 0, display: 'Recipient'},
+      {value: 1, display: 'Donor'}
+    ]
+  };
 
   //Contact Category
   const [homePhone, setHomePhone] = useState('');
@@ -62,9 +72,19 @@ const Profile = () => {
   const contactRow = [
     {label: 'Home Phone', setter: setHomePhone},
     {label: 'Cell Phone', setter: setMobile},
-    {label: 'Email', setter: setEmail},
-    {label: 'Preferred Contact', setter: setPreferredContact}
+    {label: 'Email', setter: setEmail}
   ]
+
+  var preferredContactDropdown = {
+    label: 'Preferred Contact',
+    field: preferredContact,
+    setter: setPreferredContact,
+    options: [
+      { value: 0, display: 'Email' },
+      { value: 1, display: 'Home Phone' },
+      { value: 2, display: 'Mobile Phone' }
+    ]
+  }
 
   //Address Category
   const [city, setCity] = useState('');
@@ -189,13 +209,13 @@ const Profile = () => {
       <Head>
         <title>{siteTitle}</title>
       </Head>
+      <div style={{ display: 'flex', justifyContent: 'center', fontSize: '25px', fontWeight: '500', marginTop: '55px', marginBottom: '45px' }}>Create Account</div>
       <Container component="main" maxWidth="lg" className={classes.root}>
-        <h1>Create Account</h1>
         <TableContainer component={Paper} >
           <Table className={classes.table}>
             <TableHead>
-              <TableRow style={{ backgroundColor: 'grey', height: '2.5rem' }}>
-                <TableCell style={{ rowspan: '3' }}>
+              <TableRow style={{ backgroundColor: '#496fbf', height: '2.5rem' }}>
+                <TableCell style={{ rowspan: '3', color: 'white' }}>
                   Account
                 </TableCell>
                 <TableCell />
@@ -206,11 +226,11 @@ const Profile = () => {
               </TableRow>
             </TableHead>
             <TableBody>
-              <NewUserListItem fields={accountRow} />
+              <NewUserListItem fields={accountRow} dropdown={roleDropdown} blankCells={[]}/>
             </TableBody>
             <TableHead>
-              <TableRow style={{ backgroundColor: 'grey', height: '2.5rem' }}>
-                <TableCell style={{ rowspan: '3' }}>
+              <TableRow style={{ backgroundColor: '#496fbf', height: '2.5rem' }}>
+                <TableCell style={{ rowspan: '3', color: 'white' }}>
                   Contact
                 </TableCell>
                 <TableCell />
@@ -221,11 +241,11 @@ const Profile = () => {
               </TableRow>
             </TableHead>
             <TableBody>
-              <NewUserListItem fields={contactRow} />
+              <NewUserListItem fields={contactRow} dropdown={preferredContactDropdown} blankCells={[1,2]}/>
             </TableBody>
             <TableHead>
-              <TableRow style={{ backgroundColor: 'grey', height: '2.5rem' }}>
-                <TableCell style={{ rowspan: '3' }}>
+              <TableRow style={{ backgroundColor: '#496fbf', height: '2.5rem' }}>
+                <TableCell style={{ rowspan: '3', color: 'white' }}>
                   Address
                 </TableCell>
                 <TableCell />
@@ -236,12 +256,14 @@ const Profile = () => {
               </TableRow>
             </TableHead>
             <TableBody>
-              <NewUserListItem fields={addressRow}/>
+              <NewUserListItem fields={addressRow} blankCells={[1]}/>
             </TableBody>
           </Table>
         </TableContainer>
-        <Button onClick={ () => { handleSignUpClick(); }}>Sign Up</Button>
-        <Button onClick={() => {Router.push('/')}}>Cancel</Button>
+        <div style={{ marginTop: '50px', marginBottom: '30px', display: 'flex', justifyContent: 'center',  }}>
+        <Button style={{ backgroundColor: "#496fbf", color: 'white', width: '200px', marginRight: '20px' }} onClick={ () => { handleSignUpClick(); }}>Sign Up</Button>
+        <Button style={{ backgroundColor: "#496fbf", color: 'white', width: '200px', marginLeft: '20px' }} onClick={() => {Router.push('/')}}>Cancel</Button>
+        </div>
       </Container>
     </Layout>
   )

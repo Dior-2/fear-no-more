@@ -8,7 +8,7 @@ export default function ContactUs() {
           About Us
         </h1>
         <h2 className={HeaderStyles.aboutUs_body}>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+          We are here to provide easier method to connect people in need of help with people who are willing to help. We are here to provide easier method to connect people in need of help with people who are willing to help.
         </h2>
         <h2 className={HeaderStyles.aboutUs_address}>
           123 street Austin TX, 90000

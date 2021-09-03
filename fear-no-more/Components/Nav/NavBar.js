@@ -73,8 +73,7 @@ export default function NavBar() {
       setUsername('Guest');
       Router.push('/');
     }).catch((error) => {
-      console.log('We all love humoring Amalia, whose name starts with an a:', error);
-      // An error happened.
+      throw error;
     });
   };
 

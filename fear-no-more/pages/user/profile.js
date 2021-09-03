@@ -21,8 +21,10 @@ const useStyles = makeStyles({
     flexDirection:  'column',
     justifyContent: 'center',
     alignItems:     'center',
-    height:         '100vh',
-    marginBottom:   '3rem'
+    height:         '100%',
+    marginBottom:   '70px',
+    width: '750px',
+    marginTop: '30px',
   },
   table: {
     minWidth: 700,
@@ -46,9 +48,6 @@ const Profile = ({ /*user*/ }) => {
 
   const updateProfile = async (e, name, userInfo, user, updateTrigger, setUpdateTrigger) => {
     e.preventDefault();
-    console.log('name', name);
-    console.log('userInfo', userInfo);
-    console.log('email', user.email);
     const data = {...user, ogemail: user.email, [name]: userInfo};
     console.log('data', data);
     await axios.put(`http://18.222.198.9/api/profile`, data)
@@ -65,13 +64,13 @@ const Profile = ({ /*user*/ }) => {
       {(value) => {
         return (
           <Layout>
+            <div style={{ display: 'flex', justifyContent: 'center', marginTop: '60px', marginBottom: '60px', fontSize: '40px', fontWeight: 500 }}>Profile</div>
             <Container component="main" maxWidth="lg" className={ classes.root }>
-            <h1>EDIT PROFILE</h1>
               <TableContainer component={ Paper } >
                 <Table className={ classes.table }>
                   <TableHead>
-                    <TableRow style={{ backgroundColor: 'grey', height: '2.5rem'}}>
-                      <TableCell>
+                    <TableRow style={{ backgroundColor: '#496fbf', height: '2.5rem'}}>
+                      <TableCell style={{ color: 'white'}}>
                         Account
                       </TableCell>
                       <TableCell />
@@ -83,12 +82,12 @@ const Profile = ({ /*user*/ }) => {
                     <ProfileItem label="Password"     text="******"                         name="password"     submit={ updateProfile }/>
                     <ProfileItem label="First Name"   text={value.userProfile.firstname}    name="firstname"    submit={ updateProfile }/>
                     <ProfileItem label="Last Name"    text={value.userProfile.lastname}     name="lastname"     submit={ updateProfile }/>
-                    <ProfileItem label="Role"         text={value.userProfile.role}         name="role"         submit={ updateProfile }/>
+                    <ProfileItem label="Role"         text={value.userProfile.roleDisplay}         name="role"         submit={ updateProfile }/>
                     <ProfileItem label="Organization" text={value.userProfile.organization} name="organization" submit={ updateProfile }/>
                   </TableBody>
                   <TableHead>
-                    <TableRow style={{ backgroundColor: 'grey', height: '2.5rem'}}>
-                      <TableCell>
+                    <TableRow style={{ backgroundColor: '#496fbf', height: '2.5rem'}}>
+                      <TableCell style={{ color: 'white'}}>
                         Contact
                       </TableCell>
                       <TableCell />
@@ -99,11 +98,11 @@ const Profile = ({ /*user*/ }) => {
                     <ProfileItem label="Home Phone"     text={value.userProfile.homephone}        name="homephone"        submit={ updateProfile }/>
                     <ProfileItem label="Cell Phone"     text={value.userProfile.mobile}           name="mobile"           submit={ updateProfile }/>
                     <ProfileItem label="Email"          text={value.userProfile.email}            name="email"            submit={ updateProfile }/>
-                    <ProfileItem label="Contact Method" text={value.userProfile.preferredcontact} name="preferredcontact" submit={ updateProfile }/>
+                    <ProfileItem label="Contact Method" text={value.userProfile.contactDisplay} name="preferredcontact" submit={ updateProfile }/>
                   </TableBody>
                   <TableHead>
-                  <TableRow style={{ backgroundColor: 'grey', height: '2.5rem'}}>
-                      <TableCell>
+                  <TableRow style={{ backgroundColor: '#496fbf', height: '2.5rem'}}>
+                      <TableCell style={{ color: 'white'}}>
                         Address
                       </TableCell>
                       <TableCell />
