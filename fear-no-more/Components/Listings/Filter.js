@@ -15,68 +15,15 @@ import ListingCard from './ListingCard';
 
 const useStyles = makeStyles(() => ({
   filter: {
-    marginBottom: '2rem'
+    marginBottom: '3rem'
   }
 }));
 
 const options = ['All', 'Bills', 'Food', 'Homegoods', 'Housing'];
 
 // ^^^ COMPONENT DECLARATION ^^^ //
-export default function Filter() {
-  useEffect(() => {
-    async function fetchData() {
-      const noQuery = await axios.get(`http://18.222.198.9/api/listings/offers`)
-        .then((response) => {
-          setListData(response.data);
-        })
-        .catch((error) => {
-          console.error(`ERROR :!:!:! ${error}`);
-        });
-    }
-    fetchData();
-  }, []);
-  const [listData, setListData] = useState([]);
-
+export default function FilterComponent () {
   const classes = useStyles();
-  const [open, setOpen] = useState(false);
-  const anchorRef = useRef(null);
-  const [selectedIndex, setSelectedIndex] = useState(0);
-
-  // SETS CATEGORY TO FILTER LIST BY
-  const [listFiltered, setListFiltered] = useState(false);
-  const [filteredList, setFilteredList] = useState([]);
-
-  function filterList (option) {
-    let results = listData.slice();
-    console.log(results)
-    let optionNormalize = option.charAt(0).toLowerCase() + option.slice(1);
-    if (optionNormalize === 'all') {
-      setListFiltered(false);
-    } else {
-      setListFiltered(true);
-    }
-    setFilteredList(results.filter((item) => item.category === option.toLowerCase()));
-  }
-
-  const handleMenuItemClick = (event, option, index) => {
-    setSelectedIndex(index);
-    setOpen(false);
-    filterList(option);
-  };
-
-  const handleToggle = () => {
-    setOpen((prevOpen) => !prevOpen);
-  };
-
-  const handleClose = (event) => {
-    if (anchorRef.current && anchorRef.current.contains(event.target)) {
-      return;
-    }
-    setOpen(false);
-  };
-
-
-
 
   // ~~~~~~~ STATE VARIABLES ~~~~~~~ //
   // SETS A VALUE FOR SLICING DATA AND
@@ -96,14 +43,69 @@ export default function Filter() {
   // AT END OF LIST OR BEGINNING
   const [pageNumber, setPageNumber] = useState(1);
 
+  const [listData, setListData] = useState([]);
   // SETS THE TOTAL NUMBER OF PAGES
   // USED TO TEST IF PAGE NUMBER
   // REACHES END OF LIST
   const [limit] = useState(parseInt(listData.length / 6));
 
+
   // THIS IS A CHUNK OF THE DATA THAT CHANGES ON
   // EACH CLICK OF EITHER INC OR DEC
   let projectList = listData.slice(nextPage, nextPage + 6);
+
+  // THE INITIAL API CALL FOR DATA
+  useEffect(() => {
+    async function fetchData() {
+      const noQuery = await axios.get(`http://18.222.198.9/api/listings/offers`)
+        .then(({data}) => {
+          setListData(data);
+        })
+        .catch((error) => {
+          console.error(`ERROR :!:!:! ${error}`);
+        });
+    }
+    fetchData();
+  }, []);
+
+
+  // SETS CATEGORY TO FILTER LIST BY
+  const [listFiltered, setListFiltered] = useState(false);
+  // SETS NEW DATA TO DISPLAY BASED ON FILTER SELECTION
+  const [filteredList, setFilteredList] = useState([]);
+  // FILTER FUNCTIONALITY
+  function filterList (option) {
+    let results = listData.slice();
+    let optionNormalize = option.charAt(0).toLowerCase() + option.slice(1);
+    if (optionNormalize === 'all') {
+      setListFiltered(false);
+    } else {
+      setListFiltered(true);
+    }
+    setFilteredList(results.filter((item) => item.category === option.toLowerCase()));
+  }
+
+  // OPTIONS RELATED FUNCTIONALITY
+  const [open, setOpen] = useState(false);
+  const anchorRef = useRef(null);
+  const [selectedIndex, setSelectedIndex] = useState(0);
+
+  const handleMenuItemClick = (event, option, index) => {
+    setSelectedIndex(index);
+    setOpen(false);
+    filterList(option);
+  };
+
+  const handleToggle = () => {
+    setOpen((prevOpen) => !prevOpen);
+  };
+
+  const handleClose = (event) => {
+    if (anchorRef.current && anchorRef.current.contains(event.target)) {
+      return;
+    }
+    setOpen(false);
+  };
 
   function incrementPage() {
     // SET PAGE NUMBER
@@ -148,16 +150,12 @@ export default function Filter() {
     }
   }
 
-
-
-
-
   return (
     <>
       <div className={classes.root}>
-        <Grid className={classes.filter} container direction="column" alignItems="center">
+        <Grid container direction="column" alignItems="center">
           <Grid item xs={12}>
-            <ButtonGroup variant="contained" color="primary" ref={anchorRef} aria-label="split button">
+            <ButtonGroup className={classes.filter} variant="contained" color="primary" ref={anchorRef} aria-label="split button">
               <Button>{options[selectedIndex]}</Button>
               <Button
                 color="primary"
@@ -176,8 +174,7 @@ export default function Filter() {
                   {...TransitionProps}
                   style={{
                     transformOrigin: placement === 'bottom' ? 'center top' : 'center bottom',
-                  }}
-                >
+                  }}>
                   <Paper>
                     <ClickAwayListener onClickAway={handleClose}>
                       <MenuList id="split-button-menu">
@@ -201,7 +198,6 @@ export default function Filter() {
             alignItems='center'
             justifyContent='center'
             spacing={0}>
-
             {!listFiltered
               ? projectList.map((item, idx) => {
                 let slicedWords = item.body.slice(0, 150);
@@ -224,7 +220,6 @@ export default function Filter() {
                     title={item.title} />
                 )
               })}
-
           </Grid>
           <Grid
             container
