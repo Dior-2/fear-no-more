@@ -151,7 +151,7 @@ export default function FilterComponent () {
   }
 
   return (
-    <>
+    <div style={{ display: 'flex', justifyContent: 'center' }}>
       <div className={classes.root} style={{ width: '800px'}} >
         {/* <Grid container direction="column" alignItems="center">
           <Grid item xs={12}> */}
@@ -247,8 +247,7 @@ export default function FilterComponent () {
             </ButtonGroup>
           </Grid>
         {/* </Grid> */}
-
+        </div>
       </div>
-    </>
   );
 }

@@ -36,8 +36,8 @@ export default function ListingCard(props) {
     //   alignItems='center'
     //   justifyContent='center'
     //   spacing={3}>
-    <div style={{ width: '400px' }}>
-    <div style={{ display: 'flex', width: '100%',  }} >
+    <div style={{ width: '350px', margin: '10px' }}>
+    <div style={{ display: 'flex', width: '100%'   }} >
       <Card
         className={classes.card} >
         <CardMedia
