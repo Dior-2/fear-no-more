@@ -33,12 +33,12 @@ export default function Header() {
                 </Link>
               </li>
               <li>
-                <Link href="/listings/list">
+                <Link href="/listings/requests">
                   <a>Request</a>
                 </Link>
               </li>
               <li>
-                <Link href="/listings/list">
+                <Link href="/listings/offers">
                   <a>Offer</a>
                 </Link>
               </li>
