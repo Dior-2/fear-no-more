@@ -17,7 +17,7 @@ const useStyles = makeStyles((theme) => ({
   },
   media: {
     paddingTop: '56.25%', // 16:9
-    backgroundColor: '#6f180e'
+    backgroundColor: 'grey'
   },
   cardContent: {
     height: '150px'
@@ -32,50 +32,44 @@ export default function ListingCard(props) {
       {(value) => {
         var setFocusPost = value.setFocusPost;
         return (
-          <Grid
-            item
-            container
-            sm={12}
-            md={12}
-            lg={6}
-            alignItems='center'
-            justifyContent='center'
-            spacing={3}>
-            <Card
-              className={classes.card}>
-              <CardMedia
-                className={classes.media}
-                image={props.photo || "/logo-ii.png"}
-                title={props.title} />
-              <CardContent className={classes.cardContent}>
-                <Typography variant='h6' color='textPrimary'>
-                  {props.title}
-                </Typography>
-                <Typography variant="body2" color="textSecondary" component="p">
-                  {props.body}
-                </Typography>
-                <Typography variant="body2" color="textSecondary" component="p">
-                  {props.category}
-                </Typography>
-              </CardContent>
-              <CardActions disableSpacing>
-                <Link href='/listings/detail'>
-                  <a>
-                    <Button
-                      onClick={() => {
-                        value.setFocusPost(props.id);
-                      }}
-                      variant="contained"
-                      color="primary"
-                      className={classes.button}
-                      startIcon={<AccessibilityNewTwoToneIcon />}>
-                      Reach Out
-                    </Button>
-                  </a>
-                </Link>
-              </CardActions>
-            </Card>
-          </Grid>
+          <div style={{ width: '350px', margin: '10px' }}>
+            <div style={{ display: 'flex', width: '100%</div>' }} >
+              <Card
+                className={classes.card}>
+                <CardMedia
+                  className={classes.media}
+                  image={props.photo || "/logo-ii.png"}
+                  title={props.title} />
+                  <CardContent className={classes.cardContent}>
+                    <Typography variant='h6' color='textPrimary'>
+                      {props.title}
+                    </Typography>
+                    <Typography variant="body2" color="textSecondary" component="p">
+                      {props.body}
+                    </Typography>
+                    <Typography variant="body2" color="textSecondary" component="p">
+                      {props.category}
+                    </Typography>
+                  </CardContent>
+                  <CardActions disableSpacing>
+                    <Link href='/listings/detail'>
+                      <a>
+                        <Button
+                          onClick={() => {
+                            value.setFocusPost(props.id);
+                          }}
+                          variant="contained"
+                          color="primary"
+                          className={classes.button}
+                          >
+                          Reach Out
+                        </Button>
+                      </a>
+                    </Link>
+                  </CardActions>
+              </Card>
+            </div>
+          </div>
         )
       }}
     </AuthContext.Consumer>
