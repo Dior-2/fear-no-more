@@ -28,28 +28,31 @@ const useStyles = makeStyles((theme) => ({
 export default function PostRequest({ post_id, thread_id, email }) {
   const classes = useStyles();
 
-  const [info, setInfo] = useState({
-    post_id,
-    thread_id,
-    email,
-    body: ''
-  });
+  const [info, setInfo] = useState('');
 
   const handleChange = (e) => {
     const text = e.target.value;
-    const newInfo = {...info};
-    newInfo.body = text;
-    setInfo(newInfo);
+    setInfo(text);
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
+    const comment = {
+      post_id: 5,
+      email: 'test@test.test',
+      body: info
+    }
+
+    if (info !== '') {
+      await axios.post(`http://18.222.198.9/api/comments`, comment).catch(err => err);
+    }
   };
 
-  const postComment = async (comment) => {
-    await axios.post('', comment).catch(err => err);
-  };
+  // const postComment = async (comment) => {
+
+
+  // };
 
   return (
     <AuthContext.Consumer>
@@ -59,7 +62,7 @@ export default function PostRequest({ post_id, thread_id, email }) {
             <form className={ classes.root } noValidate autoComplete="off" onSubmit={ (e) => handleSubmit(e) }>
               <TextField
                 id="outlined-multiline-static"
-                label="Leave some words"
+                label="Have a question, leave some words"
                 multiline
                 rows= { 8 }
                 columns= { 9 }

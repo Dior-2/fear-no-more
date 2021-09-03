@@ -7,7 +7,7 @@ const DisplayComment = ({ comment }) => {
     <>
       {
         <div style={{ backgroundColor: 'grey' }}>
-          <div><b>@{ comment.username }</b></div>
+          <div>@{ comment.username }</div>
           <div>{ comment.body }</div>
           <div>{ Date(comment.date) }</div>
           <div>{ comment.post_id }</div>

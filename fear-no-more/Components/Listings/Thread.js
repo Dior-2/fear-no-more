@@ -46,17 +46,16 @@ const Thread = ({ thread }) => {
   const addComment = async (e) => {
     e.preventDefault();
     const comment = {
+      ///////////////////////////////////////
       //MOST OF THIS SHOULD COME FROM CONTEXT
       post_id: thread[0].post_id,
       thread_id: thread[0].thread_id,
       email: 'need to get this from context',
       body: threadComment
     }
-    //////////////////////////////
-    //GETTING CORS ERROR RIGHT NOW
-    //////////////////////////////
+
     if (threadComment !== '') {
-      await axios.post(`http://18.222.198.9/api/listings/requests/comments`, comment).catch(err => err);
+      await axios.post(`http://18.222.198.9/api/comments`, comment).catch(err => err);
     }
     setThreadComment('');
   };
@@ -85,7 +84,6 @@ const Thread = ({ thread }) => {
                 type="submit">SUBMIT</Button>
             </form>
           </AccordionDetails>
-
           {
             thread.slice(1).map((c, i) =>
               <AccordionDetails key={ i } >

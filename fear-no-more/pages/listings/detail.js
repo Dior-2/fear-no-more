@@ -32,8 +32,8 @@ const Detail = (/*{ listing }*/) => {
   const [listing, setListing] = useState();
 
   useEffect(() => {
-    getThreads(3);
-    getListing(3);
+    getListing(5);
+    getThreads(5);
   }, []);
 
   const getListing = async (id) => {
@@ -45,7 +45,6 @@ const Detail = (/*{ listing }*/) => {
     const { data } = await axios.get(`http://18.222.198.9/api/comments?post_id=${id}`);
     setThreads(data);
   };
-
   //NEED TO PASS CONTEXT TO THIS PAGE
   return (
     <Layout>
@@ -57,7 +56,8 @@ const Detail = (/*{ listing }*/) => {
             NOT SURE IF COMMENT SHOULD GO HERE
          */ }
           {/* <DetailCard props={ listing }/> */}
-          {/* <CommentPost /> */}
+          <br/>
+          <CommentPost />
         </header>
         <section>
           {
@@ -68,9 +68,6 @@ const Detail = (/*{ listing }*/) => {
             )
           }
         </section>
-          {/* <br/>
-          <CommentPost /> */}
-
       </Container>
     </Layout>
   )

@@ -28,7 +28,6 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function ListingCard({props}) {
-  console.log(props)
   const classes = useStyles();
 
   return (
