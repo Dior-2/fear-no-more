@@ -169,9 +169,11 @@ export default function FilterComponent () {
                 <ArrowDropDownIcon />
               </Button>
             </ButtonGroup>
-            <ButtonGroup className={classes.filter} variant="contained" color="primary" ref={anchorRef} aria-label="split button">
+
+            <ButtonGroup className={classes.filter} variant="contained" color="primary" aria-label="split button">
             <Button href="/listings/create">Create Listing</Button>
           </ButtonGroup>
+
             </div>
             <div style={{ display: 'flex', justifyContent: 'center',  }} >
 
