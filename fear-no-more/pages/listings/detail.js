@@ -43,11 +43,8 @@ const Detail = () => {
 
   useEffect(() => {
     getListing(focusPost);
-  }, []);
-
-  useEffect(() => {
     getThreads(focusPost);
-  }, [trigger]);
+  }, [focusPost, trigger]);
 
   const getListing = async (id) => {
     const { data } = await axios.get(`http://18.222.198.9/api/listings/requests?post_id=${id}`);
