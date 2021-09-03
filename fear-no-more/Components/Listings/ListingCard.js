@@ -16,7 +16,7 @@ const useStyles = makeStyles((theme) => ({
   },
   media: {
     paddingTop: '56.25%', // 16:9
-    backgroundColor: '#6f180e'
+    backgroundColor: 'grey'
   },
   cardContent: {
     height: '150px'
@@ -62,7 +62,8 @@ export default function ListingCard(props) {
                 variant="contained"
                 color="primary"
                 className={classes.button}
-                startIcon={<AccessibilityNewTwoToneIcon />}>
+                // startIcon={<AccessibilityNewTwoToneIcon />}
+                >
                 Reach Out
               </Button>
             </a>
