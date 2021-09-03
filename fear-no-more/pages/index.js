@@ -9,6 +9,7 @@ import Help from '../Components/Home/Help';
 import Profile from './user/profile'
 import Testimony from '../Components/Home/Testimonials'
 import Mission from '../Components/Home/Mission'
+import Post from '../Components/Post/Request'
 
 
 const Home = () => {

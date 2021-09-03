@@ -67,7 +67,7 @@ const ProfileItem = ({ label, text, name, submit }) => {
       >
       { text }</StyledTableCell>
       <StyledTableCell style={{ maxWidth: '8rem' }}>
-        <EditCol name={ name } submit={ submit }/>
+        <EditCol name={ name } submit={ submit } fireldInfo={text}/>
       </StyledTableCell>
     </StyledTableRow>
   )
