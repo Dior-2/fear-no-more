@@ -47,12 +47,12 @@ export default function FilterComponent () {
   // SETS THE TOTAL NUMBER OF PAGES
   // USED TO TEST IF PAGE NUMBER
   // REACHES END OF LIST
-  const [limit] = useState(parseInt(listData.length / 6));
+  const [limit] = useState(parseInt(listData.length / 4));
 
 
   // THIS IS A CHUNK OF THE DATA THAT CHANGES ON
   // EACH CLICK OF EITHER INC OR DEC
-  let projectList = listData.slice(nextPage, nextPage + 6);
+  let projectList = listData.slice(nextPage, nextPage + 4);
 
   // THE INITIAL API CALL FOR DATA
   useEffect(() => {
@@ -112,7 +112,7 @@ export default function FilterComponent () {
     setPageNumber(pageNumber + 1);
 
     // SLICE NEW LIST FOR PAGE
-    setPage(nextPage + 6);
+    setPage(nextPage + 4);
 
     // WHEN FIRST CLICKING NEXT
     // SET listBegin TO FALSE
@@ -122,7 +122,7 @@ export default function FilterComponent () {
     // BECAUSE limit STAYS AT 0
     // THIS HAS TO DO WITH useEffect AND
     // I AM NOT SURE HOW TO FIX IT
-    if (pageNumber >= 3) {
+    if (pageNumber >= limit) {
       // SET LIST END TO true
       // THIS WILL DISABLE THE NEXT
       // PAGE BUTTON
@@ -132,7 +132,7 @@ export default function FilterComponent () {
   function decrementPage() {
     // SET nextPage SO PREVIOUS SLICE
     // IS DISPLAYED
-    setPage(nextPage - 6);
+    setPage(nextPage - 4);
 
     // INCREMENT pageNumber
     setPageNumber(pageNumber - 1);
