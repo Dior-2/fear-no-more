@@ -156,6 +156,7 @@ export default function FilterComponent () {
         <Grid container direction="column" alignItems="center">
           <Grid item xs={12}>
             <ButtonGroup className={classes.filter} variant="contained" color="primary" ref={anchorRef} aria-label="split button">
+            <Button href="/listings/create">Create Listing</Button>
               <Button>{options[selectedIndex]}</Button>
               <Button
                 color="primary"
