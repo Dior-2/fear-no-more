@@ -1,10 +1,11 @@
-import AuthContext from '../../pages/AuthContext.js';
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import axios from 'axios';
-import { getAuth, signOut, onAuthStateChanged } from "firebase/auth";
 import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
+
+import AuthContext from '../../pages/AuthContext.js';
+import { getAuth, signOut, onAuthStateChanged } from "firebase/auth";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -28,6 +29,7 @@ const useStyles = makeStyles((theme) => ({
 export default function PostRequest({ post_id, thread_id, email, trigger, setTrigger }) {
   const classes = useStyles();
 
+  const { focusPost, userProfile } = useContext(AuthContext);
   const [info, setInfo] = useState('');
 
   const handleChange = (e) => {
@@ -39,8 +41,8 @@ export default function PostRequest({ post_id, thread_id, email, trigger, setTri
     e.preventDefault();
 
     const comment = {
-      post_id: 5,
-      email: 'test@test.test',
+      post_id: focusPost,
+      email: userProfile.email,
       body: info
     }
 

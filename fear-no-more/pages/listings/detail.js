@@ -34,17 +34,16 @@ const Detail = () => {
 
   const { focusPost, userProfile } = useContext(AuthContext);
 
-  console.log('fp', focusPost)
-  console.log('up', userProfile)
-
   const [listing, setListing] = useState();
   const [threads, setThreads] = useState();
   const [trigger, setTrigger] = useState(false);
 
   useEffect(() => {
-    getListing(focusPost);
-    getThreads(focusPost);
-  }, [focusPost, trigger]);
+    if (focusPost && userProfile) {
+      getListing(focusPost);
+      getThreads(focusPost);
+    }
+  }, [focusPost, trigger, userProfile]);
 
   const getListing = async (id) => {
     const { data } = await axios.get(`http://18.222.198.9/api/listings/requests?post_id=${id}`);
@@ -60,7 +59,8 @@ const Detail = () => {
     <Layout>
       <Container maxWidth="lg" className={ classes.root }>
         <header className={ classes.header }>
-        {/*
+        {
+          /*
             ADD DETAIL FOR THE CURRENT LISTING
             PHOTO NOT WORKING FOR DETAILCARD
             NOT SURE IF COMMENT SHOULD GO HERE
