@@ -163,7 +163,7 @@ const Login = () => {
                   </section>
                   <section>
                     <Typography variant="body2" color="textSecondary" component="p">
-                      By Logging in, signining in or continuing, I agree to Fear-No-More's Terms of Use and Privacy Policy.
+                      {`By Logging in, signining in or continuing, I agree to Fear-No-More's Terms of Use and Privacy Policy.`}
                     </Typography>
                   </section>
                 </div>
