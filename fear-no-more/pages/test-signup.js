@@ -219,7 +219,7 @@ const FireBaseAPITesting = () => {
           </button>
         </div>
         <div>
-          <a href="#">You forgot your password, didn't you?</a>
+          <a href="#">{`You forgot your password, didn't you?`}</a>
         </div>
       </section>
       <div>----------------------------</div>
