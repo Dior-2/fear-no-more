@@ -49,11 +49,6 @@ export default function PostRequest({ post_id, thread_id, email }) {
     }
   };
 
-  // const postComment = async (comment) => {
-
-
-  // };
-
   return (
     <AuthContext.Consumer>
       {(value) => {

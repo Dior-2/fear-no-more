@@ -40,9 +40,6 @@ const Thread = ({ thread }) => {
     setThreadComment(text);
   };
 
-  /////////////////////////////////////////////////////
-  //STILL NEED TO TEST THAT THE POST REQUEST IS WORKING
-  /////////////////////////////////////////////////////
   const addComment = async (e) => {
     e.preventDefault();
     const comment = {
