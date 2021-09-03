@@ -9,20 +9,19 @@ import Layout from '../../Components/layout';
 import Thread from '../../Components/listings/Thread';
 import CommentPost from '../../Components/listings/CommentPost';
 import DetailCard from '../../Components/listings/DetailCard';
+import Typography from '@material-ui/core/Typography';
 
 const useStyles = makeStyles({
   root: {
     display:        'flex',
     flexDirection:  'column',
-    justifyContent: 'flex-start',
-    alignItems:     'center',
-    height:         '100vh',
-    marginBottom:   '3rem',
-    overflow:       'scroll'
+    justifyContent: 'center',
+    marginBottom:   '50px',
+    alignItems: 'center',
   },
   header: {
-    margin:   '6rem',
-    fontSize: '2rem'
+    // margin:   '6rem',
+    // fontSize: '2rem'
   }
 });
 
@@ -49,7 +48,12 @@ const Detail = (/*{ listing }*/) => {
   //NEED TO PASS CONTEXT TO THIS PAGE
   return (
     <Layout>
-      <Container maxWidth="lg" className={ classes.root }>
+
+      <Typography gutterBottom variant="h4" component="h2" style={{ display: 'flex', justifyContent: 'center', marginTop: '100px', fontSize: '40px', fontWeight: '500', marginBottom: '60px' }}>
+        Comments
+      </Typography>
+
+      <Container className={ classes.root }>
         <header className={ classes.header }>
         {/*
             ADD DETAIL FOR THE CURRENT LISTING
@@ -57,15 +61,15 @@ const Detail = (/*{ listing }*/) => {
             NOT SURE IF COMMENT SHOULD GO HERE
          */ }
           {/* <DetailCard props={ listing }/> */}
-          <br/>
-          <CommentPost
-            setTrigger={ setTrigger }
-            trigger={ trigger }/>
+
         </header>
+
+
+
         <section>
           {
             threads?.map((thread, i) =>
-              <article key={ i } style={{ border: '4px solid blue' }}>
+              <article key={ i } >
                 <Thread
                   key={ i }
                   thread={ thread }
@@ -75,7 +79,13 @@ const Detail = (/*{ listing }*/) => {
             )
           }
         </section>
+
       </Container>
+
+          <CommentPost
+            style={{ display: 'flex', justifyContent: 'center', width: '800px', marginBottom: '500px' }}
+            setTrigger={ setTrigger }
+            trigger={ trigger }/>
     </Layout>
   )
 };

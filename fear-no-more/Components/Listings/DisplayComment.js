@@ -6,10 +6,10 @@ const DisplayComment = ({ comment }) => {
   return (
     <>
       {
-        <div style={{ backgroundColor: 'grey' }}>
-          <div>@{ comment.username }</div>
+        <div style={{ backgroundColor: '#4b61c8', color: 'white', width: '680px', display: 'flex', justifyContent: 'center', justifyContent: 'flex-start', padding: '25px', borderRadius: '3px' }}>
+          <div>{ comment.username }</div>
           <div>{ comment.body }</div>
-          <div>{ Date(comment.date) }</div>
+          {/* <div>{ Date(comment.date) }</div> */}
           <div>{ comment.post_id }</div>
           <div>{ comment.thread_id }</div>
         </div>

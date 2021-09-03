@@ -14,10 +14,12 @@ import DisplayComment from '../../Components/Listings/DisplayComment';
 
 
 const useStyles = makeStyles((theme) => ({
+  input: {
+    color: 'white',
+  },
   root: {
     '& .MuiTextField-root': {
       margin: theme.spacing(1),
-      width: '25ch',
     },
     form: {
       display: 'flex',
@@ -60,11 +62,11 @@ const Thread = ({ thread, setTrigger, trigger }) => {
 
   return (
     <div>
-      <Accordion sqaure expanded={ expanded === 'panel1' } onChange={ handleChange('panel1') }>
+      <Accordion sqaure expanded={ expanded === 'panel1' } onChange={ handleChange('panel1') } style={{ backgroundColor: '#3f51b5', color: 'white', marginBottom: '15px' }}>
         <AccordionSummary aria-controls="panel1d-content" id="panel1d-header">
           <div style={{ width: '100%'}}>
-            @{ thread[0].username }<br />
-            { thread[0].body }
+           <div style={{ fontSize: '12px' }}> @{thread[0].username} </div> <br/>
+           <div style={{ fontSize: '20px', marginBottom: '15px' }}> {thread[0].body} </div>
           </div>
           <CommentIcon />
 
@@ -74,11 +76,18 @@ const Thread = ({ thread, setTrigger, trigger }) => {
               <TextField
                 variant="outlined"
                 type="text"
+                style={{ backgroundColor: '#2d3c8e', border: 'none', width: '100%', marginBottom: '15px', }}
+                InputProps={{
+                  className: classes.input,
+                }}
                 value={ threadComment }
                 onChange={ threadCommentChange }/>
               <Button
                 variant="contained"
-                color="primary"
+                style={{ backgroundColor: '#2b387c', color: 'white', width: '100%',  hover: {
+                  "&:hover": {
+                    backgroundColor: '#171e43'
+                  } }}}
                 type="submit">SUBMIT</Button>
             </form>
           </AccordionDetails>

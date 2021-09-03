@@ -9,19 +9,16 @@ import Button from '@material-ui/core/Button';
 const useStyles = makeStyles((theme) => ({
   root: {
     '& .MuiTextField-root': {
-      margin: theme.spacing(1),
-      width: '25ch',
+      width: '100%',
     },
+    width: '100%',
   },
   button: {
-    marginTop: theme.spacing(2),
   },
   container: {
     display: 'flex',
-    flexDirection: 'column',
     alignItems: 'center',
-    width: '27ch',
-    border: '1px solid black'
+    width: '700px',
   }
 }));
 
@@ -54,6 +51,7 @@ export default function PostRequest({ post_id, thread_id, email, trigger, setTri
     <AuthContext.Consumer>
       {(value) => {
         return (
+          <div style={{ display: 'flex', justifyContent: 'center' }}>
           <div className={ classes.container }>
             <form className={ classes.root } noValidate autoComplete="off" onSubmit={ (e) => handleSubmit(e) }>
               <TextField
@@ -64,10 +62,12 @@ export default function PostRequest({ post_id, thread_id, email, trigger, setTri
                 columns= { 9 }
                 defaultValue= ""
                 variant= "outlined"
+                style={{ marginBottom: '30px' }}
                 onChange={ handleChange }
               />
-            <Button type="submit" variant="contained" color="primary">Submit</Button>
+            <Button type="submit" variant="contained" style={{ display: 'flex', justifyContent: 'center', width: '100%', marginBottom: '30px', }} color="primary">Submit</Button>
             </form>
+          </div>
           </div>
         )
       }}

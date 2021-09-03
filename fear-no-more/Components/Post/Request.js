@@ -147,8 +147,8 @@ export default function PostRequest(props) {
                 />
               </div>
             </form>
-            <Button variant="contained" color="primary" onClick={() => handleSubmit(value)}>
-              Primary
+            <Button variant="contained" color="primary" style={{ marginBottom: '40px' }} onClick={() => handleSubmit(value)}>
+              Post
             </Button>
           </div>
       </div>
