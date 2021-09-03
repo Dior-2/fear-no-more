@@ -26,7 +26,7 @@ const useStyles = makeStyles((theme) => ({
     }
 }}));
 
-const Thread = ({ thread }) => {
+const Thread = ({ thread, setTrigger, trigger }) => {
   const classes = useStyles();
   const [expanded, setExpanded] = useState('');
   const [threadComment, setThreadComment] = useState('');
@@ -55,6 +55,7 @@ const Thread = ({ thread }) => {
       await axios.post(`http://18.222.198.9/api/comments`, comment).catch(err => err);
     }
     setThreadComment('');
+    setTrigger(!trigger);
   };
 
   return (
