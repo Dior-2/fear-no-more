@@ -16,7 +16,7 @@ const useStyles = makeStyles((theme) => ({
   },
   media: {
     paddingTop: '56.25%', // 16:9
-    backgroundColor: '#6f180e'
+    backgroundColor: 'grey'
   },
   cardContent: {
     height: '150px'
@@ -27,17 +27,19 @@ export default function ListingCard(props) {
   const classes = useStyles();
 
   return (
-    <Grid
-      item
-      container
-      sm={12}
-      md={12}
-      lg={6}
-      alignItems='center'
-      justifyContent='center'
-      spacing={3}>
+    // <Grid
+    //   item
+    //   container
+    //   sm={12}
+    //   md={12}
+    //   lg={6}
+    //   alignItems='center'
+    //   justifyContent='center'
+    //   spacing={3}>
+    <div style={{ width: '350px', margin: '10px' }}>
+    <div style={{ display: 'flex', width: '100%'   }} >
       <Card
-        className={classes.card}>
+        className={classes.card} >
         <CardMedia
           className={classes.media}
           image={props.photo || "/logo-ii.png"}
@@ -60,13 +62,16 @@ export default function ListingCard(props) {
                 variant="contained"
                 color="primary"
                 className={classes.button}
-                startIcon={<AccessibilityNewTwoToneIcon />}>
+                // startIcon={<AccessibilityNewTwoToneIcon />}
+                >
                 Reach Out
               </Button>
             </a>
           </Link>
         </CardActions>
       </Card>
-    </Grid>
+      </div>
+      </div>
+    // </Grid>
   );
 }

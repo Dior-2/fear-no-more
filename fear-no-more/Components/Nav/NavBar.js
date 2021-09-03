@@ -97,10 +97,10 @@ export default function NavBar() {
     <AuthContext.Consumer>
       {(value) => {
         return (
-          <div className={classes.root}>
-            <AppBar position="static">
-              <Toolbar>
-
+          <div className={classes.root}  >
+            <AppBar position="static"  >
+              <div style={{ display: 'flex', justifyContent: 'center' }}>
+              <Toolbar style={{ width: '800px', display: 'flex', justifyContent: 'center'  }} >
                   <Typography variant="h6" className={classes.title}>
                     <Button color="inherit" onClick={() => {
                       Router.push('/');
@@ -139,6 +139,7 @@ export default function NavBar() {
                   </Button>
                 }
               </Toolbar>
+              </div>
             </AppBar>
             {renderLogin}
           </div>

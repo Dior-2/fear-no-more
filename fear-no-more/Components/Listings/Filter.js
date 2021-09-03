@@ -151,12 +151,12 @@ export default function FilterComponent () {
   }
 
   return (
-    <>
-      <div className={classes.root}>
-        <Grid container direction="column" alignItems="center">
-          <Grid item xs={12}>
+    <div style={{ display: 'flex', justifyContent: 'center' }}>
+      <div className={classes.root} style={{ width: '800px'}} >
+        {/* <Grid container direction="column" alignItems="center">
+          <Grid item xs={12}> */}
+          <div style={{ display: 'flex', justifyContent: 'space-between', margin: '40px 40px 0 40px' }} >
             <ButtonGroup className={classes.filter} variant="contained" color="primary" ref={anchorRef} aria-label="split button">
-            <Button href="/listings/create">Create Listing</Button>
               <Button>{options[selectedIndex]}</Button>
               <Button
                 color="primary"
@@ -169,6 +169,12 @@ export default function FilterComponent () {
                 <ArrowDropDownIcon />
               </Button>
             </ButtonGroup>
+            <ButtonGroup className={classes.filter} variant="contained" color="primary" ref={anchorRef} aria-label="split button">
+            <Button href="/listings/create">Create Listing</Button>
+          </ButtonGroup>
+            </div>
+            <div style={{ display: 'flex', justifyContent: 'center',  }} >
+
             <Popper open={open} anchorEl={anchorRef.current} role={undefined} transition disablePortal>
               {({ TransitionProps, placement }) => (
                 <Grow
@@ -193,7 +199,9 @@ export default function FilterComponent () {
                 </Grow>
               )}
             </Popper>
-          </Grid>
+          {/* </Grid> */}
+          </div>
+
           <Grid
             container
             alignItems='center'
@@ -228,20 +236,35 @@ export default function FilterComponent () {
             <ButtonGroup
               className={classes.fixed}
               variant="contained"
+              style={{margin: '10px 10px 30px 10px'}}
               color="primary">
               <Button
                 disabled={listBegin}
                 onClick={() => decrementPage()}>Back</Button>
+            </ButtonGroup>
+
+            <ButtonGroup
+              className={classes.fixed}
+              variant="contained"
+              style={{margin: '10px 10px 30px 10px'}}
+              color="primary">
               <Button
-                color='secondary'
+                backgroundColor='primary'
                 disableRipple={true}>Page : {pageNumber}</Button>
+            </ButtonGroup>
+
+            <ButtonGroup
+              className={classes.fixed}
+              variant="contained"
+              style={{margin: '10px 10px 30px 10px'}}
+              color="primary">
               <Button
                 disabled={listEnd}
                 onClick={() => incrementPage()}>Next</Button>
             </ButtonGroup>
           </Grid>
-        </Grid>
+        {/* </Grid> */}
+        </div>
       </div>
-    </>
   );
 }
