@@ -53,6 +53,7 @@ const ProfileItem = ({ label, text, name, submit }) => {
   const classes = useStyles();
   const [editing, setEditing] = useState(false);
 
+
   return (
     <StyledTableRow className={ classes.root }>
       <StyledTableCell

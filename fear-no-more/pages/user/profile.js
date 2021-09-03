@@ -46,9 +46,6 @@ const Profile = ({ /*user*/ }) => {
 
   const updateProfile = async (e, name, userInfo, user, updateTrigger, setUpdateTrigger) => {
     e.preventDefault();
-    console.log('name', name);
-    console.log('userInfo', userInfo);
-    console.log('email', user.email);
     const data = {...user, ogemail: user.email, [name]: userInfo};
     console.log('data', data);
     await axios.put(`http://18.222.198.9/api/profile`, data)
@@ -83,7 +80,7 @@ const Profile = ({ /*user*/ }) => {
                     <ProfileItem label="Password"     text="******"            name="password"     submit={ updateProfile }/>
                     <ProfileItem label="First Name"   text={value.userProfile.firstname}    name="firstname"    submit={ updateProfile }/>
                     <ProfileItem label="Last Name"    text={value.userProfile.lastname}     name="lastname"     submit={ updateProfile }/>
-                    <ProfileItem label="Role"         text={value.userProfile.role}         name="role"         submit={ updateProfile }/>
+                    <ProfileItem label="Role"         text={value.userProfile.roleDisplay}         name="role"         submit={ updateProfile }/>
                     <ProfileItem label="Organization" text={value.userProfile.organization} name="organization" submit={ updateProfile }/>
                   </TableBody>
                   <TableHead>
@@ -99,7 +96,7 @@ const Profile = ({ /*user*/ }) => {
                     <ProfileItem label="Home Phone"     text={value.userProfile.homephone}        name="homephone"        submit={ updateProfile }/>
                     <ProfileItem label="Cell Phone"     text={value.userProfile.mobile}           name="mobile"           submit={ updateProfile }/>
                     <ProfileItem label="Email"          text={value.userProfile.email}            name="email"            submit={ updateProfile }/>
-                    <ProfileItem label="Contact Method" text={value.userProfile.preferredcontact} name="preferredcontact" submit={ updateProfile }/>
+                    <ProfileItem label="Contact Method" text={value.userProfile.contactDisplay} name="preferredcontact" submit={ updateProfile }/>
                   </TableBody>
                   <TableHead>
                   <TableRow style={{ backgroundColor: 'grey', height: '2.5rem'}}>

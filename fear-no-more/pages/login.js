@@ -133,7 +133,7 @@ const Login = () => {
                 </div>
                 <div>
                   <Typography htmlFor="password">Password</Typography>
-                  <input type="text" id="login-password" name="password" placeholder="Enter password..." required
+                  <input type="text" id="login-password" name="password" type="password" placeholder="Enter password..." required
                     onChange={(e) => { setPassword(e.target.value); }}
                   />
                 </div>
