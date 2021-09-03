@@ -1,5 +1,5 @@
 import Head from 'next/head';
-import AuthContext from '../pages/AuthContext.js';
+import AuthContext from './Context/AuthContext.js';
 import Image from 'next/image';
 import Link from 'next/link';
 import Header from './Nav/Header';

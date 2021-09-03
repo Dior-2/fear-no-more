@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import AuthContext from '../../pages/AuthContext.js';
+import AuthContext from '../../Components/Context/AuthContext.js';
 import axios from 'axios';
 import { withStyles, makeStyles } from '@material-ui/core/styles';
 import { Container, List } from '@material-ui/core';
