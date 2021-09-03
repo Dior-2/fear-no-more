@@ -13,7 +13,7 @@ import {
 } from '@material-ui/core';
 import DisplayComment from '../../Components/Listings/DisplayComment';
 
-import AuthContext from '../../pages/AuthContext.js';
+import AuthContext from '../Context/AuthContext.js';
 import { getAuth, signOut, onAuthStateChanged } from "firebase/auth";
 
 

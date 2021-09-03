@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import AuthContext from '../../pages/AuthContext.js';
+import AuthContext from '../Context/AuthContext.js';
 import { makeStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
