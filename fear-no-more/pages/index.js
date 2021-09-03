@@ -26,12 +26,6 @@ const Home = () => {
         <Mission />
         <Help />
         <Testimony />
-        {/* <h1>
-          LISTINGS{' '}
-          <Link href='/listings/list'><a>HERE</a></Link>
-          <br/>
-          <Link href='/user/profile'><a>Edit Profile</a></Link>
-        </h1> */}
       </section>
     </Layout>
   )
