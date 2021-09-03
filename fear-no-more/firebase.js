@@ -19,12 +19,3 @@ const firebaseConfig = {
 
 const firebaseApp = initializeApp(firebaseConfig);
 const auth = getAuth(firebaseApp);
-// ​
-// //Detect Auth state
-// // onAuthStateChanged(auth, user => {
-// //   if (user != null) {
-// //     console.log('firebase.js sees user is logged in');
-// //   } else {
-// //     console.log('firebase.js does not see a logged in user');
-// //   }
-// // })
