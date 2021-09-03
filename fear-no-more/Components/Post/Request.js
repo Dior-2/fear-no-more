@@ -1,4 +1,4 @@
-import AuthContext from '../../pages/AuthContext.js';
+import AuthContext from '../Context/AuthContext.js';
 import React, { useState, useEffect } from 'react';
 import Router, { useRouter } from 'next/router';
 import axios from 'axios';

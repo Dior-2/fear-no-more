@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import Router, { useRouter } from 'next/router';
-import AuthContext from '../../pages/AuthContext.js';
+import AuthContext from '../Context/AuthContext.js';
 import { makeStyles } from '@material-ui/core/styles';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';

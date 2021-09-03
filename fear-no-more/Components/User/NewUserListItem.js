@@ -98,8 +98,8 @@ const NewUserListItem = ({ fields, dropdown, blankCells }) => {
               >
                 <option aria-label="None" value="" />
                 {
-                  dropdown.options.map(option =>
-                    <option value={option.value}>
+                  dropdown.options.map((option, i) =>
+                    <option value={option.value} key={ i }>
                       {option.display}
                     </option>
                   )
@@ -111,7 +111,7 @@ const NewUserListItem = ({ fields, dropdown, blankCells }) => {
         null
       }
       {
-        blankCells.map(cell => <StyledTableCell></StyledTableCell>)
+        blankCells.map((cell, i) => <StyledTableCell key={ i }></StyledTableCell>)
       }
     </StyledTableRow>
   )

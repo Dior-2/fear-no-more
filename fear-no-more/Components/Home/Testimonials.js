@@ -65,7 +65,7 @@ export default function Testimonial(props) {
       </Typography>
 
       <Paper style={{ border: "none", boxShadow: "none", display: 'flex', justifyContent: 'center', flexDirection: 'row', marginBottom: '30px', alignItems: 'flex-start', paddingTop: '25px'}}>
-        <Image src={iconThree} />
+        <Image alt='' src={iconThree} />
       </Paper>
 
       <Typography gutterBottom style={{ display: 'flex', justifyContent: 'center', marginTop: '15px', fontSize: '17px'}}>

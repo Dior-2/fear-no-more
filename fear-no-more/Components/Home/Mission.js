@@ -64,7 +64,7 @@ export default function Mission(props) {
 
 
           <Paper style={{ border: "none", boxShadow: "none", display: 'flex', justifyContent: 'center', flexDirection: 'row', height: '350px', width: '350px', }}>
-            <Image src={iconFour} />
+            <Image alt='' src={iconFour} />
           </Paper>
 
 
@@ -76,7 +76,7 @@ export default function Mission(props) {
             </Typography>
 
             <Paper style={{ border: "none", boxShadow: "none", display: 'flex', paddingLeft: '20px', height: '10px', flexDirection: 'row', marginBottom: '30px', alignItems: 'flex-start', paddingTop: '25px'}}>
-              <Image src={iconThree} />
+              <Image alt='' src={iconThree} />
             </Paper>
 
             {/* <Typography gutterBottom variant="h5" component="h2">

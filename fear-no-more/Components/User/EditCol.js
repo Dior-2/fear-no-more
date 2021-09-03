@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import AuthContext from '../../pages/AuthContext.js';
+import AuthContext from '../Context/AuthContext.js';
 import EditIcon from '@material-ui/icons/Edit';
 import { TextField, Button } from '@material-ui/core';
 import { withStyles, makeStyles } from '@material-ui/core/styles';
@@ -30,7 +30,7 @@ const EditCol = ({ submit, fieldInfo, name }) => {
         const user = value.userProfile;
         const updateTrigger = value.updateTrigger;
         const setUpdateTrigger = value.setUpdateTrigger;
-      
+
         return (
           <React.Fragment>
             {
