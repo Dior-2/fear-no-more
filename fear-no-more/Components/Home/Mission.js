@@ -63,7 +63,7 @@ export default function Mission(props) {
       </Typography> */}
 
 
-          <Paper style={{ border: "none", boxShadow: "none", display: 'flex', justifyContent: 'center', flexDirection: 'row', height: '400px', width: '400px', }}>
+          <Paper style={{ border: "none", boxShadow: "none", display: 'flex', justifyContent: 'center', flexDirection: 'row', height: '350px', width: '350px', }}>
             <Image src={iconFour} />
           </Paper>
 
@@ -71,7 +71,7 @@ export default function Mission(props) {
         <Card className={classes.root} style={{ border: "none", boxShadow: "none", display: 'flex', justifyContent: 'center', flexDirection: 'row', }} >
           <CardActionArea>
           <CardContent>
-            <Typography variant="h4" component="h2" style={{ display: 'flex', justifyContent: 'center', fontSize: '30px', paddingLeft: '20px', width: '400px', alignItems: 'flex-start'}}>
+            <Typography variant="h4" component="h2" style={{ display: 'flex', justifyContent: 'center', fontSize: '30px', paddingLeft: '20px', width: '350px', alignItems: 'flex-start'}}>
               To Save Our Community, We Must Move Beyond Hope!
             </Typography>
 
@@ -82,11 +82,11 @@ export default function Mission(props) {
             {/* <Typography gutterBottom variant="h5" component="h2">
               Lorem ipsum
             </Typography> */}
-            <Typography variant="body2" color="textSecondary" component="p" style={{ width: '400px', display: 'flex', flexDirection: 'column',  paddingLeft: '20px', marginTop: '30px'}}>
-              {/* <p>
+            <Typography variant="body2" color="textSecondary" component="p" style={{ width: '350px', display: 'flex', flexDirection: 'column',  paddingLeft: '20px', marginTop: '30px'}}>
+              <p>
                 Poverty is a serious nationwide issue. The average U.S. family in poverty, with two adults and two children, lives on less than $26,500 a year. Consider these staggering statistics from the regions where Fear No More currently operates:
               </p>
-              <ul>
+              {/* <ul>
                 <li>
                   More than 1 in 3 children, 12 years old and younger, live in low-income or homeless situations.
 
@@ -97,13 +97,13 @@ export default function Mission(props) {
                 <li>
                   1 in 2 children in Texas live in low income and homeless situations.
                 </li>
-              </ul>
- */}
+              </ul> */}
 
-              <p>
+
+              {/* <p>
                 Without adequate and appropriate clothing, children face unfair barriers and participate in life on an unequal playing field. Across most of the United States, only three (food, housing, energy) of four basic needs are supported by government safety net programs. Fear No More uses the term “Clothing Insecurity” as part of our efforts to formally recognize the issue, and increase awareness on this hidden basic need.
 
-              </p>
+              </p> */}
             </Typography>
           </CardContent>
         </CardActionArea>

@@ -83,7 +83,7 @@ export default function Testimonial(props) {
           <CardMedia
             component="img"
             alt="Lorem ipsum"
-            height="250"
+            height="200"
             image="https://cf.ltkcdn.net/charity/images/orig/254503-1600x1030-how-organize-food-drive.jpg"
             title="Lorem ipsum"
           />
@@ -124,7 +124,7 @@ export default function Testimonial(props) {
           <CardMedia
             component="img"
             alt="Lorem ipsum"
-            height="250"
+            height="200"
             image="https://www.northwestharvest.org/wp-content/uploads/food-drives-mastheads.jpg"
             title="Lorem ipsum"
           />
