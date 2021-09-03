@@ -91,8 +91,6 @@ const Login = () => {
   // }, []);
 
   const handleSignInClick = () => {
-    console.log('Auth');
-    console.log(auth);
     signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         // Signed in
@@ -143,7 +141,7 @@ const Login = () => {
                 </div>
                 <div>
                   <Typography htmlFor="password" style={{ paddingTop: '10px', paddingBottom: '10px', fontSize: '17px', fontWeight: '500', }}>Password</Typography>
-                  <input style={{ width: '100%', border: 'none', backgroundColor: '#bbc9e7', height: '35px', borderRadius: '5px', marginBottom: '20px' }} type="text" id="login-password" name="password" placeholder="  Enter password..." required
+                  <input style={{ width: '100%', border: 'none', backgroundColor: '#bbc9e7', height: '35px', borderRadius: '5px', marginBottom: '20px' }} type="password" id="login-password" name="password" placeholder="  Enter password..." required
                     onChange={(e) => { setPassword(e.target.value); }}
                   />
                 </div>

@@ -72,8 +72,6 @@ const FireBaseAPITesting = () => {
   }
 
   const handleSignInClick = () => {
-    console.log('Auth');
-    console.log(auth);
     signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         // Signed in
@@ -117,10 +115,9 @@ const FireBaseAPITesting = () => {
   }
 
   const handlePasswordResetClick = () => {
-    console.log('Paty Haus is having a grumpy day!');
     sendPasswordResetEmail(auth, email)
       .then(() => {
-        console.log('Password reset email sent!');
+        alert('Password reset sent!');
         // ..
       })
       .catch((error) => {
