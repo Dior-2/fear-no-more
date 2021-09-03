@@ -19,12 +19,9 @@ function MyApp({ Component, pageProps }) {
         // https://firebase.google.com/docs/reference/js/firebase.User
         const userId = user.uid;
         const userEmail = user.email;
-        console.log('User email on Load is', userEmail);
-        console.log('UserId on load is', userId);
         //setUserId(userId);
         axios.get(`${url}/api/profile?email=${userEmail}`)
         .then(response => {
-          console.log('Response from app', response)
           if (response.data.length > 0) {
             setUserProfile(response.data[0]);
           } else {

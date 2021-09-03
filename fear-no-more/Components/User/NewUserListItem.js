@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
 import { TextField, Button } from '@material-ui/core';
 import EditRow from './EditRow';
+import FormControl from '@material-ui/core/FormControl';
+import InputLabel from '@material-ui/core/InputLabel';
+import Select from '@material-ui/core/Select';
 import { withStyles, makeStyles } from '@material-ui/core/styles';
 import {
   TableContainer,
@@ -12,6 +15,14 @@ import {
   Paper
 } from '@material-ui/core';
 
+const StyledTableRow = withStyles((theme) => ({
+  root: {
+    '&:nth-of-type(odd)': {
+      backgroundColor: theme.palette.action.hover,
+    },
+    // display: 'flex',
+  }
+}))(TableRow);
 
 const StyledTableCell = withStyles((theme) => ({
   head: {
@@ -24,15 +35,6 @@ const StyledTableCell = withStyles((theme) => ({
     // flexGrow: 1
   },
 }))(TableCell);
-
-const StyledTableRow = withStyles((theme) => ({
-  root: {
-    '&:nth-of-type(odd)': {
-      backgroundColor: theme.palette.action.hover,
-    },
-    // display: 'flex',
-  }
-}))(TableRow);
 
 const useStyles = makeStyles({
   list: {
@@ -47,11 +49,20 @@ const useStyles = makeStyles({
   },
   edit: {
     cursor: 'pointer'
-  }
+  },
+  formControl: {
+    minWidth: 176,
+  },
+  // select: {
+  //   padding: '16px'
+  // },
+  // selectEmpty: {
+  //   marginTop: theme.spacing(2),
+  // },
 });
 
 
-const NewUserListItem = ({ fields }) => {
+const NewUserListItem = ({ fields, dropdown, blankCells }) => {
   const classes = useStyles();
   const [editing, setEditing] = useState(true);
 
@@ -61,12 +72,46 @@ const NewUserListItem = ({ fields }) => {
         fields.map((field, i) => {
           return (
             <StyledTableCell key={i}>
-              <TextField  label={field.label}
+              <TextField
+                label={field.label}
+                type={field.label === "Password" ? 'password' : 'text'}
                 onChange={(e) => { field.setter(e.target.value); }}
               />
             </StyledTableCell>
           )
         })
+      }
+      {
+        dropdown
+          ?
+          <StyledTableCell>
+            <FormControl className={classes.formControl}>
+              <InputLabel htmlFor="age-native-simple">{dropdown.label}</InputLabel>
+              <Select
+                native
+                value={dropdown.field}
+                onChange={(e) => dropdown.setter(e.target.value) }
+                inputProps={{
+                  name: dropdown.label,
+                  id: 'age-native-simple',
+                }}
+              >
+                <option aria-label="None" value="" />
+                {
+                  dropdown.options.map(option =>
+                    <option value={option.value}>
+                      {option.display}
+                    </option>
+                  )
+                }
+              </Select>
+            </FormControl>
+          </StyledTableCell>
+          :
+        null
+      }
+      {
+        blankCells.map(cell => <StyledTableCell></StyledTableCell>)
       }
     </StyledTableRow>
   )

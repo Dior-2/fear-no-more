@@ -7,6 +7,7 @@ import Layout, { siteTitle } from '../../Components/layout';
 import Head from 'next/head';
 import Button from '@material-ui/core/Button';
 import NewUserListItem from '../../Components/User/NewUserListItem';
+
 import { withStyles, makeStyles } from '@material-ui/core/styles';
 import { Container, List } from '@material-ui/core';
 import {
@@ -49,9 +50,17 @@ const Profile = () => {
     {label: 'Password', setter: setPassword},
     {label: 'First Name', setter: setFirstName},
     {label: 'Last Name', setter: setLastName},
-    {label: 'Role', setter: setRole},
-    {label: 'Organization', setter: setOrganization}
+    {label: 'Organization', setter: setOrganization},
   ];
+  var roleDropdown = {
+    label: 'Role',
+    field: role,
+    setter: setRole,
+    options: [
+      {value: 0, display: 'Recipient'},
+      {value: 1, display: 'Donor'}
+    ]
+  };
 
   //Contact Category
   const [homePhone, setHomePhone] = useState('');
@@ -62,9 +71,19 @@ const Profile = () => {
   const contactRow = [
     {label: 'Home Phone', setter: setHomePhone},
     {label: 'Cell Phone', setter: setMobile},
-    {label: 'Email', setter: setEmail},
-    {label: 'Preferred Contact', setter: setPreferredContact}
+    {label: 'Email', setter: setEmail}
   ]
+
+  var preferredContactDropdown = {
+    label: 'Preferred Contact',
+    field: preferredContact,
+    setter: setPreferredContact,
+    options: [
+      { value: 0, display: 'Email' },
+      { value: 1, display: 'Home Phone' },
+      { value: 2, display: 'Mobile Phone' }
+    ]
+  }
 
   //Address Category
   const [city, setCity] = useState('');
@@ -206,7 +225,7 @@ const Profile = () => {
               </TableRow>
             </TableHead>
             <TableBody>
-              <NewUserListItem fields={accountRow} />
+              <NewUserListItem fields={accountRow} dropdown={roleDropdown} blankCells={[]}/>
             </TableBody>
             <TableHead>
               <TableRow style={{ backgroundColor: 'grey', height: '2.5rem' }}>
@@ -221,7 +240,7 @@ const Profile = () => {
               </TableRow>
             </TableHead>
             <TableBody>
-              <NewUserListItem fields={contactRow} />
+              <NewUserListItem fields={contactRow} dropdown={preferredContactDropdown} blankCells={[1,2]}/>
             </TableBody>
             <TableHead>
               <TableRow style={{ backgroundColor: 'grey', height: '2.5rem' }}>
@@ -236,7 +255,7 @@ const Profile = () => {
               </TableRow>
             </TableHead>
             <TableBody>
-              <NewUserListItem fields={addressRow}/>
+              <NewUserListItem fields={addressRow} blankCells={[1]}/>
             </TableBody>
           </Table>
         </TableContainer>

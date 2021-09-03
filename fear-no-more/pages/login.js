@@ -87,8 +87,6 @@ const Login = () => {
   // }, []);
 
   const handleSignInClick = () => {
-    console.log('Auth');
-    console.log(auth);
     signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         // Signed in
