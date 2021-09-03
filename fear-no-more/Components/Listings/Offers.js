@@ -57,7 +57,7 @@ export default function FilterComponent () {
   // THE INITIAL API CALL FOR DATA
   useEffect(() => {
     async function fetchData() {
-      const noQuery = await axios.get(`http://18.222.198.9/api/listings/requests`)
+      const noQuery = await axios.get(`http://18.222.198.9/api/listings/offers`)
         .then(({data}) => {
           setListData(data);
         })
