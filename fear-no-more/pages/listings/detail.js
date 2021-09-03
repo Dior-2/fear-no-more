@@ -30,11 +30,12 @@ const Detail = (/*{ listing }*/) => {
   const classes = useStyles();
   const [threads, setThreads] = useState();
   const [listing, setListing] = useState();
+  const [trigger, setTrigger] = useState(false);
 
   useEffect(() => {
     getListing(5);
     getThreads(5);
-  }, []);
+  }, [trigger]);
 
   const getListing = async (id) => {
     const { data } = await axios.get(`http://18.222.198.9/api/listings/requests?post_id=${id}`);
@@ -57,13 +58,19 @@ const Detail = (/*{ listing }*/) => {
          */ }
           {/* <DetailCard props={ listing }/> */}
           <br/>
-          <CommentPost />
+          <CommentPost
+            setTrigger={ setTrigger }
+            trigger={ trigger }/>
         </header>
         <section>
           {
             threads?.map((thread, i) =>
               <article key={ i } style={{ border: '4px solid blue' }}>
-                <Thread key={ i } thread={ thread } />
+                <Thread
+                  key={ i }
+                  thread={ thread }
+                  setTrigger={ setTrigger }
+                  trigger={ trigger }/>
               </article>
             )
           }

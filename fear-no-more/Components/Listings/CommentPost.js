@@ -25,7 +25,7 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-export default function PostRequest({ post_id, thread_id, email }) {
+export default function PostRequest({ post_id, thread_id, email, trigger, setTrigger }) {
   const classes = useStyles();
 
   const [info, setInfo] = useState('');
@@ -47,6 +47,7 @@ export default function PostRequest({ post_id, thread_id, email }) {
     if (info !== '') {
       await axios.post(`http://18.222.198.9/api/comments`, comment).catch(err => err);
     }
+    setTrigger(!trigger);
   };
 
   return (
