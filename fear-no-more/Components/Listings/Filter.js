@@ -26,8 +26,8 @@ export default function Filter() {
   useEffect(() => {
     async function fetchData() {
       const noQuery = await axios.get(`http://18.222.198.9/api/listings/offers`)
-        .then((response) => {
-          setListData(response.data);
+        .then(({data}) => {
+          setListData(data);
         })
         .catch((error) => {
           console.error(`ERROR :!:!:! ${error}`);
@@ -48,7 +48,6 @@ export default function Filter() {
 
   function filterList (option) {
     let results = listData.slice();
-    console.log(results)
     let optionNormalize = option.charAt(0).toLowerCase() + option.slice(1);
     if (optionNormalize === 'all') {
       setListFiltered(false);
