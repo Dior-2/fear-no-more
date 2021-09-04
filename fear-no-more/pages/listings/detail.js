@@ -11,7 +11,7 @@ import CommentPost from '../../Components/listings/CommentPost';
 import DetailCard from '../../Components/listings/DetailCard';
 import Typography from '@material-ui/core/Typography';
 
-import AuthContext from '../../pages/AuthContext.js';
+import AuthContext from '../../Components/Context/AuthContext.js';
 import { getAuth, signOut, onAuthStateChanged } from "firebase/auth";
 
 const useStyles = makeStyles({

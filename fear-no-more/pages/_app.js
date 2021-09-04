@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import AuthContext from './AuthContext.js';
+import AuthContext from '../Components/Context/AuthContext.js';
 import axios from 'axios';
 import '../styles/globals.css'
 import firebase from '../firebase.js';
