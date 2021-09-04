@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-// import EditRow from './EditRow';
 import EditCol from './EditCol';
 import { withStyles, makeStyles } from '@material-ui/core/styles';
 import {
@@ -53,23 +52,20 @@ const ProfileItem = ({ label, text, name, submit }) => {
 
 
   return (
-    <StyledTableRow className={ classes.root }>
+    <StyledTableRow className={classes.root}>
       <StyledTableCell
-        className={ classes.cell }
+        className={classes.cell}
         component="th"
-        scope="row"
-      >
-      { label }</StyledTableCell>
+        scope="row">
+        {label}</StyledTableCell>
       <StyledTableCell
         component="th"
-        scope="row"
-      >
-      { text }</StyledTableCell>
+        scope="row">
+        {text}</StyledTableCell>
       <StyledTableCell style={{ maxWidth: '8rem' }}>
-        <EditCol name={ name } submit={ submit } fireldInfo={text}/>
+        <EditCol name={name} submit={submit} fireldInfo={text} />
       </StyledTableCell>
     </StyledTableRow>
   )
 };
-
 export default ProfileItem;

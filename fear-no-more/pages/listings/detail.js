@@ -1,38 +1,29 @@
 import React, { useState, useEffect, useContext } from 'react';
 import Image from 'next/image';
 import axios from 'axios';
-
 import { Container } from '@material-ui/core';
 import { withStyles, makeStyles } from '@material-ui/core/styles';
-
 import Layout from '../../Components/layout';
 import Thread from '../../Components/listings/Thread';
 import CommentPost from '../../Components/listings/CommentPost';
 import DetailCard from '../../Components/listings/DetailCard';
 import Typography from '@material-ui/core/Typography';
-
 import AuthContext from '../../Components/Context/AuthContext.js';
 import { getAuth, signOut, onAuthStateChanged } from "firebase/auth";
 
 const useStyles = makeStyles({
   root: {
-    display:        'flex',
-    flexDirection:  'column',
+    display: 'flex',
+    flexDirection: 'column',
     justifyContent: 'center',
-    marginBottom:   '50px',
+    marginBottom: '50px',
     alignItems: 'center',
   },
-  header: {
-    // margin:   '6rem',
-    // fontSize: '2rem'
-  }
 });
 
 const Detail = () => {
   const classes = useStyles();
-
   const { focusPost, userProfile } = useContext(AuthContext);
-
   const [listing, setListing] = useState();
   const [threads, setThreads] = useState();
   const [trigger, setTrigger] = useState(false);
@@ -56,47 +47,31 @@ const Detail = () => {
 
   return (
     <Layout>
-
       <Typography gutterBottom variant="h4" component="h2" style={{ display: 'flex', justifyContent: 'center', marginTop: '100px', fontSize: '40px', fontWeight: '500', marginBottom: '60px' }}>
         Comments
       </Typography>
-
-      <Container className={ classes.root }>
-        <header className={ classes.header }>
-        {
-          /*
-            ADD DETAIL FOR THE CURRENT LISTING
-            PHOTO NOT WORKING FOR DETAILCARD
-            NOT SURE IF COMMENT SHOULD GO HERE
-        */ }
-          {/* <DetailCard props={ listing }/> */}
-
+      <Container className={classes.root}>
+        <header className={classes.header}>
         </header>
-
-
-
         <section>
           {
             threads?.map((thread, i) =>
-              <article key={ i } >
+              <article key={i} >
                 <Thread
-                  key={ i }
-                  thread={ thread }
-                  setTrigger={ setTrigger }
-                  trigger={ trigger }/>
+                  key={i}
+                  thread={thread}
+                  setTrigger={setTrigger}
+                  trigger={trigger} />
               </article>
             )
           }
         </section>
-
       </Container>
-
-          <CommentPost
-            style={{ display: 'flex', justifyContent: 'center', width: '800px', marginBottom: '500px' }}
-            setTrigger={ setTrigger }
-            trigger={ trigger }/>
+      <CommentPost
+        style={{ display: 'flex', justifyContent: 'center', width: '800px', marginBottom: '500px' }}
+        setTrigger={setTrigger}
+        trigger={trigger} />
     </Layout>
   )
 };
-
 export default Detail;

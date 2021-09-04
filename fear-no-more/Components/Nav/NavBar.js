@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import Router, { useRouter } from 'next/router';
 import AuthContext from '../Context/AuthContext.js';
 import { makeStyles } from '@material-ui/core/styles';
@@ -31,29 +31,8 @@ export default function NavBar() {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
   const auth = getAuth();
-
   const isMenuOpen = Boolean(anchorEl);
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
-
-  // useEffect(() => {
-  //   onAuthStateChanged(auth, (user) => {
-  //     if (user) {
-  //       // User is signed in, see docs for a list of available properties
-  //       // https://firebase.google.com/docs/reference/js/firebase.User
-  //       const userId = user.uid;
-  //       console.log('User ID on Load is', userId);
-  //       setUserId(userId);
-  //       // ...
-  //     } else {
-  //       // User is signed out
-  //       // ...
-  //     }
-  //   });
-  //   // const auth = getAuth();
-  //   // console.log('auth', auth);
-  //   // { auth.currentUser ? console.log('userId', auth.currentUser.uid) : console.log('No user to log') }
-  //   // { auth.currentUser ? setUserId(auth.currentUser.uid) : console.log('No user to set') }
-  // }, []);
 
   const handleProfileMenuOpen = (event) => {
     setAnchorEl(event.currentTarget);
@@ -66,9 +45,6 @@ export default function NavBar() {
 
   const handleSignOutClick = () => {
     signOut(auth).then(() => {
-      // Sign-out successful.
-      // Manipulate our local db
-      // set user role to 3
       setUserId('Guest');
       setUsername('Guest');
       Router.push('/');
@@ -86,8 +62,7 @@ export default function NavBar() {
       keepMounted
       transformOrigin={{ vertical: 'top', horizontal: 'right' }}
       open={isMenuOpen}
-      onClose={handleMenuClose}
-    >
+      onClose={handleMenuClose}>
       <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
       <MenuItem onClick={handleMenuClose}>My account</MenuItem>
     </Menu>
@@ -97,10 +72,10 @@ export default function NavBar() {
     <AuthContext.Consumer>
       {(value) => {
         return (
-          <div className={classes.root}  >
-            <AppBar position="static"  >
+          <div className={classes.root}>
+            <AppBar position="static">
               <div style={{ display: 'flex', justifyContent: 'center' }}>
-              <Toolbar style={{ width: '800px', display: 'flex', justifyContent: 'center'  }} >
+                <Toolbar style={{ width: '800px', display: 'flex', justifyContent: 'center' }}>
                   <Typography variant="h6" className={classes.title}>
                     <Button color="inherit" onClick={() => {
                       Router.push('/');
@@ -108,37 +83,37 @@ export default function NavBar() {
                       Fear No More
                     </Button>
                   </Typography>
-                {
-                  value.userProfile.username === 'Guest'
-                    ?
-                  <Button color="inherit" onClick={() => {
-                    Router.push('/login');
-                  }}>
-                    Login
-                  </Button>
-                    :
-                  <Button color="inherit" onClick={() => {
-                    Router.push('/user/profile');
-                  }}>
-                    {`Welcome, ${value.userProfile.username}`}
-                  </Button>
-                }
-                {
-                  value.userProfile.username === 'Guest'
-                    ?
-                  <Button color="inherit" onClick={() => {
-                    Router.push('/user/signup');
-                  }}>
-                    Sign Up
-                  </Button>
-                    :
-                  <Button color="inherit" onClick={() => {
-                     handleSignOutClick();
-                  }}>
-                    Sign Out
-                  </Button>
-                }
-              </Toolbar>
+                  {
+                    value.userProfile.username === 'Guest'
+                      ?
+                      <Button color="inherit" onClick={() => {
+                        Router.push('/login');
+                      }}>
+                        Login
+                      </Button>
+                      :
+                      <Button color="inherit" onClick={() => {
+                        Router.push('/user/profile');
+                      }}>
+                        {`Welcome, ${value.userProfile.username}`}
+                      </Button>
+                  }
+                  {
+                    value.userProfile.username === 'Guest'
+                      ?
+                      <Button color="inherit" onClick={() => {
+                        Router.push('/user/signup');
+                      }}>
+                        Sign Up
+                      </Button>
+                      :
+                      <Button color="inherit" onClick={() => {
+                        handleSignOutClick();
+                      }}>
+                        Sign Out
+                      </Button>
+                  }
+                </Toolbar>
               </div>
             </AppBar>
             {renderLogin}

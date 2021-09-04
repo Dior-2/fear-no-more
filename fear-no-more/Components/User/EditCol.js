@@ -38,13 +38,11 @@ const EditCol = ({ submit, fieldInfo, name }) => {
                 <form onSubmit={(e) => {
                   resetForm(e, name)
                   submit(e, name, userInfo, user, updateTrigger, setUpdateTrigger);
-                }}
-                >
+                }}>
                   <TextField
                     name={name}
                     value={userInfo}
-                    onChange={(e) => handleChange(e)}
-                  />
+                    onChange={(e) => handleChange(e)} />
                   <Button variant="contained" size="small" type="submit">Submit</Button>
                   <Button variant="contained" size="small" onClick={(e) => resetForm(e)}>X</Button>
                 </form> :
@@ -57,5 +55,4 @@ const EditCol = ({ submit, fieldInfo, name }) => {
 
   )
 };
-
 export default EditCol;

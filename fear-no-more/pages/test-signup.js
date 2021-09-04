@@ -1,10 +1,10 @@
-import React, {useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import Head from 'next/head';
 import Layout, { siteTitle } from '../Components/layout';
 import Link from 'next/link';
-// import { initializeApp } from 'firebase/app';
 import firebase from '../firebase.js';
-import { getAuth,
+import {
+  getAuth,
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
   signOut,
@@ -24,26 +24,6 @@ const FireBaseAPITesting = () => {
   const [userId, setUserId] = useState('Guest');
   const auth = getAuth();
 
-  // useEffect(() => {
-  //   onAuthStateChanged(auth, (user) => {
-  //     if (user) {
-  //       // User is signed in, see docs for a list of available properties
-  //       // https://firebase.google.com/docs/reference/js/firebase.User
-  //       const userId = user.uid;
-  //       console.log('User ID on Load is', userId);
-  //       setUserId(userId);
-  //       // ...
-  //     } else {
-  //       // User is signed out
-  //       // ...
-  //     }
-  //   });
-  //   // const auth = getAuth();
-  //   // console.log('auth', auth);
-  //   // { auth.currentUser ? console.log('userId', auth.currentUser.uid) : console.log('No user to log') }
-  //   // { auth.currentUser ? setUserId(auth.currentUser.uid) : console.log('No user to set') }
-  // }, []);
-
   const handleSignUpClick = () => {
     if (password === passwordConfirmation) {
       createUserWithEmailAndPassword(auth, email, password)
@@ -59,14 +39,10 @@ const FireBaseAPITesting = () => {
             method: method,
             location: location
           };
-          // send newUserData to backend
-            // get backend user info and set states
-            // take to the appropriate listings
         })
         .catch((error) => {
           const errorCode = error.code;
           const errorMessage = error.message;
-          // ...
         });
     }
   }
@@ -74,14 +50,9 @@ const FireBaseAPITesting = () => {
   const handleSignInClick = () => {
     signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
-        // Signed in
         const user = userCredential.user;
         const userId = user.auth.currentUser.uid;
-        // console.log('user', user);
-        // console.log
         setUserId(userId);
-        // More stuff here when you think about it
-
       })
       .catch((error) => {
         const errorCode = error.code;
@@ -91,12 +62,8 @@ const FireBaseAPITesting = () => {
 
   const handleSignOutClick = () => {
     signOut(auth).then(() => {
-      // Sign-out successful.
-      // Manipulate our local db
-      // set user role to 3
       setUserId('Guest');
     }).catch((error) => {
-      // An error happened.
     });
   };
 
@@ -105,11 +72,7 @@ const FireBaseAPITesting = () => {
       var user = auth.currentUser;
       var newPassword = password;
       updatePassword(user, newPassword).then(() => {
-        console.log('Password Updated');
-        // Update successful.
       }).catch((error) => {
-        // An error ocurred
-        // ...
       });
     }
   }
@@ -118,12 +81,10 @@ const FireBaseAPITesting = () => {
     sendPasswordResetEmail(auth, email)
       .then(() => {
         alert('Password reset sent!');
-        // ..
       })
       .catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message;
-        // ..
       });
   };
 
@@ -132,9 +93,9 @@ const FireBaseAPITesting = () => {
       <Head>
         <title>{siteTitle}</title>
       </Head>
-        <div>
-          This is the 3 authentication function test page
-        </div>
+      <div>
+        This is the 3 authentication function test page
+      </div>
       <div>----------------------------</div>
       <section>
         <div>
@@ -152,18 +113,18 @@ const FireBaseAPITesting = () => {
         <div>
           <label htmlFor="email">What is yor email?</label>
           <input type="text" id="signup-email" name="email" placeholder="Enter email..."
-            onChange={(e) => {setEmail(e.target.value);}}
+            onChange={(e) => { setEmail(e.target.value); }}
           />
         </div>
         <div>
           <label htmlFor="password">What is your password?</label>
           <input type="text" id="signup-password" name="password" placeholder="Enter password..." required
-            onChange={(e) => {setPassword(e.target.value)}}/>
+            onChange={(e) => { setPassword(e.target.value) }} />
         </div>
         <div>
           <label htmlFor="confirm-password">Confirm password?</label>
           <input type="text" id="confirm-password" name="confirm-password" placeholder="Confirm password..." required
-            onChange={(e) => {setPasswordConfirmation(e.target.value)}}/>
+            onChange={(e) => { setPasswordConfirmation(e.target.value) }} />
         </div>
         <div>
           <label htmlFor="phone-number">What is yor phone number?</label>
@@ -199,13 +160,13 @@ const FireBaseAPITesting = () => {
         <div>
           <label htmlFor="username">Email</label>
           <input type="text" id="login-username" name="email" placeholder="Enter email..." required
-            onChange={(e) => {setEmail(e.target.value);}}
+            onChange={(e) => { setEmail(e.target.value); }}
           />
         </div>
         <div>
           <label htmlFor="password">Password</label>
           <input type="text" id="login-password" name="password" placeholder="Enter password..." required
-            onChange={(e) => {setPassword(e.target.value);}}
+            onChange={(e) => { setPassword(e.target.value); }}
           />
         </div>
         <div>
@@ -273,10 +234,9 @@ const FireBaseAPITesting = () => {
       </section>
       <div>----------------------------</div>
       <section>
-        <div styles={{color: 'red'}}>The current user ID: {userId}</div>
+        <div styles={{ color: 'red' }}>The current user ID: {userId}</div>
       </section>
     </Layout>
   )
 }
-
 export default FireBaseAPITesting;

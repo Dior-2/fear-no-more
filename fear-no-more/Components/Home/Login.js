@@ -8,7 +8,6 @@ import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 
-
 const useStyles = makeStyles({
   root: {
     maxWidth: 800,
@@ -25,8 +24,6 @@ const useStyles = makeStyles({
     flexDirection: 'row',
     letterSpacing: -2,
     justifyContent: 'center',
-    // fontWeight: 'Bold'
-
   },
   snip: {
     align: 'right',
@@ -42,9 +39,7 @@ const useStyles = makeStyles({
     lineHeight: 1.2,
     fontStyle: 'italic'
   }
-
 });
-
 
 export default function Mission(props) {
   const classes = useStyles()
@@ -64,8 +59,7 @@ export default function Mission(props) {
             alt="Lorem ipsum"
             height="170"
             image="https://resize.indiatvnews.com/en/resize/newbucket/1200_-/2017/05/istock-64215815-medium-1024x679-1493792308.jpg"
-            title="Lorem ipsum"
-          />
+            title="Lorem ipsum" />
           <CardContent>
             <Typography gutterBottom variant="h5" component="h2">
               Lorem ipsum
