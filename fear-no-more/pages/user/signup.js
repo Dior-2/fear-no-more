@@ -38,41 +38,39 @@ const useStyles = makeStyles({
 const Profile = () => {
   const auth = getAuth();
   const [fireBaseID, setFireBaseID] = useState('Guest');
-  //Account Category
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [firstName, setFirstName] = useState('');
-  const [lastName, setLastName]  = useState('');
+  const [lastName, setLastName] = useState('');
   const [role, setRole] = useState('');
   const [organization, setOrganization] = useState('');
 
   const accountRow = [
-    {label: 'Username', setter: setUsername},
-    {label: 'Password', setter: setPassword},
-    {label: 'First Name', setter: setFirstName},
-    {label: 'Last Name', setter: setLastName},
-    {label: 'Organization', setter: setOrganization},
+    { label: 'Username', setter: setUsername },
+    { label: 'Password', setter: setPassword },
+    { label: 'First Name', setter: setFirstName },
+    { label: 'Last Name', setter: setLastName },
+    { label: 'Organization', setter: setOrganization },
   ];
   var roleDropdown = {
     label: 'Role',
     field: role,
     setter: setRole,
     options: [
-      {value: 0, display: 'Recipient'},
-      {value: 1, display: 'Donor'}
+      { value: 0, display: 'Recipient' },
+      { value: 1, display: 'Donor' }
     ]
   };
 
-  //Contact Category
   const [homePhone, setHomePhone] = useState('');
   const [mobile, setMobile] = useState('');
   const [email, setEmail] = useState('');
   const [preferredContact, setPreferredContact] = useState('');
 
   const contactRow = [
-    {label: 'Home Phone', setter: setHomePhone},
-    {label: 'Cell Phone', setter: setMobile},
-    {label: 'Email', setter: setEmail}
+    { label: 'Home Phone', setter: setHomePhone },
+    { label: 'Cell Phone', setter: setMobile },
+    { label: 'Email', setter: setEmail }
   ]
 
   var preferredContactDropdown = {
@@ -86,7 +84,6 @@ const Profile = () => {
     ]
   }
 
-  //Address Category
   const [city, setCity] = useState('');
   const [state, updateState] = useState('');
   const [zipcode, setZipcode] = useState('');
@@ -94,21 +91,19 @@ const Profile = () => {
   const [address2, setAddress2] = useState('');
 
   const addressRow = [
-    {label: 'City', setter: setCity},
-    {label: 'State', setter: updateState},
-    {label: 'Zipcode', setter: setZipcode},
-    {label: 'Address 1', setter: setAddress1},
-    {label: 'Address 2', setter: setAddress2},
+    { label: 'City', setter: setCity },
+    { label: 'State', setter: updateState },
+    { label: 'Zipcode', setter: setZipcode },
+    { label: 'Address 1', setter: setAddress1 },
+    { label: 'Address 2', setter: setAddress2 },
   ];
 
   const url = 'http://18.222.198.9';
-
   const classes = useStyles();
 
   const handleSignUpClick = () => {
     axios.get(`${url}/api/check?email=${email}`)
       .then(response => {
-        console.log('response is', response);
         if (city !== ''
           && email !== ''
           && firstName !== ''
@@ -118,11 +113,8 @@ const Profile = () => {
           && response.data[0] === "0") {
           createUserWithEmailAndPassword(auth, email, password)
             .then((userCredential) => {
-              // Signed in
-              console.log(userCredential);
               const uid = userCredential.user.uid;
               setFireBaseID(uid);
-              console.log('Reaching this line with firebase_id', fireBaseID);
               if (address1 === '') {
                 var convertedAddress1 = null;
               } else {
@@ -180,22 +172,16 @@ const Profile = () => {
                 role: convertedRole,
                 organization: convertedOrganization
               };
-              console.log('Sending newUserData:', newUserData);
               axios.post(`${url}/api/profile/`, newUserData)
                 .then((data) => {
-                  console.log('No whammies?', data);
                   Router.push('/');
                 })
                 .catch(err => console.log('Whammies', err));
-              // send newUserData to backend
-              // get backend user info and set states
-              // take to the appropriate listings
             })
             .catch((error) => {
-              console.log('WHAMMIES', error);
               const errorCode = error.code;
               const errorMessage = error.message;
-              // ...
+              console.error('WHAMMIES', error);
             });
         } else {
           console.log('Ask them if they validate!');
@@ -226,7 +212,7 @@ const Profile = () => {
               </TableRow>
             </TableHead>
             <TableBody>
-              <NewUserListItem fields={accountRow} dropdown={roleDropdown} blankCells={[]}/>
+              <NewUserListItem fields={accountRow} dropdown={roleDropdown} blankCells={[]} />
             </TableBody>
             <TableHead>
               <TableRow style={{ backgroundColor: '#496fbf', height: '2.5rem' }}>
@@ -241,7 +227,7 @@ const Profile = () => {
               </TableRow>
             </TableHead>
             <TableBody>
-              <NewUserListItem fields={contactRow} dropdown={preferredContactDropdown} blankCells={[1,2]}/>
+              <NewUserListItem fields={contactRow} dropdown={preferredContactDropdown} blankCells={[1, 2]} />
             </TableBody>
             <TableHead>
               <TableRow style={{ backgroundColor: '#496fbf', height: '2.5rem' }}>
@@ -256,13 +242,13 @@ const Profile = () => {
               </TableRow>
             </TableHead>
             <TableBody>
-              <NewUserListItem fields={addressRow} blankCells={[1]}/>
+              <NewUserListItem fields={addressRow} blankCells={[1]} />
             </TableBody>
           </Table>
         </TableContainer>
-        <div style={{ marginTop: '50px', marginBottom: '30px', display: 'flex', justifyContent: 'center',  }}>
-        <Button style={{ backgroundColor: "#496fbf", color: 'white', width: '200px', marginRight: '20px' }} onClick={ () => { handleSignUpClick(); }}>Sign Up</Button>
-        <Button style={{ backgroundColor: "#496fbf", color: 'white', width: '200px', marginLeft: '20px' }} onClick={() => {Router.push('/')}}>Cancel</Button>
+        <div style={{ marginTop: '50px', marginBottom: '30px', display: 'flex', justifyContent: 'center', }}>
+          <Button style={{ backgroundColor: "#496fbf", color: 'white', width: '200px', marginRight: '20px' }} onClick={() => { handleSignUpClick(); }}>Sign Up</Button>
+          <Button style={{ backgroundColor: "#496fbf", color: 'white', width: '200px', marginLeft: '20px' }} onClick={() => { Router.push('/') }}>Cancel</Button>
         </div>
       </Container>
     </Layout>

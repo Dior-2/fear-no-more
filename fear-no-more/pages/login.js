@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import Router, { useRouter } from 'next/router';
 import Head from 'next/head';
 import Link from 'next/link';
@@ -32,7 +32,6 @@ const useStyles = makeStyles({
     align: 'center',
     marginTop: 60,
     marginBottom: 60,
-    // pointerEvents: 'none',
     border: "none",
     boxShadow: "none",
     width: '400px'
@@ -44,8 +43,6 @@ const useStyles = makeStyles({
     flexDirection: 'row',
     letterSpacing: -2,
     justifyContent: 'center',
-    // fontWeight: 'Bold'
-
   },
   snip: {
     align: 'right',
@@ -61,7 +58,6 @@ const useStyles = makeStyles({
     lineHeight: 1.2,
     fontStyle: 'italic'
   }
-
 });
 
 const Login = () => {
@@ -72,34 +68,12 @@ const Login = () => {
   const auth = getAuth();
   const classes = useStyles();
 
-  // useEffect(() => {
-  //   onAuthStateChanged(auth, (user) => {
-  //     if (user) {
-  //       // User is signed in, see docs for a list of available properties
-  //       // https://firebase.google.com/docs/reference/js/firebase.User
-  //       const userId = user.uid;
-  //       console.log('User ID on Load is', userId);
-  //       setUserId(userId);
-  //       // sent send email to server, if email matches firebase id, let user do whatever
-  //       // ...
-  //     } else {
-  //       console.log('You have loaded a page with a user logged out');
-  //       // User is signed out
-  //       // ...
-  //     }
-  //   });
-  // }, []);
-
   const handleSignInClick = () => {
     signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
-        // Signed in
         const user = userCredential.user;
         const userId = user.auth.currentUser.uid;
-        // console.log('user', user);
-        // console.log
         setUserId(userId);
-        // More stuff here when you think about it
         Router.push('/');
       })
       .catch((error) => {
@@ -113,18 +87,10 @@ const Login = () => {
       <Head>
         <title>{siteTitle}</title>
       </Head>
-      {/* <NavBar username={userId}/> */}
       <section>
         <div style={{ display: 'flex', justifyContent: 'center' }}>
           <Card className={classes.root} >
             <CardActionArea>
-              {/* <CardMedia
-                component="img"
-                alt="Lorem ipsum"
-                height="170"
-                image="https://resize.indiatvnews.com/en/resize/newbucket/1200_-/2017/05/istock-64215815-medium-1024x679-1493792308.jpg"
-                title="Lorem ipsum"
-              /> */}
               <CardContent>
                 <Typography gutterBottom variant="h5" component="h2" style={{ marginTop: '15px', marginBottom: '15px' }}>
                   Welcome Fear No More!
@@ -135,7 +101,7 @@ const Login = () => {
                 </Typography>
                 <div>
                   <Typography htmlFor="username" style={{ paddingTop: '10px', paddingBottom: '10px', fontSize: '17px', fontWeight: '500', }}>Email</Typography>
-                  <input style={{ width: '100%', border: 'none', backgroundColor: '#bbc9e7', height: '35px', borderRadius: '5px',  }} type="text" id="login-username" name="email" placeholder="  Enter email..." required
+                  <input style={{ width: '100%', border: 'none', backgroundColor: '#bbc9e7', height: '35px', borderRadius: '5px', }} type="text" id="login-username" name="email" placeholder="  Enter email..." required
                     onChange={(e) => { setEmail(e.target.value); }}
                   />
                 </div>
@@ -145,11 +111,9 @@ const Login = () => {
                     onChange={(e) => { setPassword(e.target.value); }}
                   />
                 </div>
-
                 <div>
                   <a style={{ display: 'flex', justifyContent: 'flex-end', marginBottom: '20px', color: 'grey' }} onClick={() => { requestReset(true) }}>Forgot Password?</a>
                 </div>
-
                 <div>
                   <section>
                     <Button style={{ marginRight: '15px', marginBottom: '30px', width: '48%' }} variant="contained" color="primary" onClick={() => {
@@ -167,7 +131,6 @@ const Login = () => {
                     </Typography>
                   </section>
                 </div>
-
               </CardContent>
             </CardActionArea>
           </Card>
@@ -176,5 +139,4 @@ const Login = () => {
     </Layout>
   )
 }
-
 export default Login;

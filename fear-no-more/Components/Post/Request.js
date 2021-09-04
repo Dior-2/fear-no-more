@@ -85,7 +85,6 @@ export default function PostRequest(props) {
   return (
     <AuthContext.Consumer>
       {(value) => {
-        console.log(value)
         return (
           <div style={{ display: 'flex', justifyContent: 'center' }}>
             <div style={{ width: '600px', display: 'flex', justifyContent: 'center', flexDirection: 'column', }}>
