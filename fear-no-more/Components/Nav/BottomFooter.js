@@ -5,9 +5,7 @@ export default function Header() {
   return (
     <div>
       <div className={TopHeaderStyles.copyRight}>
-        <p>
-          copyright © 2021 Fear No More
-        </p>
+        <p>copyright © 2021 Fear No More</p>
       </div>
     </div>
   )

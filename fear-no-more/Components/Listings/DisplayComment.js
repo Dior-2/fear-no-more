@@ -16,14 +16,14 @@ const DisplayComment = ({ comment }) => {
           justifyContent: 'center',
           justifyContent: 'flex-start',
           padding: '25px',
-          borderRadius: '3px' }}>
-          <div style={{ marginBottom: '20px', fontSize: '12px' }}>@{ comment.username }</div>
-          <div style={{ marginBottom: '25px', fontSize: '20px' }}>{ comment.body }</div>
-          <div style={{ fontSize: '13px' }}>{ moment(comment.date).format("MMM Do YY") }</div>
+          borderRadius: '3px'
+        }}>
+          <div style={{ marginBottom: '20px', fontSize: '12px' }}>@{comment.username}</div>
+          <div style={{ marginBottom: '25px', fontSize: '20px' }}>{comment.body}</div>
+          <div style={{ fontSize: '13px' }}>{moment(comment.date).format("MMM Do YY")}</div>
         </div>
       }
     </>
   )
 };
-
 export default DisplayComment;

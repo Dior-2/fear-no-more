@@ -6,16 +6,15 @@ export default function Header() {
     <div>
       <div className={TopHeaderStyles.background}>
         <div className={TopHeaderStyles.widthBlock}>
-        <nav className={TopHeaderStyles.nav}>
-          <ul>
-            <li>
-              <Link href="/">
-                <a>Login or Register</a>
-              </Link>
-            </li>
-
-          </ul>
-        </nav>
+          <nav className={TopHeaderStyles.nav}>
+            <ul>
+              <li>
+                <Link href="/">
+                  <a>Login or Register</a>
+                </Link>
+              </li>
+            </ul>
+          </nav>
         </div>
       </div>
     </div>

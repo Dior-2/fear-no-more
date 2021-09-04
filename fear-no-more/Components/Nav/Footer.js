@@ -7,8 +7,8 @@ export default function Header() {
   return (
     <div className={headerStyles.footer}>
       <div className={headerStyles.footer_block}>
-          <AboutUs />
-          <ContactUs />
+        <AboutUs />
+        <ContactUs />
       </div>
     </div>
   )

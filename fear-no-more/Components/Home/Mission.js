@@ -43,6 +43,19 @@ const useStyles = makeStyles({
     fontSize: 13,
     lineHeight: 1.2,
     fontStyle: 'italic'
+  },
+  missionTextDiv: {
+    width: '350px',
+    display: 'flex',
+    flexDirection: 'column',
+    paddingLeft: '20px',
+    marginTop: '30px',
+    color: 'rgba(0, 0, 0, 0.54)',
+    fontSize: '0.875rem',
+    fontFamily: '"Roboto", "Helvetica", "Arial", sans-serif',
+    fontWeight: 400,
+    lineHeight: '1.43',
+    letterSpacing: '0.01071em'
   }
 });
 
@@ -63,11 +76,11 @@ export default function Mission(props) {
             <Paper style={{ border: "none", boxShadow: "none", display: 'flex', paddingLeft: '20px', height: '10px', flexDirection: 'row', marginBottom: '30px', alignItems: 'flex-start', paddingTop: '25px' }}>
               <Image alt='' src={iconThree} />
             </Paper>
-            <Typography variant="body2" color="textSecondary" component="p" style={{ width: '350px', display: 'flex', flexDirection: 'column', paddingLeft: '20px', marginTop: '30px' }}>
+            <div className={classes.missionTextDiv}>
               <p>
                 Poverty is a serious nationwide issue. The average U.S. family in poverty, with two adults and two children, lives on less than $26,500 a year. Consider these staggering statistics from the regions where Fear No More currently operates:
               </p>
-            </Typography>
+            </div>
           </CardContent>
         </CardActionArea>
       </Card>

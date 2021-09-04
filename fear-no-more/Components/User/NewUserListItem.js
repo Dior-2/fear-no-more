@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { TextField, Button } from '@material-ui/core';
-// import EditRow from './EditRow';
 import FormControl from '@material-ui/core/FormControl';
 import InputLabel from '@material-ui/core/InputLabel';
 import Select from '@material-ui/core/Select';
@@ -20,7 +19,6 @@ const StyledTableRow = withStyles((theme) => ({
     '&:nth-of-type(odd)': {
       backgroundColor: theme.palette.action.hover,
     },
-    // display: 'flex',
   }
 }))(TableRow);
 
@@ -32,7 +30,6 @@ const StyledTableCell = withStyles((theme) => ({
   body: {
     fontSize: 14,
     minWidth: '200px'
-    // flexGrow: 1
   },
 }))(TableCell);
 
@@ -53,14 +50,7 @@ const useStyles = makeStyles({
   formControl: {
     minWidth: 176,
   },
-  // select: {
-  //   padding: '16px'
-  // },
-  // selectEmpty: {
-  //   marginTop: theme.spacing(2),
-  // },
 });
-
 
 const NewUserListItem = ({ fields, dropdown, blankCells }) => {
   const classes = useStyles();
@@ -75,8 +65,7 @@ const NewUserListItem = ({ fields, dropdown, blankCells }) => {
               <TextField
                 label={field.label}
                 type={field.label === "Password" ? 'password' : 'text'}
-                onChange={(e) => { field.setter(e.target.value); }}
-              />
+                onChange={(e) => { field.setter(e.target.value); }} />
             </StyledTableCell>
           )
         })
@@ -90,16 +79,15 @@ const NewUserListItem = ({ fields, dropdown, blankCells }) => {
               <Select
                 native
                 value={dropdown.field}
-                onChange={(e) => dropdown.setter(e.target.value) }
+                onChange={(e) => dropdown.setter(e.target.value)}
                 inputProps={{
                   name: dropdown.label,
                   id: 'age-native-simple',
-                }}
-              >
+                }}>
                 <option aria-label="None" value="" />
                 {
                   dropdown.options.map((option, i) =>
-                    <option value={option.value} key={ i }>
+                    <option value={option.value} key={i}>
                       {option.display}
                     </option>
                   )
@@ -108,10 +96,10 @@ const NewUserListItem = ({ fields, dropdown, blankCells }) => {
             </FormControl>
           </StyledTableCell>
           :
-        null
+          null
       }
       {
-        blankCells.map((cell, i) => <StyledTableCell key={ i }></StyledTableCell>)
+        blankCells.map((cell, i) => <StyledTableCell key={i}></StyledTableCell>)
       }
     </StyledTableRow>
   )

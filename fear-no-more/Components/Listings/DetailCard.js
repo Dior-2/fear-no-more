@@ -24,10 +24,9 @@ const useStyles = makeStyles((theme) => ({
     alignItems: 'center',
     justifyContent: 'center'
   }
-
 }));
 
-export default function ListingCard({props}) {
+export default function ListingCard({ props }) {
   const classes = useStyles();
 
   return (
@@ -38,26 +37,25 @@ export default function ListingCard({props}) {
       md={12}
       lg={6}
       spacing={3}
-      className={ classes.grid }
-    >
-        <Card
-          className={classes.card}>
-          <CardMedia
-            className={classes.media}
-            image={ props.photo }
-            title="Image of something..." />
-          <CardContent className={classes.cardContent}>
-            <Typography variant='h6' color='textPrimary'>
-              { props.category }
-            </Typography>
-            <Typography variant='h6' color='textPrimary'>
-              { props.title }
-            </Typography>
-            <Typography variant="body2" color="textSecondary" component="p">
-              { props.body }
-            </Typography>
-          </CardContent>
-        </Card>
-      </Grid>
+      className={classes.grid}>
+      <Card
+        className={classes.card}>
+        <CardMedia
+          className={classes.media}
+          image={props.photo}
+          title="Image of something..." />
+        <CardContent className={classes.cardContent}>
+          <Typography variant='h6' color='textPrimary'>
+            {props.category}
+          </Typography>
+          <Typography variant='h6' color='textPrimary'>
+            {props.title}
+          </Typography>
+          <Typography variant="body2" color="textSecondary" component="p">
+            {props.body}
+          </Typography>
+        </CardContent>
+      </Card>
+    </Grid>
   );
 }

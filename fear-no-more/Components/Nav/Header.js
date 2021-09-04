@@ -1,19 +1,14 @@
 import React, { useState } from 'react';
-
 import Link from 'next/link'
 import headerStyles from '../../styles/Header.module.css'
 import Image from 'next/image'
 import Logo from '../../public/Logo.png'
-
 import { ReactElement } from 'react'
 import { faBars } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
-
 export default function Header() {
-
   const [isActive, setActive] = useState(true);
-
   const menuClick = () => {
     setActive(!isActive);
   }
@@ -49,9 +44,7 @@ export default function Header() {
           </div>
         </div>
         <div className={headerStyles.pageName}>
-          <p>
-            Share your love with ones who need
-          </p>
+          <p>Share your love with ones who need</p>
         </div>
       </nav>
     </div>
