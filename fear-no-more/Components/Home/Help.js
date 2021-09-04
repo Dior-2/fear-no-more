@@ -36,7 +36,6 @@ const useStyles = makeStyles({
     letterSpacing: -2,
     justifyContent: 'center',
     color: 'white'
-    // fontWeight: 'Bold'
   },
   snip: {
     align: 'right',
@@ -54,13 +53,9 @@ const useStyles = makeStyles({
   },
   btnL: {
     marginTop: 10,
-    // color: 'red',
     float: 'right',
     borderColor: 'black'
-    // bgcolor: ''
-    // position: 'absolute',
   }
-
 });
 const theme = {
   spacing: 8,
@@ -73,86 +68,47 @@ export default function Testimonial(props) {
     <AuthContext.Consumer>
       {(value) => {
         return (
-          <div style={{ display: 'flex', justifyContent: 'center', backgroundColor: '#829cd3', paddingTop: '50px'}}>
+          <div style={{ display: 'flex', justifyContent: 'center', backgroundColor: '#829cd3', paddingTop: '50px' }}>
             <Typography gutterBottom variant="h4" component="h2" className={classes.cent}>
               Who Are You?
             </Typography>
-            {/* <Typography variant="body2" component="p" className={classes.snip}>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-            </Typography> */}
             <Card className={classes.root} style={{ border: "none", boxShadow: "none" }} >
-              {/* <CardActionArea> */}
-
               <CardContent style={{ backgroundColor: '#829cd3' }}>
-              <Paper variant="outlined" style={{ border: "none", boxShadow: "none", display: 'flex', justifyContent: 'center', marginRight: '40px', backgroundColor: '#829cd3', marginBottom: '30px', cursor: 'pointer' }}>
-                <Image src={iconOne} onClick={() => {
-                    if (value.userProfile.username === "Guest") {
-                      Router.push('/user/signup');
-                    } else {
-                      Router.push('/listings/list')
-                    }
-
-                  }}/>
-              </Paper>
+                <Paper variant="outlined" style={{ border: "none", boxShadow: "none", display: 'flex', justifyContent: 'center', marginRight: '40px', backgroundColor: '#829cd3', marginBottom: '30px', cursor: 'pointer' }}>
+                  <Image
+                    src={iconOne}
+                    alt='Profile photo'
+                    onClick={() => {
+                      if (value.userProfile.username === "Guest") {
+                        Router.push('/user/signup');
+                      } else {
+                        Router.push('/listings/list')
+                      }
+                    }} />
+                </Paper>
                 <Typography gutterBottom variant="h5" component="h2" style={{ display: 'flex', justifyContent: 'center', marginRight: '40px', color: 'white' }}>
                   Need Help
                 </Typography>
-                {/* <Typography variant="body2" color="textSecondary" component="p">
-                  <p>
-                    Our whole purpose is to help families like yours to get the everyday essentials you need. Our crowdsourcing platform makes it easy to request help and it will be fulfilled by potential donors.
-                  </p>
-
-
-                </Typography> */}
-                {/* <Button variant="contained" size="large" color="default" className={classes.btnL}
-                  onClick={() => {
-                    if (value.userProfile.username === "Guest") {
-                      Router.push('/user/signup');
-                    } else {
-                      Router.push('/listings/list')
-                    }
-
-                  }}
-                >
-                  Sign Up
-                </Button> */}
               </CardContent>
-              {/* </CardActionArea> */}
             </Card>
             <Card className={classes.root} style={{ border: "none", boxShadow: "none" }} >
-
               <CardContent style={{ backgroundColor: '#829cd3' }}>
-              <Paper variant="outlined" style={{ border: "none", boxShadow: "none", display: 'flex', justifyContent: 'center', marginLeft: '40px', backgroundColor: '#829cd3', marginBottom: '40px', cursor: 'pointer' }}>
-                <Image src={iconTwo} onClick={() => {
-                    if (value.userProfile.username === "Guest") {
-                      Router.push('/user/signup');
-                    } else {
-                      Router.push('/listings/list')
-                    }
-                  }} />
-              </Paper>
+                <Paper variant="outlined" style={{ border: "none", boxShadow: "none", display: 'flex', justifyContent: 'center', marginLeft: '40px', backgroundColor: '#829cd3', marginBottom: '40px', cursor: 'pointer' }}>
+                  <Image
+                    src={iconTwo}
+                    alt='Profile photo'
+                    onClick={() => {
+                      if (value.userProfile.username === "Guest") {
+                        Router.push('/user/signup');
+                      } else {
+                        Router.push('/listings/list')
+                      }
+                    }} />
+                </Paper>
                 <Typography gutterBottom variant="h5" component="h2" style={{ display: 'flex', justifyContent: 'center', marginLeft: '30px', color: 'white' }}>
-                Can Help
+                  Can Help
                 </Typography>
-                {/* <Typography variant="body2" color="textSecondary" component="p">
-                  <p>
-                    The support we receive from individuals, families, and businesses sustains our mission and work year-round. Our crowdsourcing program makes it easy to donate to individuals.
-                  </p>
-
-                </Typography>
-                <Button variant="contained" size="large" color="default" className={classes.btnL}
-                  onClick={() => {
-                    if (value.userProfile.username === "Guest") {
-                      Router.push('/user/signup');
-                    } else {
-                      Router.push('/listings/list')
-                    }
-                  }}
-                >
-                  Sign Up
-                </Button> */}
               </CardContent>
-
             </Card>
           </div>
         )

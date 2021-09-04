@@ -13,23 +13,21 @@ export const siteTitle = "Fear No More";
 const Layout = ({ children, home }) => {
   return (
     <AuthContext.Consumer>
-      {({username}) => {
+      {({ username }) => {
         return (
           <div>
             <Head>
               <meta
                 name="Fear No More"
-                content="Helping people in need"
-              />
-              <meta name="og:title" content={ siteTitle } />
+                content="Helping people in need" />
+              <meta name="og:title" content={siteTitle} />
               <meta name="twitter:card" content="summary_large_image" />
               <meta name="viewport" content="width=device-width, initial-scale=0.5" />
             </Head>
-            <NavBar username={username}/>
-            {/* <TopHeader /> */}
+            <NavBar username={username} />
             <Header />
             <main>
-              { children }
+              {children}
             </main>
             <Footer />
             <BottomFooter />
@@ -39,5 +37,4 @@ const Layout = ({ children, home }) => {
     </AuthContext.Consumer>
   )
 }
-
 export default Layout;
