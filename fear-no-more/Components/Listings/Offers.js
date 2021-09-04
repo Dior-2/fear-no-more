@@ -21,40 +21,16 @@ const useStyles = makeStyles(() => ({
 
 const options = ['All', 'Bills', 'Food', 'Homegoods', 'Housing'];
 
-// ^^^ COMPONENT DECLARATION ^^^ //
 export default function FilterComponent () {
   const classes = useStyles();
-
-  // ~~~~~~~ STATE VARIABLES ~~~~~~~ //
-  // SETS A VALUE FOR SLICING DATA AND
-  // ONLY DISPLAYING 4 PROJECTS/PAGE
   const [nextPage, setPage] = useState(0);
-
-  // SET TO TRUE ONCE THE END OF THE LIST
-  // IS REACHED
   const [listEnd, setListEnd] = useState(false);
-
-  // SET TO FALSE AFTER THE FIRST CLICK TO
-  // GO TO NEXT PAGE OF PROJECTS
   const [listBegin, setListBegin] = useState(true);
-
-  // DISPLAYS PAGE NUMBER BETWEEN BUTTONS
-  // ALSO USED FOR CONDITIONAL TO CHECK IF
-  // AT END OF LIST OR BEGINNING
   const [pageNumber, setPageNumber] = useState(1);
-
   const [listData, setListData] = useState([]);
-  // SETS THE TOTAL NUMBER OF PAGES
-  // USED TO TEST IF PAGE NUMBER
-  // REACHES END OF LIST
   const [limit] = useState(parseInt(listData.length / 5));
-
-
-  // THIS IS A CHUNK OF THE DATA THAT CHANGES ON
-  // EACH CLICK OF EITHER INC OR DEC
   let projectList = listData.slice(nextPage, nextPage + 5);
 
-  // THE INITIAL API CALL FOR DATA
   useEffect(() => {
     async function fetchData() {
       const noQuery = await axios.get(`http://18.222.198.9/api/listings/offers`)
@@ -68,24 +44,35 @@ export default function FilterComponent () {
     fetchData();
   }, []);
 
-
-  // SETS CATEGORY TO FILTER LIST BY
   const [listFiltered, setListFiltered] = useState(false);
-  // SETS NEW DATA TO DISPLAY BASED ON FILTER SELECTION
   const [filteredList, setFilteredList] = useState([]);
-  // FILTER FUNCTIONALITY
-  function filterList (option) {
-    let results = listData.slice();
+
+  function filterByCategory(option) {
+    let results = [];
     let optionNormalize = option.charAt(0).toLowerCase() + option.slice(1);
+
     if (optionNormalize === 'all') {
       setListFiltered(false);
     } else {
       setListFiltered(true);
     }
-    setFilteredList(results.filter((item) => item.category === option.toLowerCase()));
+
+    function fetchData() {
+      const getFilteredData = axios.get(`http://18.222.198.9/api/listings/offers`, {
+        params: {
+          category: `${optionNormalize}`
+        }
+      })
+        .then(({ data }) => {
+          setFilteredList(data);
+        })
+        .catch((error) => {
+          console.error(`ERROR :!:!:! ${error}`);
+        });
+    }
+    fetchData();
   }
 
-  // OPTIONS RELATED FUNCTIONALITY
   const [open, setOpen] = useState(false);
   const anchorRef = useRef(null);
   const [selectedIndex, setSelectedIndex] = useState(0);
@@ -93,7 +80,7 @@ export default function FilterComponent () {
   const handleMenuItemClick = (event, option, index) => {
     setSelectedIndex(index);
     setOpen(false);
-    filterList(option);
+    filterByCategory(option);
   };
 
   const handleToggle = () => {
@@ -108,44 +95,19 @@ export default function FilterComponent () {
   };
 
   function incrementPage() {
-    // SET PAGE NUMBER
     setPageNumber(pageNumber + 1);
-
-    // SLICE NEW LIST FOR PAGE
     setPage(nextPage + 5);
-
-    // WHEN FIRST CLICKING NEXT
-    // SET listBegin TO FALSE
     setListBegin(false);
-
-    // I ADDED A CONSTANT NUMBER (3)
-    // BECAUSE limit STAYS AT 0
-    // THIS HAS TO DO WITH useEffect (I THINK) AND
-    // I AM NOT SURE HOW TO FIX IT
     if (pageNumber >= 3) {
-      // SET LIST END TO true
-      // THIS WILL DISABLE THE NEXT
-      // PAGE BUTTON
       setListEnd(true);
     }
   }
+
   function decrementPage() {
-    // SET nextPage SO PREVIOUS SLICE
-    // IS DISPLAYED
     setPage(nextPage - 5);
-
-    // INCREMENT pageNumber
     setPageNumber(pageNumber - 1);
-
-    // WHENEVER pageNumber IS DECREMENTED
-    // SET listEnd TO false
-    // THIS WILL RE-ENABLE THE INCREMENT BTN
     setListEnd(false);
-
-    // IF pageNumber lt || eq to 2
-    // WE ARE AT THE BEGINNING OF THE LIST
     if (pageNumber <= 2) {
-      // THIS DISABLES THE DECREMENT BTN
       setListBegin(true);
     }
   }
@@ -153,8 +115,6 @@ export default function FilterComponent () {
   return (
     <div style={{ display: 'flex', justifyContent: 'center' }}>
       <div className={classes.root} style={{ width: '800px'}} >
-        {/* <Grid container direction="column" alignItems="center">
-          <Grid item xs={12}> */}
           <div style={{ display: 'flex', justifyContent: 'space-between', margin: '40px 40px 0 40px' }} >
             <ButtonGroup className={classes.filter} variant="contained" color="primary" ref={anchorRef} aria-label="split button">
               <Button>{options[selectedIndex]}</Button>
@@ -169,14 +129,11 @@ export default function FilterComponent () {
                 <ArrowDropDownIcon />
               </Button>
             </ButtonGroup>
-
             <ButtonGroup className={classes.filter} variant="contained" color="primary" aria-label="split button">
             <Button href="/listings/create">Create Listing</Button>
           </ButtonGroup>
-
             </div>
             <div style={{ display: 'flex', justifyContent: 'center',  }} >
-
             <Popper open={open} anchorEl={anchorRef.current} role={undefined} transition disablePortal>
               {({ TransitionProps, placement }) => (
                 <Grow
@@ -201,9 +158,7 @@ export default function FilterComponent () {
                 </Grow>
               )}
             </Popper>
-          {/* </Grid> */}
           </div>
-
           <Grid
             container
             alignItems='center'
@@ -246,7 +201,6 @@ export default function FilterComponent () {
                 disabled={listBegin}
                 onClick={() => decrementPage()}>Back</Button>
             </ButtonGroup>
-
             <ButtonGroup
               className={classes.fixed}
               variant="contained"
@@ -256,7 +210,6 @@ export default function FilterComponent () {
                 backgroundColor='primary'
                 disableRipple={true}>Page : {pageNumber}</Button>
             </ButtonGroup>
-
             <ButtonGroup
               className={classes.fixed}
               variant="contained"
@@ -267,7 +220,6 @@ export default function FilterComponent () {
                 onClick={() => incrementPage()}>Next</Button>
             </ButtonGroup>
           </Grid>
-        {/* </Grid> */}
         </div>
       </div>
   );
