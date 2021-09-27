@@ -41,6 +41,8 @@ Fork and clone this repo then run:
 
 - Edrick Ee (Lead Front-end architect & UI design, Full Stack Engineer)
 
+- Joseph Peck (Authentication, customer negotiations, Full Stack Engineer)
+
 - Erin O'Connor (Full Stack Engineer)
 
 - Chi Chan (Full Stack Engineer)
